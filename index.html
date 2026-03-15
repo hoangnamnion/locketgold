@@ -3,428 +3,507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cài Đặt Locket Gold - OTA</title>
+    <title>Cài Đặt Locket Gold - OTA VIP</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #0a0f1e;
+            font-family: 'Inter', system-ui, sans-serif;
+            background: radial-gradient(circle at 50% 30%, rgba(65, 88, 208, 0.15) 0%, #0a0f1e 70%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 16px;
-        }
-
-        .container {
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .card {
-            background: rgba(20, 30, 50, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px;
-            padding: 32px 24px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(145deg, #4158D0, #C850C0);
-            border-radius: 30px;
-            margin: 10px auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 30px rgba(193, 80, 192, 0.3);
             position: relative;
             overflow: hidden;
         }
-
-        .app-icon::after {
+        /* Background glow orbs */
+        body::before {
             content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(145deg, rgba(255,255,255,0.3), transparent);
-            opacity: 0.5;
+            position: fixed;
+            top: -30%;
+            left: -30%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(193, 80, 192, 0.25) 0%, transparent 70%);
+            z-index: -1;
+            animation: orbFloat 25s ease-in-out infinite;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -40%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(65, 88, 208, 0.2) 0%, transparent 70%);
+            z-index: -1;
+            animation: orbFloat 30s ease-in-out infinite reverse;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(80px, 60px) rotate(8deg); }
         }
 
-        .app-icon span {
-            font-size: 60px;
-            color: white;
-            position: relative;
+        .container {
+            max-width: 480px;
+            width: 100%;
             z-index: 2;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+        }
+        .card {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border-radius: 48px;
+            padding: 40px 28px 36px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(255,255,255,0.04), transparent);
+            pointer-events: none;
+        }
+
+        .app-icon {
+            width: 138px;
+            height: 138px;
+            background: linear-gradient(145deg, #4158D0, #C850C0, #FF6B6B);
+            border-radius: 36px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(193, 80, 192, 0.5),
+                        0 25px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            animation: floatIcon 3s ease-in-out infinite;
+            z-index: 2;
+        }
+        .app-icon::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: inherit;
+            border-radius: 50%;
+            opacity: 0.25;
+            filter: blur(25px);
+            z-index: -1;
+        }
+        .app-icon span {
+            font-size: 68px;
+            color: white;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.5));
+        }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-14px) rotate(3deg); }
         }
 
         h1 {
-            font-size: 2.4em;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.85rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #fff, #e0e0ff);
+            background: linear-gradient(90deg, #fff, #e0e8ff, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            letter-spacing: -1.2px;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+            margin-bottom: 6px;
         }
-
         .subtitle {
-            color: #8e9ab0;
-            font-size: 1em;
-            margin-bottom: 25px;
-            font-weight: 400;
+            color: #a0b0ff;
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
         }
 
         .bundle-badge {
-            background: rgba(65, 88, 208, 0.2);
-            border: 1px solid rgba(65, 88, 208, 0.4);
-            color: #a0b0ff;
-            padding: 10px 20px;
-            border-radius: 30px;
+            background: rgba(65, 88, 208, 0.15);
+            border: 1px solid rgba(100, 150, 255, 0.4);
+            color: #b0c0ff;
+            padding: 10px 26px;
+            border-radius: 9999px;
             font-family: monospace;
-            font-size: 0.9em;
-            display: inline-block;
-            margin-bottom: 20px;
-            backdrop-filter: blur(5px);
+            font-size: 0.88rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 28px;
+            box-shadow: 0 0 15px rgba(65, 88, 208, 0.3);
         }
 
         .info-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 25px 0;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 28px 0;
         }
-
         .info-chip {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 40px;
+            padding: 14px 18px;
+            border-radius: 9999px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             color: #fff;
-            font-size: 0.95em;
-            backdrop-filter: blur(5px);
+            font-size: 0.95rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-
         .info-chip span {
             color: #8e9ab0;
-            font-size: 0.9em;
+            font-size: 0.82rem;
+            font-weight: 400;
         }
 
         .install-btn {
+            position: relative;
+            overflow: hidden;
             background: linear-gradient(145deg, #4158D0, #C850C0);
             color: white;
             border: none;
-            padding: 22px 20px;
-            border-radius: 60px;
-            font-size: 1.4em;
-            font-weight: 600;
-            margin: 30px 0 20px;
+            padding: 26px 20px;
+            border-radius: 9999px;
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin: 32px 0 24px;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            box-shadow: 0 15px 25px rgba(193, 80, 192, 0.4);
-            border: 1px solid rgba(255,255,255,0.2);
+            gap: 14px;
+            box-shadow: 0 20px 35px rgba(193, 80, 192, 0.45),
+                        0 0 0 1px rgba(255,255,255,0.25) inset;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
         }
-
+        .install-btn:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 25px 45px rgba(193, 80, 192, 0.55);
+        }
         .install-btn:active {
-            transform: scale(0.98);
-            box-shadow: 0 5px 15px rgba(193, 80, 192, 0.4);
+            transform: scale(0.96);
         }
-
+        .install-btn::after {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -150%;
+            width: 60%;
+            height: 300%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+            transform: skewX(-25deg);
+            animation: shine 3.5s linear infinite;
+        }
+        @keyframes shine {
+            0% { left: -150%; }
+            25% { left: 120%; }
+            100% { left: 120%; }
+        }
         .install-btn.disabled {
-            opacity: 0.5;
+            opacity: 0.45;
             pointer-events: none;
-            background: linear-gradient(145deg, #666, #888);
-        }
-
-        .warning-box {
-            background: rgba(255, 149, 0, 0.15);
-            border: 1px solid rgba(255, 149, 0, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: left;
-            backdrop-filter: blur(5px);
-        }
-
-        .warning-title {
-            color: #FF9F0A;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.1em;
-        }
-
-        .warning-text {
-            color: #ffd9a3;
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-left: 28px;
-        }
-
-        .steps-container {
-            background: rgba(0,0,0,0.2);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 25px 0;
-            text-align: left;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .steps-title {
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.1em;
-        }
-
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 18px;
-            color: #b0b8c5;
-            font-size: 0.95em;
-        }
-
-        .step-number {
-            width: 28px;
-            height: 28px;
-            background: rgba(65, 88, 208, 0.3);
-            border: 1px solid rgba(65, 88, 208, 0.6);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: #a0b0ff;
-            flex-shrink: 0;
+            background: linear-gradient(145deg, #555, #777);
         }
 
         .device-check {
-            background: rgba(40, 200, 100, 0.1);
-            border: 1px solid rgba(40, 200, 100, 0.3);
-            border-radius: 16px;
-            padding: 16px;
-            margin: 20px 0;
+            background: rgba(40, 200, 100, 0.12);
+            border: 1px solid rgba(40, 200, 100, 0.45);
+            border-radius: 24px;
+            padding: 18px 20px;
+            margin: 24px 0;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             color: #2ac46b;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.02rem;
+            box-shadow: 0 8px 20px rgba(40, 200, 100, 0.15);
+        }
+
+        .steps-container {
+            background: rgba(255,255,255,0.04);
+            border-radius: 28px;
+            padding: 26px;
+            margin: 28px 0;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .steps-title {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 22px;
+            color: #b0b8c5;
+            font-size: 0.98rem;
+            line-height: 1.45;
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: rgba(65, 88, 208, 0.25);
+            border: 1px solid rgba(100, 150, 255, 0.5);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #a0b0ff;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .warning-box {
+            background: rgba(255, 149, 0, 0.13);
+            border: 1px solid rgba(255, 149, 0, 0.45);
+            border-radius: 24px;
+            padding: 22px;
+            margin: 26px 0;
+            text-align: left;
+            backdrop-filter: blur(12px);
+        }
+        .warning-title {
+            color: #FF9F0A;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+        }
+        .warning-text {
+            color: #ffe0b3;
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+        .backup-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #8e9ab0;
+            font-size: 0.95rem;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+        .backup-link:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
         }
 
         .footer {
-            margin-top: 20px;
+            margin-top: 28px;
             color: #5e6a82;
-            font-size: 0.9em;
+            font-size: 0.88rem;
+            text-align: center;
         }
-
         .footer a {
             color: #8e9ab0;
             text-decoration: none;
             border-bottom: 1px dashed #5e6a82;
         }
 
-        @media (max-width: 380px) {
-            .card {
-                padding: 24px 16px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .install-btn {
-                font-size: 1.2em;
-                padding: 18px;
-            }
-        }
-
-        /* Loading effect */
+        /* Loading */
         .loading {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
+            animation: spin 1s linear infinite;
         }
-
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 380px) {
+            .card { padding: 32px 20px; }
+            h1 { font-size: 2.4rem; }
+            .install-btn { font-size: 1.3rem; padding: 22px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
+            <!-- App Icon -->
             <div class="app-icon">
                 <span>📸</span>
             </div>
-            
+           
             <h1>Locket Gold</h1>
-            <div class="subtitle">Phiên bản đặc biệt • VIP</div>
-            
+            <div class="subtitle">Phiên bản VIP • Gold Edition</div>
+           
             <div class="bundle-badge">
-                📦 com.locket.Locket
+                📦 com.locket.Locket <span style="font-size:10px; opacity:0.6;">• PRO</span>
             </div>
 
+            <!-- Info -->
             <div class="info-grid">
                 <div class="info-chip">
-                    <span>Version</span> 10000.000.0
+                    <span>Version</span> 
+                    <strong>10000.000.0</strong>
                 </div>
                 <div class="info-chip">
-                    <span>Dung lượng</span> ~120 MB
+                    <span>Dung lượng</span> 
+                    <strong>~120 MB</strong>
                 </div>
             </div>
 
-            <!-- Nút cài đặt trực tiếp qua manifest -->
-            <a href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/hoangnamnion/locketgold/main/manifest.plist" 
-               class="install-btn" 
+            <!-- Install Button -->
+            <a href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/hoangnamnion/locketgold/main/manifest.plist"
+               class="install-btn"
                id="installBtn">
-                <span>📲</span>
+                <span style="font-size:1.6rem;">📲</span>
                 Cài Đặt Trực Tiếp
             </a>
 
-            <!-- Kiểm tra thiết bị iOS -->
+            <!-- Device Check -->
             <div class="device-check" id="deviceCheck">
-                <span>✅</span>
+                <span style="font-size:1.4rem;">✅</span>
                 <span>Đang kiểm tra thiết bị...</span>
             </div>
 
-            <!-- Hướng dẫn chi tiết -->
+            <!-- Steps -->
             <div class="steps-container">
                 <div class="steps-title">
-                    <span>📋</span>
-                    <span>Hướng dẫn cài đặt (3 bước)</span>
+                    <span style="font-size:1.4rem;">📋</span>
+                    <span>Hướng dẫn cài đặt (3 bước nhanh)</span>
                 </div>
-                
+               
                 <div class="step-item">
                     <div class="step-number">1</div>
-                    <div>Nhấn nút <strong style="color:#fff;">"Cài Đặt Trực Tiếp"</strong> màu tím ở trên</div>
+                    <div>Nhấn <strong style="color:#fff;">"Cài Đặt Trực Tiếp"</strong> bên trên</div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">2</div>
-                    <div>Chọn <strong style="color:#fff;">"Cài đặt"</strong> khi cửa sổ popup xuất hiện</div>
+                    <div>Chọn <strong style="color:#fff;">"Cài đặt"</strong> khi popup hiện ra</div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">3</div>
-                    <div>Vào <strong style="color:#fff;">Cài đặt > Cài đặt chung > VPN & Quản lý thiết bị</strong> để tin cậy chứng chỉ</div>
+                    <div>Vào <strong style="color:#fff;">Cài đặt → Cài đặt chung → VPN &amp; Quản lý thiết bị</strong> → Tin cậy chứng chỉ</div>
                 </div>
             </div>
 
-            <!-- Cảnh báo quan trọng -->
+            <!-- Warning -->
             <div class="warning-box">
                 <div class="warning-title">
-                    <span>⚠️</span>
+                    <span style="font-size:1.4rem;">⚠️</span>
                     <span>Lưu ý quan trọng</span>
                 </div>
                 <div class="warning-text">
-                    • Chỉ cài được trên <strong>iPhone/iPad</strong> dùng iOS 12.0 trở lên<br>
-                    • Vào <strong>Cài đặt > Cài đặt chung > Ngày & Giờ</strong> chỉnh tự động nếu báo không tin cậy<br>
-                    • Ứng dụng có hiệu lực 7 ngày với Apple ID thường
+                    • Chỉ hỗ trợ <strong>iPhone / iPad</strong> iOS 12.0 trở lên<br>
+                    • Bật <strong>Ngày &amp; Giờ tự động</strong> trong Cài đặt nếu bị lỗi tin cậy<br>
+                    • Chứng chỉ hết hạn sau 7 ngày (dùng Apple ID thường)
                 </div>
             </div>
 
-            <!-- Nút dự phòng tải file ipa -->
-            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <!-- Backup -->
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
                 <a href="https://github.com/hoangnamnion/locketgold/releases/download/v01/quanver2.ipa" 
-                   style="color: #8e9ab0; font-size: 0.9em; text-decoration: none;">
-                    ⬇️ Tải file .ipa (dự phòng)
+                   class="backup-link">
+                    ⬇️ Tải file .ipa dự phòng
                 </a>
             </div>
         </div>
-        
+       
         <div class="footer">
-            ⚡ Cần hỗ trợ? Liên hệ <a href="#">@hoangnamnion</a> • OTA Installer v2.0
+            ⚡ Cần hỗ trợ nhanh? Chat <a href="#">@hoangnamnion</a><br>
+            OTA Installer v2.1 • Siêu mượt trên iPhone
         </div>
     </div>
 
     <script>
-        // Kiểm tra thiết bị iOS
+        // Tailwind-like enhancements already in CSS
         function checkiOS() {
             const deviceCheck = document.getElementById('deviceCheck');
             const installBtn = document.getElementById('installBtn');
-            
+           
             const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-            
+           
             if (isiOS) {
                 if (isSafari) {
-                    deviceCheck.innerHTML = '<span>✅</span><span>Thiết bị iOS • Có thể cài đặt trực tiếp</span>';
-                    deviceCheck.style.background = 'rgba(40, 200, 100, 0.15)';
-                    deviceCheck.style.color = '#2ac46b';
+                    deviceCheck.innerHTML = `<span style="font-size:1.4rem;">✅</span><span>Thiết bị iOS • Sẵn sàng cài đặt!</span>`;
+                    deviceCheck.style.background = 'rgba(40, 200, 100, 0.18)';
+                    deviceCheck.style.borderColor = 'rgba(40, 200, 100, 0.6)';
+                    deviceCheck.style.color = '#34d399';
                     installBtn.classList.remove('disabled');
                 } else {
-                    deviceCheck.innerHTML = '<span>⚠️</span><span>Vui lòng mở bằng Safari để cài đặt</span>';
-                    deviceCheck.style.background = 'rgba(255, 149, 0, 0.15)';
-                    deviceCheck.style.color = '#FF9F0A';
+                    deviceCheck.innerHTML = `<span style="font-size:1.4rem;">⚠️</span><span>Mở bằng Safari để cài đặt</span>`;
+                    deviceCheck.style.background = 'rgba(255, 149, 0, 0.18)';
+                    deviceCheck.style.borderColor = 'rgba(255, 149, 0, 0.5)';
+                    deviceCheck.style.color = '#fb923c';
                     installBtn.classList.add('disabled');
                 }
             } else {
-                deviceCheck.innerHTML = '<span>❌</span><span>Không phải thiết bị iOS • Không thể cài trực tiếp</span>';
-                deviceCheck.style.background = 'rgba(255, 59, 48, 0.15)';
+                deviceCheck.innerHTML = `<span style="font-size:1.4rem;">❌</span><span>Chỉ hỗ trợ iPhone/iPad</span>`;
+                deviceCheck.style.background = 'rgba(255, 59, 48, 0.18)';
+                deviceCheck.style.borderColor = 'rgba(255, 59, 48, 0.5)';
                 deviceCheck.style.color = '#ff3b30';
                 installBtn.classList.add('disabled');
             }
         }
 
-        // Xử lý khi nhấn nút cài đặt
         document.getElementById('installBtn').addEventListener('click', function(e) {
             const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-            
+           
             if (!isiOS || !isSafari) {
                 e.preventDefault();
-                alert('❌ Vui lòng mở link này bằng Safari trên iPhone/iPad để cài đặt!');
+                alert('❌ Vui lòng mở bằng Safari trên iPhone hoặc iPad!');
                 return;
             }
-            
-            // Hiệu ứng loading
+           
             const btn = this;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> Đang kết nối...';
-            
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `<span class="loading"></span> Đang kết nối máy chủ...`;
+            btn.style.pointerEvents = 'none';
+           
             setTimeout(() => {
-                btn.innerHTML = originalText;
-            }, 2000);
+                btn.innerHTML = originalHTML;
+                btn.style.pointerEvents = 'auto';
+            }, 2400);
         });
 
-        // Chạy kiểm tra khi load trang
-        checkiOS();
-        
-        // Kiểm tra nếu là iOS thì tự động focus vào nút cài
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-            document.getElementById('installBtn').focus();
-        }
+        // Run check
+        window.onload = function() {
+            checkiOS();
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                document.getElementById('installBtn').focus();
+            }
+        };
     </script>
 </body>
 </html>
