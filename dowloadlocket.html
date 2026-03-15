@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Locket Gold trên App Store</title>
+    
+    <script>
+        // Chặn chuột phải
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Chặn các phím tắt F12, Ctrl+U, Ctrl+Shift+I...
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) { // F12
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
+                return false;
+            }
+        }
+
+        // Chặn DevTools bằng cách phát hiện thay đổi kích thước console (cơ bản)
+        // Nếu phát hiện đang mở inspect, có thể reload hoặc làm trắng body
+        setInterval(function() {
+            var before = new Date().getTime();
+            debugger; // Gây treo nhẹ nếu mở DevTools
+            var after = new Date().getTime();
+            if (after - before > 100) {
+                 document.body.innerHTML = ""; // Xóa trắng trang nếu phát hiện debug
+                 window.location.reload(); 
+            }
+        }, 1000);
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #1c1c1e;
+            --text-secondary: #8e8e93;
+            --btn-blue: #007aff;
+            --btn-text: #ffffff;
+            --separator: #e5e5ea;
+            --gray-bg: #f2f2f7;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --text-primary: #ffffff;
+                --text-secondary: #8e8e93;
+                --btn-blue: #0a84ff;
+                --separator: #38383a;
+                --gray-bg: #1c1c1e;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            user-select: none; /* Không cho bôi đen text */
+            -webkit-user-select: none;
+        }
+
+        /* HEADER APP */
+        .app-header {
+            display: flex;
+            padding: 20px;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        /* LOGO APP */
+        .app-icon {
+            width: 118px;
+            height: 118px;
+            border-radius: 26px;
+            border: 1px solid rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        .app-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 5px;
+            flex-grow: 1;
+        }
+
+        .app-name {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .app-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* KHU VỰC NÚT BẤM VÀ SHARE */
+        .get-btn-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ĐỒNG HỒ ĐẾM NGƯỢC */
+        .timer-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+            display: none;
+        }
+
+        /* BUTTON STYLE */
+        .get-btn {
+            background-color: var(--btn-blue);
+            color: var(--btn-text);
+            border: none;
+            border-radius: 20px;
+            padding: 0;
+            width: 72px; 
+            height: 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* VÒNG TRÒN PROGRESS (SVG) */
+        /* Chu vi hình tròn r=9 là ~56.54. Ta set stroke-dasharray là 56.5 */
+        .progress-ring {
+            display: none; 
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring__circle {
+            stroke: white;
+            stroke-width: 3;
+            fill: transparent;
+            r: 9;
+            cx: 12;
+            cy: 12;
+            stroke-dasharray: 56.5; 
+            stroke-dashoffset: 56.5; /* Bắt đầu là ẩn hết (hoặc hiện hết tùy logic) */
+            stroke-linecap: round;
+        }
+
+        .stop-icon {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 1px;
+            position: absolute;
+            display: none;
+        }
+
+        .share-icon {
+            color: var(--btn-blue);
+            font-size: 24px;
+        }
+
+        /* CÁC PHẦN KHÁC */
+        .stats-bar { display: flex; justify-content: space-around; padding: 15px 20px; border-bottom: 1px solid var(--separator); }
+        .stat-item { text-align: center; flex: 1; position: relative; }
+        .stat-item:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 10%; height: 80%; width: 1px; background-color: var(--separator); }
+        .stat-title { font-size: 11px; color: var(--text-secondary); font-weight: 600; margin-bottom: 4px; }
+        .stat-value { font-size: 20px; font-weight: 700; color: var(--text-secondary); }
+        
+        .section { padding: 20px; border-bottom: 1px solid var(--separator); }
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .version-history { color: var(--btn-blue); font-size: 15px; font-weight: 400; }
+        .version-info { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; }
+        .release-notes { font-size: 15px; line-height: 1.5; }
+
+        .preview-scroll { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; scrollbar-width: none; }
+        .preview-scroll::-webkit-scrollbar { display: none; }
+        
+        /* Style cho ảnh màn hình */
+        .screenshot { 
+            width: 200px; 
+            height: auto; /* Để ảnh tự chỉnh theo tỷ lệ, hoặc set cố định 433px */
+            min-height: 433px;
+            background-color: var(--gray-bg); 
+            border-radius: 20px; 
+            flex-shrink: 0; 
+            object-fit: cover;
+            border: 1px solid var(--separator); 
+        }
+        
+        .info-row { padding-top: 10px; font-size: 12px; color: var(--text-secondary); text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="app-header">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f2/da/9b/f2da9bc4-74c3-6583-6c34-45db6a9e5383/app_icon-0-0-1x_U007ephone-0-1-sRGB-85-220.png/512x512bb.jpg" class="app-icon" alt="Locket Logo">
+        
+        <div class="app-info">
+            <div class="app-name">Locket Widget</div>
+            <div class="app-subtitle">Locket Gold Premium</div>
+            
+            <div class="get-btn-container">
+                <div class="btn-wrapper">
+                    <div class="get-btn" id="installBtn" onclick="startLoading('itms-services://?action=download-manifest&url=https://webhoangnam.id.vn/manifest.plist')">
+                        <span class="btn-text">NHẬN</span>
+                        
+                        <svg class="progress-ring" width="24" height="24">
+                            <circle class="progress-ring__circle" />
+                        </svg>
+                        
+                        <div class="stop-icon"></div>
+                    </div>
+
+                    <div id="timer" class="timer-text">Đang tải...</div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-title">XẾP HẠNG</div>
+            <div class="stat-value">4.9 ★</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-title">TUỔI</div>
+            <div class="stat-value">12+</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-title">BẢNG XẾP HẠNG</div>
+            <div class="stat-value">#1</div>
+            <div class="stat-title" style="margin-top:2px">Ảnh & Video</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            Có gì mới
+            <span class="version-history">Lịch sử phiên bản</span>
+        </div>
+        <div class="version-info">Phiên bản 2.27.3 • 25 thg 12</div>
+        <div class="release-notes">
+            - Đã mở khóa tính năng Locket Gold.<br>
+            - Upload ảnh chất lượng cao.<br>
+            - Sửa lỗi văng app trên iOS 18.<br>
+            <br>
+            Cảm ơn bạn đã sử dụng phiên bản của Hoang Nam.
+        </div>
+    </div>
+
+    <div class="section" style="border-bottom: none;">
+        <div class="section-title">Bản xem trước</div>
+        <div class="preview-scroll">
+            <img src="./magelk/10.jpg" class="screenshot" alt="Preview 1" onerror="this.style.display='none'">
+            <img src="./magelk/2.jpg" class="screenshot" alt="Preview 2" onerror="this.style.display='none'">
+            <img src="./magelk/3.jpg" class="screenshot" alt="Preview 3" onerror="this.style.display='none'">
+            <img src="./magelk/4.jpg" class="screenshot" alt="Preview 3" onerror="this.style.display='none'">
+            <img src="./magelk/5.jpg" class="screenshot" alt="Preview 4" onerror="this.style.display='none'">
+            <img src="./magelk/6.jpg" class="screenshot" alt="Preview 3" onerror="this.style.display='none'">
+
+        </div>
+    </div>
+    
+    <div class="info-row">
+        Hoang Nam Store &copy; 2025
+    </div>
+    <br><br>
+
+    <script>
+        function startLoading(linkTai) {
+            var btn = document.getElementById('installBtn');
+            var textSpan = btn.querySelector('.btn-text');
+            var progressRing = btn.querySelector('.progress-ring');
+            var circle = btn.querySelector('.progress-ring__circle');
+            var stopIcon = btn.querySelector('.stop-icon');
+            var timerText = document.getElementById('timer');
+            
+            // Nếu đang chạy rồi thì thôi
+            if (textSpan.style.display === 'none') return;
+
+            // --- 1. SETUP THỜI GIAN ---
+            // Random từ 3 phút (180s) đến 5 phút (300s)
+            var durationSeconds = 1;
+            
+            // --- 2. ĐỔI GIAO DIỆN NÚT ---
+            textSpan.style.display = 'none';      
+            progressRing.style.display = 'block'; 
+            stopIcon.style.display = 'block';     
+            timerText.style.display = 'block'; // Hiện đồng hồ
+
+            // Setup trạng thái ban đầu cho vòng tròn (đầy hoặc rỗng)
+            // Chu vi = 56.5. offset = 56.5 là ẩn hết. offset = 0 là hiện hết.
+            // Muốn chạy vòng tròn dần hiện ra:
+            circle.style.transition = 'none';
+            circle.style.strokeDashoffset = '56.5'; // Bắt đầu rỗng
+            
+            // Trigger reflow (quan trọng để animation hoạt động sau khi set display block)
+            circle.getBoundingClientRect(); 
+
+            // Set animation duration
+            circle.style.transition = `stroke-dashoffset ${durationSeconds}s linear`;
+            
+            // Bắt đầu chạy vòng tròn (về 0 là đầy vòng)
+            circle.style.strokeDashoffset = '0';
+
+            // --- 3. BẮT ĐẦU ĐẾM NGƯỢC ---
+            updateTimerDisplay(durationSeconds);
+            
+            var interval = setInterval(function() {
+                durationSeconds--;
+                updateTimerDisplay(durationSeconds);
+
+                if (durationSeconds <= 0) {
+                    clearInterval(interval);
+                    timerText.innerHTML = "Đã tải xong";
+                    // Reset nút sau khi xong
+                    setTimeout(function() {
+                        resetButton();
+                        // Chuyển trang sau khi hoàn tất
+                        window.location.href = linkTai;
+                    }, 2000);
+                }
+            }, 1000);
+
+            // Hàm hiển thị phút:giây
+            function updateTimerDisplay(seconds) {
+                if (seconds < 0) seconds = 0;
+                var m = Math.floor(seconds / 60);
+                var s = seconds % 60;
+                timerText.innerHTML = m + ":" + (s < 10 ? "0" : "") + s;
+            }
+
+            // Hàm reset nút về ban đầu
+            function resetButton() {
+                circle.style.transition = 'none';
+                circle.style.strokeDashoffset = '56.5';
+                progressRing.style.display = 'none';
+                stopIcon.style.display = 'none';
+                textSpan.style.display = 'block';
+                timerText.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
