@@ -3,507 +3,799 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cài Đặt Locket Gold - OTA VIP</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    
+    <title>Locket Gold - CEO Hệ Thống</title>
+    <meta name="description" content="Hệ thống nâng cấp Locket Gold Premium Plus uy tín bởi CEO Locket - CAO VĂN NAM.">
+    <meta property="og:title" content="Locket Gold | CAO VĂN NAM">
+    <meta property="og:description" content="Hướng dẫn cài đặt Locket Gold Premium mới nhất với tài khoản VIP.">
+    <meta property="og:image" content="./logovip.png">
+    <meta property="og:type" content="website">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Ẩn tất cả các view mặc định */
+        #messenger-view, #safari-view, #other-view {
+            display: none;
         }
+        
+        :root {
+            --primary-sand: #f5e6d3;
+            --primary-mist: #d9e2e8;
+            --primary-blush: #f0d9da;
+            --primary-sage: #d4e0d4;
+            --gold-soft: #e6c9a8;
+            --text-soft: #5c5f66;
+            --text-light: #8a8d93;
+            --bg-soft: #faf7f2;
+        }
+        
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: radial-gradient(circle at 50% 30%, rgba(65, 88, 208, 0.15) 0%, #0a0f1e 70%);
+            font-family: 'Quicksand', sans-serif;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 16px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-soft);
         }
-        /* Background glow orbs */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -30%;
-            left: -30%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(193, 80, 192, 0.25) 0%, transparent 70%);
-            z-index: -1;
-            animation: orbFloat 25s ease-in-out infinite;
-        }
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -40%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(65, 88, 208, 0.2) 0%, transparent 70%);
-            z-index: -1;
-            animation: orbFloat 30s ease-in-out infinite reverse;
-        }
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(80px, 60px) rotate(8deg); }
-        }
-
-        .container {
-            max-width: 480px;
+        
+        /* View Messenger - CHỈ HIỂN THỊ ẢNH */
+        #messenger-view {
             width: 100%;
-            z-index: 2;
-        }
-        .card {
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            border-radius: 48px;
-            padding: 40px 28px 36px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6),
-                        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            text-align: center;
+            height: 100vh;
             position: relative;
-            overflow: hidden;
         }
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(145deg, rgba(255,255,255,0.04), transparent);
-            pointer-events: none;
+        
+        #messenger-view img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-
-        .app-icon {
-            width: 138px;
-            height: 138px;
-            background: linear-gradient(145deg, #4158D0, #C850C0, #FF6B6B);
-            border-radius: 36px;
-            margin: 0 auto 24px;
+        
+        /* View Other Browser */
+        #other-view {
+            width: 100%;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 60px rgba(193, 80, 192, 0.5),
-                        0 25px 40px rgba(0, 0, 0, 0.4);
-            position: relative;
-            animation: floatIcon 3s ease-in-out infinite;
-            z-index: 2;
+            background: linear-gradient(135deg, #f5efe9 0%, #f3ece7 100%);
+            padding: 20px;
         }
-        .app-icon::before {
-            content: '';
-            position: absolute;
-            inset: -20px;
-            background: inherit;
-            border-radius: 50%;
-            opacity: 0.25;
-            filter: blur(25px);
-            z-index: -1;
+        
+        .other-box {
+            background: rgba(255, 250, 245, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(230, 210, 190, 0.5);
+            border-radius: 40px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+            padding: 35px 25px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
         }
-        .app-icon span {
-            font-size: 68px;
-            color: white;
-            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.5));
+        
+        .other-box h2 {
+            color: #6b5e55;
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: 600;
         }
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-14px) rotate(3deg); }
+        
+        .other-box p {
+            color: #8b7f76;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
-
-        h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.85rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #fff, #e0e8ff, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1.2px;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
-            margin-bottom: 6px;
-        }
-        .subtitle {
-            color: #a0b0ff;
-            font-size: 1.05rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            letter-spacing: -0.3px;
-        }
-
-        .bundle-badge {
-            background: rgba(65, 88, 208, 0.15);
-            border: 1px solid rgba(100, 150, 255, 0.4);
-            color: #b0c0ff;
-            padding: 10px 26px;
-            border-radius: 9999px;
-            font-family: monospace;
-            font-size: 0.88rem;
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 28px;
-            box-shadow: 0 0 15px rgba(65, 88, 208, 0.3);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 28px 0;
-        }
-        .info-chip {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 14px 18px;
-            border-radius: 9999px;
+        
+        .copy-box {
+            background: #faf3ec;
+            border: 2px dashed #dccfc4;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            justify-content: space-between;
         }
-        .info-chip span {
-            color: #8e9ab0;
-            font-size: 0.82rem;
-            font-weight: 400;
+        
+        .copy-box input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 10px;
+            color: #6b5e55;
+            font-size: 14px;
         }
-
-        .install-btn {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(145deg, #4158D0, #C850C0);
+        
+        .copy-box button {
+            background: linear-gradient(135deg, #c7b5a5 0%, #b8a699 100%);
             color: white;
             border: none;
-            padding: 26px 20px;
-            border-radius: 9999px;
-            font-size: 1.45rem;
-            font-weight: 700;
-            margin: 32px 0 24px;
+            border-radius: 15px;
+            padding: 10px 20px;
+            font-weight: 500;
             cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        /* View Safari (main content) */
+        #safari-view {
             width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #faf4ed 0%, #f7efe8 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 14px;
-            box-shadow: 0 20px 35px rgba(193, 80, 192, 0.45),
-                        0 0 0 1px rgba(255,255,255,0.25) inset;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .install-btn:hover {
-            transform: scale(1.04) translateY(-2px);
-            box-shadow: 0 25px 45px rgba(193, 80, 192, 0.55);
-        }
-        .install-btn:active {
-            transform: scale(0.96);
-        }
-        .install-btn::after {
-            content: '';
-            position: absolute;
-            top: -60%;
-            left: -150%;
-            width: 60%;
-            height: 300%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
-            transform: skewX(-25deg);
-            animation: shine 3.5s linear infinite;
-        }
-        @keyframes shine {
-            0% { left: -150%; }
-            25% { left: 120%; }
-            100% { left: 120%; }
-        }
-        .install-btn.disabled {
-            opacity: 0.45;
-            pointer-events: none;
-            background: linear-gradient(145deg, #555, #777);
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .device-check {
-            background: rgba(40, 200, 100, 0.12);
-            border: 1px solid rgba(40, 200, 100, 0.45);
-            border-radius: 24px;
-            padding: 18px 20px;
-            margin: 24px 0;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            color: #2ac46b;
-            font-weight: 600;
-            font-size: 1.02rem;
-            box-shadow: 0 8px 20px rgba(40, 200, 100, 0.15);
+        .floating-animation {
+            animation: floating 7s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
-        .steps-container {
-            background: rgba(255,255,255,0.04);
-            border-radius: 28px;
-            padding: 26px;
-            margin: 28px 0;
-            text-align: left;
-            border: 1px solid rgba(255,255,255,0.06);
+        .pulse-animation {
+            animation: pulse 3s infinite;
         }
-        .steps-title {
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.15rem;
-        }
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 22px;
-            color: #b0b8c5;
-            font-size: 0.98rem;
-            line-height: 1.45;
-        }
-        .step-number {
-            width: 32px;
-            height: 32px;
-            background: rgba(65, 88, 208, 0.25);
-            border: 1px solid rgba(100, 150, 255, 0.5);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: #a0b0ff;
-            flex-shrink: 0;
-            font-size: 1.1rem;
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(230, 201, 168, 0.3); }
+            70% { box-shadow: 0 0 0 15px rgba(230, 201, 168, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(230, 201, 168, 0); }
         }
 
-        .warning-box {
-            background: rgba(255, 149, 0, 0.13);
-            border: 1px solid rgba(255, 149, 0, 0.45);
-            border-radius: 24px;
-            padding: 22px;
-            margin: 26px 0;
-            text-align: left;
+        .soft-card {
+            background: rgba(255, 250, 245, 0.85);
             backdrop-filter: blur(12px);
-        }
-        .warning-title {
-            color: #FF9F0A;
-            font-weight: 700;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.15rem;
-        }
-        .warning-text {
-            color: #ffe0b3;
-            font-size: 0.96rem;
-            line-height: 1.65;
+            border: 1px solid rgba(255, 245, 235, 0.8);
+            border-radius: 40px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
-        .backup-link {
+        .soft-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-custom-gradient {
+            background: rgba(255, 245, 240, 0.9);
+            backdrop-filter: blur(5px);
+            color: #6b5e55;
+            border: 1px solid rgba(230, 210, 190, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-custom-gradient:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 245, 240, 1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-download-special {
+            background: rgba(255, 250, 245, 0.95);
+            color: #6b5e55;
+            border: 1px solid #e6d2c0;
+            box-shadow: 0 6px 18px rgba(200, 170, 150, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-download-special:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 250, 245, 1);
+            box-shadow: 0 12px 25px rgba(180, 150, 130, 0.15);
+        }
+
+        .gold-badge {
+            background: linear-gradient(135deg, #e6c9a8 0%, #dbbd9c 100%);
+            color: #5e4e40;
+            font-weight: 600;
+        }
+
+        .copy-row {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #efdbcd !important;
+            background: rgba(255, 250, 245, 0.7) !important;
+        }
+        
+        .copy-row:active {
+            transform: scale(0.98);
+        }
+
+        .copy-row.copied {
+            background: linear-gradient(135deg, #e8f0e8 0%, #f0f5f0 100%) !important;
+            border-color: #b8cfb8 !important;
+        }
+
+        /* Toast thông báo */
+        #notification {
+            visibility: hidden;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: rgba(255, 250, 245, 0.95);
+            backdrop-filter: blur(10px);
+            color: #5e534a;
+            text-align: center;
+            border-radius: 40px;
+            padding: 20px 30px;
+            z-index: 1000;
+            font-weight: 500;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 80%;
+            max-width: 320px;
+            border: 1px solid #efdbcd;
+        }
+
+        #notification.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .bubble {
+            position: fixed;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(50px);
+            opacity: 0.35;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(200, 170, 150, 0.2), transparent);
+            margin: 30px 0;
+        }
+
+        .instruction-card {
+            background: rgba(255, 245, 240, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 28px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(230, 210, 190, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .instruction-card:hover {
+            background: rgba(255, 245, 240, 0.8);
+            border-color: rgba(200, 170, 150, 0.4);
+        }
+
+        .step-number {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: #8e9ab0;
-            font-size: 0.95rem;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 9999px;
-            transition: all 0.3s;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            background: rgba(200, 170, 150, 0.2);
+            color: #7a6a5d;
+            font-weight: 600;
+            margin-right: 12px;
+            font-size: 14px;
         }
-        .backup-link:hover {
-            background: rgba(255,255,255,0.08);
-            color: #fff;
+        
+        /* Animation cho các bong bóng nền */
+        @keyframes bubbleFloat1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(15px, -15px); }
+        }
+        
+        @keyframes bubbleFloat2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, 10px); }
+        }
+        
+        @keyframes bubbleFloat3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10px, 20px); }
+        }
+        
+        .bubble-1 {
+            animation: bubbleFloat1 20s ease-in-out infinite;
+        }
+        
+        .bubble-2 {
+            animation: bubbleFloat2 25s ease-in-out infinite;
+        }
+        
+        .bubble-3 {
+            animation: bubbleFloat3 30s ease-in-out infinite;
+        }
+        
+        /* Tab system */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+            color: #8f8177;
+        }
+        
+        .tab-button.active {
+            background: rgba(255, 245, 240, 0.9);
+            color: #7a6a5d;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(150, 120, 100, 0.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .footer {
-            margin-top: 28px;
-            color: #5e6a82;
-            font-size: 0.88rem;
-            text-align: center;
-        }
-        .footer a {
-            color: #8e9ab0;
-            text-decoration: none;
-            border-bottom: 1px dashed #5e6a82;
+        /* Text colors */
+        h1, h2, h3, p {
+            color: var(--text-soft);
         }
 
-        /* Loading */
-        .loading {
-            display: inline-block;
-            width: 22px;
-            height: 22px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .text-slate-800 {
+            color: #5c524a !important;
         }
 
-        @media (max-width: 380px) {
-            .card { padding: 32px 20px; }
-            h1 { font-size: 2.4rem; }
-            .install-btn { font-size: 1.3rem; padding: 22px; }
+        .text-slate-600 {
+            color: #7a6e65 !important;
+        }
+
+        .text-slate-500 {
+            color: #978b82 !important;
+        }
+
+        .text-slate-400 {
+            color: #b1a69e !important;
+        }
+
+        .bg-white\/70 {
+            background-color: rgba(255, 250, 245, 0.7) !important;
+        }
+
+        .bg-blue-100 {
+            background-color: rgba(210, 225, 235, 0.5) !important;
+        }
+
+        .bg-pink-100 {
+            background-color: rgba(240, 210, 215, 0.5) !important;
+        }
+
+        .bg-amber-100 {
+            background-color: rgba(240, 225, 200, 0.5) !important;
+        }
+
+        .text-blue-500 {
+            color: #9aa9b5 !important;
+        }
+
+        .text-pink-500 {
+            color: #c9a9b1 !important;
+        }
+
+        .text-amber-500 {
+            color: #cfb697 !important;
+        }
+        
+        /* Gradient text */
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, #b9a186, #d2b9a0) !important;
+        }
+        
+        /* Border colors */
+        .border-slate-100 {
+            border-color: #efe5dd !important;
+        }
+
+        /* VIP Badge */
+        .gold-badge {
+            background: linear-gradient(135deg, #e6c9a8 0%, #dbbd9c 100%);
+            color: #5e4e40;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <!-- App Icon -->
-            <div class="app-icon">
-                <span>📸</span>
-            </div>
-           
-            <h1>Locket Gold</h1>
-            <div class="subtitle">Phiên bản VIP • Gold Edition</div>
-           
-            <div class="bundle-badge">
-                📦 com.locket.Locket <span style="font-size:10px; opacity:0.6;">• PRO</span>
-            </div>
+    <!-- View cho Messenger - CHỈ HIỂN THỊ ẢNH -->
+    <div id="messenger-view">
+        <img src="./nen.png" alt="Mở bằng Safari">
+    </div>
 
-            <!-- Info -->
-            <div class="info-grid">
-                <div class="info-chip">
-                    <span>Version</span> 
-                    <strong>10000.000.0</strong>
-                </div>
-                <div class="info-chip">
-                    <span>Dung lượng</span> 
-                    <strong>~120 MB</strong>
-                </div>
+    <!-- View cho các trình duyệt khác -->
+    <div id="other-view">
+        <div class="other-box">
+            <h2>🌿 Vui lòng sử dụng Safari</h2>
+            <p>Để truy cập hệ thống Locket Gold, bạn cần sử dụng trình duyệt Safari trên iPhone/iPad.</p>
+            <p>Sao chép đường link bên dưới và dán vào Safari để tiếp tục:</p>
+            
+            <div class="copy-box">
+                <input type="text" id="copy-link" value="https://webhoangnam.id.vn/locket.html" readonly>
+                <button id="copy-button">Sao chép</button>
             </div>
-
-            <!-- Install Button -->
-            <a href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/hoangnamnion/locketgold/main/manifest.plist"
-               class="install-btn"
-               id="installBtn">
-                <span style="font-size:1.6rem;">📲</span>
-                Cài Đặt Trực Tiếp
-            </a>
-
-            <!-- Device Check -->
-            <div class="device-check" id="deviceCheck">
-                <span style="font-size:1.4rem;">✅</span>
-                <span>Đang kiểm tra thiết bị...</span>
-            </div>
-
-            <!-- Steps -->
-            <div class="steps-container">
-                <div class="steps-title">
-                    <span style="font-size:1.4rem;">📋</span>
-                    <span>Hướng dẫn cài đặt (3 bước nhanh)</span>
-                </div>
-               
-                <div class="step-item">
-                    <div class="step-number">1</div>
-                    <div>Nhấn <strong style="color:#fff;">"Cài Đặt Trực Tiếp"</strong> bên trên</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-number">2</div>
-                    <div>Chọn <strong style="color:#fff;">"Cài đặt"</strong> khi popup hiện ra</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-number">3</div>
-                    <div>Vào <strong style="color:#fff;">Cài đặt → Cài đặt chung → VPN &amp; Quản lý thiết bị</strong> → Tin cậy chứng chỉ</div>
-                </div>
-            </div>
-
-            <!-- Warning -->
-            <div class="warning-box">
-                <div class="warning-title">
-                    <span style="font-size:1.4rem;">⚠️</span>
-                    <span>Lưu ý quan trọng</span>
-                </div>
-                <div class="warning-text">
-                    • Chỉ hỗ trợ <strong>iPhone / iPad</strong> iOS 12.0 trở lên<br>
-                    • Bật <strong>Ngày &amp; Giờ tự động</strong> trong Cài đặt nếu bị lỗi tin cậy<br>
-                    • Chứng chỉ hết hạn sau 7 ngày (dùng Apple ID thường)
-                </div>
-            </div>
-
-            <!-- Backup -->
-            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
-                <a href="https://github.com/hoangnamnion/locketgold/releases/download/v01/quanver2.ipa" 
-                   class="backup-link">
-                    ⬇️ Tải file .ipa dự phòng
-                </a>
-            </div>
-        </div>
-       
-        <div class="footer">
-            ⚡ Cần hỗ trợ nhanh? Chat <a href="#">@hoangnamnion</a><br>
-            OTA Installer v2.1 • Siêu mượt trên iPhone
+            
+            <p>Sau khi sao chép:<br>
+               <b>1.</b> Mở Safari<br>
+               <b>2.</b> Dán link vào thanh địa chỉ<br>
+               <b>3.</b> Truy cập trang</p>
         </div>
     </div>
 
+    <!-- View cho Safari (main content) -->
+    <div id="safari-view" class="p-6 pb-16">
+        <!-- Các bong bóng nền với animation - tone pastel nhẹ -->
+        <div class="bubble bg-[#f0e3d9] w-64 h-64 -top-20 -left-20 bubble-1"></div>
+        <div class="bubble bg-[#e8d9d4] w-72 h-72 bottom-1/4 -right-16 bubble-2"></div>
+        <div class="bubble bg-[#e4ddd0] w-60 h-60 top-1/3 right-1/4 bubble-3"></div>
+        
+        <div class="w-full max-w-md flex flex-col items-center">
+            <!-- Header với logo và tiêu đề -->
+            <div class="mt-4 mb-8 flex flex-col items-center floating-animation">
+                <div class="relative mb-4">
+                    <img src="./imglocket/locket5.png" alt="Logo Locket Gold" class="w-28 h-28 object-contain rounded-[28px] shadow-xl pulse-animation">
+                    <div class="absolute -top-2 -right-2 gold-badge text-xs px-3 py-1 rounded-full">
+                        VIP
+                    </div>
+                </div>
+                <h1 class="text-4xl font-bold" style="color: #6b5e55;">Locket <span class="text-transparent bg-clip-text bg-gradient-to-r" style="background-image: linear-gradient(to right, #b9a186, #d2b9a0);">Gold</span></h1>
+                <p class="font-medium text-sm mt-2" style="color: #8b7f76;">Hệ Thống CEO <span class="font-bold" style="color: #b3a08f;">CAO VĂN NAM</span></p>
+                <p class="text-xs mt-1" style="color: #a6978b;">Premium Plus - Bản Quyền Độc Quyền</p>
+            </div>
+
+            <!-- Tab hệ thống -->
+            <div class="soft-card w-full p-1 mb-6">
+                <div class="flex justify-around mb-4">
+                    <button id="tab1-btn" class="tab-button active py-3 px-6 rounded-2xl text-sm font-medium transition-all duration-300">Tài Khoản</button>
+                    <button id="tab2-btn" class="tab-button py-3 px-6 rounded-2xl text-sm font-medium transition-all duration-300">Hướng Dẫn</button>
+                </div>
+                
+                <!-- Tab 1: Thông tin tài khoản -->
+                <div id="tab1" class="tab-content active p-4">
+                    <h2 class="text-xs uppercase tracking-widest font-bold mb-5 flex items-center" style="color: #b8a699;">
+                        <i class="fas fa-user-shield mr-2"></i>
+                        THÔNG TIN TÀI KHOẢN VIP
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div onclick="copyToClipboard('acc-actual', 'Tài khoản')" id="acc-row" class="copy-row flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all duration-200">
+                            <div>
+                                <p class="text-[10px] font-bold uppercase" style="color: #b8a699;">Tài khoản Premium</p>
+                                <p class="font-bold text-sm" style="color: #b3a08f;">Bấm để sao chép Tài Khoản</p>
+                                <span id="acc-actual" class="hidden">Hoangnamnion@gmail.com</span>
+                            </div>
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl" style="background: rgba(200, 180, 170, 0.1); color: #b8a699;">
+                                <i class="fas fa-user-circle text-xl"></i>
+                            </div>
+                        </div>
+
+                        <div onclick="copyToClipboard('pw-actual', 'Mật khẩu')" id="pw-row" class="copy-row flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all duration-200">
+                            <div>
+                                <p class="text-[10px] font-bold uppercase" style="color: #b8a699;">Mật khẩu Premium</p>
+                                <p class="font-bold text-sm" style="color: #c9a9b1;">Bấm để sao chép Mật Khẩu</p>
+                                <span id="pw-actual" class="hidden">Caonam2005@</span>
+                            </div>
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl" style="background: rgba(220, 190, 190, 0.1); color: #c9a9b1;">
+                                <i class="fas fa-key text-xl"></i>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <p class="text-xs mb-3 font-medium" style="color: #978b82;">Tải ứng dụng cần thiết:</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="window.open('https://apps.apple.com/vn/app/shadowrocket/id932747118?l=vi', '_blank')" class="btn-download-special w-full flex items-center justify-center gap-2 py-4 rounded-2xl">
+                                    <i class="fab fa-apple" style="color: #b8a699;"></i>
+                                    <span class="font-bold uppercase text-xs tracking-wider">Shadowrocket</span>
+                                </button>
+                                <button onclick="window.open('https://webhoangnam.id.vn/dowloadlocket.html', '_blank')" class="btn-download-special w-full flex items-center justify-center gap-2 py-4 rounded-2xl">
+                                    <i class="fas fa-crown" style="color: #cfb697;"></i>
+                                    <span class="font-bold uppercase text-xs tracking-wider">Bản VIP</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 2: Hướng dẫn cài đặt -->
+                <div id="tab2" class="tab-content p-4">
+                    <h2 class="text-xs uppercase tracking-widest font-bold mb-5 flex items-center" style="color: #b8a699;">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        HƯỚNG DẪN CÀI ĐẶT
+                    </h2>
+                    
+                    <div class="instruction-card">
+                        <div class="flex items-start mb-2">
+                            <span class="step-number">1</span>
+                            <h3 class="font-bold text-sm" style="color: #6b5e55;">Đăng nhập tài khoản</h3>
+                        </div>
+                        <p class="text-xs" style="color: #8f8177;">Sao Chép Lần Lượt tài Khoản và mật Khẩu để đăng nhập Appstore</p>
+                    </div>
+
+                    <div class="instruction-card">
+                        <div class="flex items-start mb-2">
+                            <span class="step-number">2</span>
+                            <h3 class="font-bold text-sm" style="color: #6b5e55;">Tải Shadowrocket</h3>
+                        </div>
+                        <p class="text-xs" style="color: #8f8177;">Cài đặt ứng dụng Shadowrocket từ AppStore (miễn phí khi đăng nhập tài khoản của CAO VĂN NAM)</p>
+                    </div>
+                    
+                    <div class="instruction-card">
+                        <div class="flex items-start mb-2">
+                            <span class="step-number">3</span>
+                            <h3 class="font-bold text-sm" style="color: #6b5e55;">Thực hiện lệnh cài đặt</h3>
+                        </div>
+                        <p class="text-xs" style="color: #8f8177;">Nhấn lần lượt vào 4 lệnh bên dưới để cài đặt cấu hình Locket Gold.</p>
+                    </div>
+                    
+                    <div class="instruction-card">
+                        <div class="flex items-start mb-2">
+                            <span class="step-number">4</span>
+                            <h3 class="font-bold text-sm" style="color: #6b5e55;">Bật App Shadowrocket</h3>
+                        </div>
+                        <p class="text-xs" style="color: #8f8177;">Vào Locket và tận hưởng bản Premium không giới hạn.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 lệnh cài đặt -->
+            <div class="w-full mb-8">
+                <h2 class="text-xs uppercase tracking-widest font-bold mb-5 flex items-center justify-center" style="color: #b8a699;">
+                    <i class="fas fa-terminal mr-2"></i>
+                    THỰC THI LỆNH CÀI ĐẶT
+                </h2>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="executeCommand(1)" class="btn-custom-gradient py-6 rounded-[30px] font-bold uppercase text-xs flex flex-col items-center justify-center">
+                        <i class="fas fa-code text-lg mb-1" style="color: #b8a699;"></i>
+                        <span>Lệnh 1</span>
+                        <span class="text-[10px] font-normal mt-1" style="color: #a6978b;">Cấu hình gốc</span>
+                    </button>
+                    <button onclick="executeCommand(2)" class="btn-custom-gradient py-6 rounded-[30px] font-bold uppercase text-xs flex flex-col items-center justify-center">
+                        <i class="fas fa-cogs text-lg mb-1" style="color: #c9a9b1;"></i>
+                        <span>Lệnh 2</span>
+                        <span class="text-[10px] font-normal mt-1" style="color: #a6978b;">Cấu hình VIP</span>
+                    </button>
+                    <button onclick="executeCommand(3)" class="btn-custom-gradient py-6 rounded-[30px] font-bold uppercase text-xs flex flex-col items-center justify-center">
+                        <i class="fas fa-shield-alt text-lg mb-1" style="color: #cfb697;"></i>
+                        <span>Lệnh 3</span>
+                        <span class="text-[10px] font-normal mt-1" style="color: #a6978b;">Chứng chỉ</span>
+                    </button>
+                    <button onclick="executeCommand(4)" class="btn-custom-gradient py-6 rounded-[30px] font-bold uppercase text-xs flex flex-col items-center justify-center">
+                        <i class="fas fa-mobile-alt text-lg mb-1" style="color: #b3baa5;"></i>
+                        <span>Lệnh 4</span>
+                        <span class="text-[10px] font-normal mt-1" style="color: #a6978b;">Cấu hình Mobile</span>
+                    </button>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-xs font-medium" style="color: #978b82;">Nhấn lần lượt 4 lệnh theo thứ tự từ 1 đến 4</p>
+                    <div class="flex justify-center mt-2">
+                        <div class="w-3 h-3 rounded-full mx-1" style="background: #d2b9a0;"></div>
+                        <div class="w-3 h-3 rounded-full mx-1" style="background: #e6d2c0;"></div>
+                        <div class="w-3 h-3 rounded-full mx-1" style="background: #e6d2c0;"></div>
+                        <div class="w-3 h-3 rounded-full mx-1" style="background: #e6d2c0;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Thông tin thêm -->
+            <div class="soft-card w-full p-5 mb-6">
+                <h2 class="text-xs uppercase tracking-widest font-bold mb-4 flex items-center" style="color: #b8a699;">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Chính Sách Bảo Mật
+                </h2>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-lg mr-3" style="background: rgba(200, 180, 170, 0.1); color: #b8a699;">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold" style="color: #6b5e55;">Tốc độ cao</p>
+                            <p class="text-xs" style="color: #8f8177;">Kết nối ổn định, tốc độ tối đa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-lg mr-3" style="background: rgba(220, 190, 190, 0.1); color: #c9a9b1;">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold" style="color: #6b5e55;">Không giới hạn</p>
+                            <p class="text-xs" style="color: #8f8177;">Sử dụng không giới hạn thời gian</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-lg mr-3" style="background: rgba(220, 210, 190, 0.1); color: #cfb697;">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold" style="color: #6b5e55;">Bảo mật cao</p>
+                            <p class="text-xs" style="color: #8f8177;">Mã hóa dữ liệu, an toàn tuyệt đối</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast thông báo -->
+        <div id="notification"></div>
+
+        <!-- Hiệu ứng overlay khi hiển thị toast -->
+        <div id="overlay" class="fixed inset-0 bg-black/5 z-50 hidden"></div>
+    </div>
+
     <script>
-        // Tailwind-like enhancements already in CSS
-        function checkiOS() {
-            const deviceCheck = document.getElementById('deviceCheck');
-            const installBtn = document.getElementById('installBtn');
-           
-            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-           
-            if (isiOS) {
-                if (isSafari) {
-                    deviceCheck.innerHTML = `<span style="font-size:1.4rem;">✅</span><span>Thiết bị iOS • Sẵn sàng cài đặt!</span>`;
-                    deviceCheck.style.background = 'rgba(40, 200, 100, 0.18)';
-                    deviceCheck.style.borderColor = 'rgba(40, 200, 100, 0.6)';
-                    deviceCheck.style.color = '#34d399';
-                    installBtn.classList.remove('disabled');
-                } else {
-                    deviceCheck.innerHTML = `<span style="font-size:1.4rem;">⚠️</span><span>Mở bằng Safari để cài đặt</span>`;
-                    deviceCheck.style.background = 'rgba(255, 149, 0, 0.18)';
-                    deviceCheck.style.borderColor = 'rgba(255, 149, 0, 0.5)';
-                    deviceCheck.style.color = '#fb923c';
-                    installBtn.classList.add('disabled');
-                }
+        // Kiểm tra trình duyệt khi trang tải
+        function detectBrowser() {
+            const ua = navigator.userAgent;
+            const isMessenger = /FBAN|FBAV|FB_IAB|Messenger/i.test(ua);
+            const isSafari = /Safari/i.test(ua) && !/Chrome|FBAN|FBAV|FB_IAB/i.test(ua);
+            
+            if (isMessenger) {
+                document.getElementById('messenger-view').style.display = 'block';
+                document.getElementById('safari-view').style.display = 'none';
+                document.getElementById('other-view').style.display = 'none';
+            } else if (isSafari) {
+                document.getElementById('messenger-view').style.display = 'none';
+                document.getElementById('safari-view').style.display = 'flex';
+                document.getElementById('other-view').style.display = 'none';
             } else {
-                deviceCheck.innerHTML = `<span style="font-size:1.4rem;">❌</span><span>Chỉ hỗ trợ iPhone/iPad</span>`;
-                deviceCheck.style.background = 'rgba(255, 59, 48, 0.18)';
-                deviceCheck.style.borderColor = 'rgba(255, 59, 48, 0.5)';
-                deviceCheck.style.color = '#ff3b30';
-                installBtn.classList.add('disabled');
+                document.getElementById('messenger-view').style.display = 'none';
+                document.getElementById('safari-view').style.display = 'none';
+                document.getElementById('other-view').style.display = 'flex';
             }
         }
-
-        document.getElementById('installBtn').addEventListener('click', function(e) {
-            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-           
-            if (!isiOS || !isSafari) {
-                e.preventDefault();
-                alert('❌ Vui lòng mở bằng Safari trên iPhone hoặc iPad!');
-                return;
+        
+        // Sao chép link cho view other
+        document.getElementById('copy-button').addEventListener('click', function() {
+            const linkInput = document.getElementById('copy-link');
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                alert('✅ Đã sao chép link! Vui lòng mở Safari và dán link vào thanh địa chỉ.');
+            } catch (err) {
+                alert('❌ Lỗi sao chép. Vui lòng sao chép thủ công.');
             }
-           
-            const btn = this;
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = `<span class="loading"></span> Đang kết nối máy chủ...`;
-            btn.style.pointerEvents = 'none';
-           
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.pointerEvents = 'auto';
-            }, 2400);
         });
 
-        // Run check
-        window.onload = function() {
-            checkiOS();
-            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                document.getElementById('installBtn').focus();
+        // Khởi tạo biến trạng thái
+        let currentStep = 0;
+        const totalSteps = 4;
+        
+        // Tab system
+        document.getElementById('tab1-btn').addEventListener('click', function() {
+            switchTab(1);
+        });
+        
+        document.getElementById('tab2-btn').addEventListener('click', function() {
+            switchTab(2);
+        });
+        
+        function switchTab(tabNumber) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(`tab${tabNumber}`).classList.add('active');
+            document.getElementById(`tab${tabNumber}-btn`).classList.add('active');
+        }
+        
+        // Sao chép thông tin với hiệu ứng
+        function copyToClipboard(elementId, label) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast("✅ Đã sao chép " + label);
+                
+                const row = document.getElementById(elementId === 'acc-actual' ? 'acc-row' : 'pw-row');
+                row.classList.add('copied');
+                
+                setTimeout(() => {
+                    row.classList.remove('copied');
+                }, 1500);
+                
+            } catch (err) {
+                showToast("❌ Lỗi sao chép");
             }
-        };
+            document.body.removeChild(tempTextArea);
+        }
+        
+        // Thực thi lệnh với hiệu ứng
+        function executeCommand(commandNumber) {
+            currentStep = commandNumber;
+            
+            const indicators = document.querySelectorAll('.flex.justify-center.mt-2 > div');
+            indicators.forEach((indicator, index) => {
+                if (index < commandNumber) {
+                    indicator.style.background = '#d2b9a0';
+                } else {
+                    indicator.style.background = '#e6d2c0';
+                }
+            });
+            
+            const links = [
+                'shadowrocket://install?module=https://raw.githubusercontent.com/caovannam2ka5/LocketGoldd/refs/heads/main/locketGoldmodule',
+                'shadowrocket://config/add/https://raw.githubusercontent.com/caovannam2ka5/LocketGoldd/refs/heads/main/LocketGold_HoangNam',
+                'http://webhoangnam.id.vn/Configuration/locketgoldhn.crt',
+                'http://webhoangnam.id.vn/Configuration/locketvipver2.mobileconfig'
+            ];
+            
+            window.open(links[commandNumber-1], '_blank');
+            
+            const commandNames = [
+                "Cấu hình gốc Locket Gold",
+                "Cấu hình VIP Locket Gold", 
+                "Chứng chỉ bảo mật",
+                "Cấu hình Mobile"
+            ];
+            
+            showToast(`🚀 Đang thực thi ${commandNames[commandNumber-1]}...`);
+            
+            if (commandNumber === 1) {
+                setTimeout(() => switchTab(2), 500);
+            }
+        }
+        
+        // Toast notification
+        function showToast(message) {
+            const toast = document.getElementById("notification");
+            const overlay = document.getElementById("overlay");
+            
+            toast.innerText = message;
+            toast.classList.add("show");
+            overlay.classList.remove("hidden");
+            
+            setTimeout(() => { 
+                toast.classList.remove("show"); 
+                overlay.classList.add("hidden");
+            }, 2000);
+        }
+        
+        // Khởi chạy khi tải trang
+        document.addEventListener('DOMContentLoaded', function() {
+            detectBrowser();
+            
+            setTimeout(() => {
+                const floatingEl = document.querySelector('.floating-animation');
+                if (floatingEl) {
+                    floatingEl.style.opacity = '1';
+                }
+            }, 300);
+            
+            switchTab(1);
+        });
     </script>
 </body>
 </html>
