@@ -2,8 +2,8 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cài Đặt Locket Gold</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cài Đặt Locket Gold - OTA</title>
     <style>
         * {
             margin: 0;
@@ -12,218 +12,274 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0a0f1e;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 16px;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: rgba(20, 30, 50, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 32px 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        h1 {
-            font-size: 2.2em;
-            color: #333;
-            margin-bottom: 15px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .app-icon {
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(145deg, #4158D0, #C850C0);
             border-radius: 30px;
-            margin: 20px auto;
+            margin: 10px auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 20px 30px rgba(193, 80, 192, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-icon::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.3), transparent);
+            opacity: 0.5;
         }
 
         .app-icon span {
             font-size: 60px;
             color: white;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
         }
 
-        .version-info {
-            background: #f5f5f5;
-            padding: 15px 20px;
-            border-radius: 20px;
-            margin: 25px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+        h1 {
+            font-size: 2.4em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #e0e0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .subtitle {
+            color: #8e9ab0;
+            font-size: 1em;
+            margin-bottom: 25px;
+            font-weight: 400;
         }
 
-        .info-label {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .info-value {
-            color: #333;
-            font-weight: 600;
-            background: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .bundle-id {
+        .bundle-badge {
+            background: rgba(65, 88, 208, 0.2);
+            border: 1px solid rgba(65, 88, 208, 0.4);
+            color: #a0b0ff;
+            padding: 10px 20px;
+            border-radius: 30px;
             font-family: monospace;
             font-size: 0.9em;
-            color: #764ba2;
-            background: #f0e7ff;
-            padding: 8px 15px;
-            border-radius: 20px;
             display: inline-block;
-            margin: 10px 0;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
         }
 
-        .download-btn {
-            display: inline-flex;
+        .info-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .info-chip {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 0.95em;
+            backdrop-filter: blur(5px);
+        }
+
+        .info-chip span {
+            color: #8e9ab0;
+            font-size: 0.9em;
+        }
+
+        .install-btn {
+            background: linear-gradient(145deg, #4158D0, #C850C0);
+            color: white;
+            border: none;
+            padding: 22px 20px;
+            border-radius: 60px;
+            font-size: 1.4em;
+            font-weight: 600;
+            margin: 30px 0 20px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            box-shadow: 0 15px 25px rgba(193, 80, 192, 0.4);
+            border: 1px solid rgba(255,255,255,0.2);
             text-decoration: none;
-            padding: 18px 40px;
-            border-radius: 60px;
-            font-size: 1.2em;
-            font-weight: 600;
-            margin: 25px 0;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        .install-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px 15px rgba(193, 80, 192, 0.4);
         }
 
-        .download-btn:active {
-            transform: translateY(0);
+        .install-btn.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            background: linear-gradient(145deg, #666, #888);
         }
 
-        .download-icon {
-            font-size: 1.3em;
-        }
-
-        .guide-section {
-            background: #f8f9fa;
+        .warning-box {
+            background: rgba(255, 149, 0, 0.15);
+            border: 1px solid rgba(255, 149, 0, 0.3);
             border-radius: 20px;
-            padding: 25px 20px;
-            margin-top: 30px;
+            padding: 20px;
+            margin: 20px 0;
             text-align: left;
+            backdrop-filter: blur(5px);
         }
 
-        .guide-title {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 15px;
+        .warning-title {
+            color: #FF9F0A;
+            font-weight: 600;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 1.1em;
         }
 
-        .guide-steps {
-            list-style: none;
-            padding: 0;
+        .warning-text {
+            color: #ffd9a3;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-left: 28px;
         }
 
-        .guide-steps li {
+        .steps-container {
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .steps-title {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+
+        .step-item {
             display: flex;
             align-items: flex-start;
             gap: 15px;
             margin-bottom: 18px;
-            color: #555;
+            color: #b0b8c5;
             font-size: 0.95em;
-            line-height: 1.5;
         }
 
         .step-number {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            background: rgba(65, 88, 208, 0.3);
+            border: 1px solid rgba(65, 88, 208, 0.6);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9em;
             font-weight: 600;
+            color: #a0b0ff;
             flex-shrink: 0;
         }
 
-        .note-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 12px;
-            margin: 20px 0 10px 0;
-            font-size: 0.9em;
-            color: #856404;
-        }
-
-        .note-box strong {
-            color: #856404;
-        }
-
-        .footer-text {
-            margin-top: 20px;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9em;
-        }
-
-        .footer-text a {
-            color: white;
-            text-decoration: none;
+        .device-check {
+            background: rgba(40, 200, 100, 0.1);
+            border: 1px solid rgba(40, 200, 100, 0.3);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #2ac46b;
             font-weight: 500;
         }
 
-        @media (max-width: 480px) {
+        .footer {
+            margin-top: 20px;
+            color: #5e6a82;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #8e9ab0;
+            text-decoration: none;
+            border-bottom: 1px dashed #5e6a82;
+        }
+
+        @media (max-width: 380px) {
             .card {
-                padding: 30px 20px;
+                padding: 24px 16px;
             }
             
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
             
-            .version-info {
-                flex-direction: column;
-                align-items: flex-start;
+            .install-btn {
+                font-size: 1.2em;
+                padding: 18px;
             }
+        }
+
+        /* Loading effect */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -235,81 +291,140 @@
             </div>
             
             <h1>Locket Gold</h1>
+            <div class="subtitle">Phiên bản đặc biệt • VIP</div>
             
-            <div class="bundle-id">
+            <div class="bundle-badge">
                 📦 com.locket.Locket
             </div>
 
-            <div class="version-info">
-                <div class="info-item">
-                    <span class="info-label">Phiên bản</span>
-                    <span class="info-value">10000.000.0</span>
+            <div class="info-grid">
+                <div class="info-chip">
+                    <span>Version</span> 10000.000.0
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Dung lượng</span>
-                    <span class="info-value">~120 MB</span>
+                <div class="info-chip">
+                    <span>Dung lượng</span> ~120 MB
                 </div>
             </div>
 
-            <!-- Link tải trực tiếp file .ipa -->
-            <a href="https://github.com/hoangnamnion/locketgold/releases/download/v01/quanver2.ipa" 
-               class="download-btn" 
-               download>
-                <span class="download-icon">⬇️</span>
-                Tải xuống Locket Gold
+            <!-- Nút cài đặt trực tiếp qua manifest -->
+            <a href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/hoangnamnion/locketgold/main/manifest.plist" 
+               class="install-btn" 
+               id="installBtn">
+                <span>📲</span>
+                Cài Đặt Trực Tiếp
             </a>
 
-            <div class="guide-section">
-                <div class="guide-title">
-                    <span>📱</span>
-                    <strong>Hướng dẫn cài đặt trên iPhone/iPad</strong>
+            <!-- Kiểm tra thiết bị iOS -->
+            <div class="device-check" id="deviceCheck">
+                <span>✅</span>
+                <span>Đang kiểm tra thiết bị...</span>
+            </div>
+
+            <!-- Hướng dẫn chi tiết -->
+            <div class="steps-container">
+                <div class="steps-title">
+                    <span>📋</span>
+                    <span>Hướng dẫn cài đặt (3 bước)</span>
                 </div>
                 
-                <ul class="guide-steps">
-                    <li>
-                        <span class="step-number">1</span>
-                        <span>Tải file <strong>.ipa</strong> bằng nút màu tím ở trên</span>
-                    </li>
-                    <li>
-                        <span class="step-number">2</span>
-                        <span>Cài đặt ứng dụng <strong>AltStore</strong> hoặc <strong>SideStore</strong> trên máy tính và iPhone</span>
-                    </li>
-                    <li>
-                        <span class="step-number">3</span>
-                        <span>Kết nối iPhone với máy tính và mở AltStore</span>
-                    </li>
-                    <li>
-                        <span class="step-number">4</span>
-                        <span>Kéo file <strong>quanver2.ipa</strong> vào cửa sổ AltStore trên máy tính</span>
-                    </li>
-                    <li>
-                        <span class="step-number">5</span>
-                        <span>Nhập Apple ID khi được yêu cầu (dùng để ký ứng dụng)</span>
-                    </li>
-                    <li>
-                        <span class="step-number">6</span>
-                        <span>Đợi quá trình cài đặt hoàn tất, vào <strong>Cài đặt > Cài đặt chung > VPN & Quản lý thiết bị</strong> để tin cậy chứng chỉ</span>
-                    </li>
-                </ul>
-
-                <div class="note-box">
-                    <strong>⚠️ Lưu ý quan trọng:</strong>
-                    <ul style="margin-top: 8px; margin-left: 20px;">
-                        <li>Ứng dụng tự ký bằng AltStore có hiệu lực 7 ngày, cần ký lại sau khi hết hạn</li>
-                        <li>Nên dùng Apple ID phụ để bảo mật</li>
-                        <li>Nếu cài bằng <strong>ESign</strong> hoặc <strong>Scarlet</strong> thì không cần máy tính</li>
-                    </ul>
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div>Nhấn nút <strong style="color:#fff;">"Cài Đặt Trực Tiếp"</strong> màu tím ở trên</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div>Chọn <strong style="color:#fff;">"Cài đặt"</strong> khi cửa sổ popup xuất hiện</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div>Vào <strong style="color:#fff;">Cài đặt > Cài đặt chung > VPN & Quản lý thiết bị</strong> để tin cậy chứng chỉ</div>
                 </div>
             </div>
 
-            <div style="margin-top: 20px; font-size: 0.9em; color: #888;">
-                ⚡ File được lưu trữ bởi GitHub Releases
+            <!-- Cảnh báo quan trọng -->
+            <div class="warning-box">
+                <div class="warning-title">
+                    <span>⚠️</span>
+                    <span>Lưu ý quan trọng</span>
+                </div>
+                <div class="warning-text">
+                    • Chỉ cài được trên <strong>iPhone/iPad</strong> dùng iOS 12.0 trở lên<br>
+                    • Vào <strong>Cài đặt > Cài đặt chung > Ngày & Giờ</strong> chỉnh tự động nếu báo không tin cậy<br>
+                    • Ứng dụng có hiệu lực 7 ngày với Apple ID thường
+                </div>
+            </div>
+
+            <!-- Nút dự phòng tải file ipa -->
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <a href="https://github.com/hoangnamnion/locketgold/releases/download/v01/quanver2.ipa" 
+                   style="color: #8e9ab0; font-size: 0.9em; text-decoration: none;">
+                    ⬇️ Tải file .ipa (dự phòng)
+                </a>
             </div>
         </div>
         
-        <div class="footer-text">
-            ⚡ Cần hỗ trợ? Liên hệ <a href="#">@hoangnamnion</a>
+        <div class="footer">
+            ⚡ Cần hỗ trợ? Liên hệ <a href="#">@hoangnamnion</a> • OTA Installer v2.0
         </div>
     </div>
+
+    <script>
+        // Kiểm tra thiết bị iOS
+        function checkiOS() {
+            const deviceCheck = document.getElementById('deviceCheck');
+            const installBtn = document.getElementById('installBtn');
+            
+            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            
+            if (isiOS) {
+                if (isSafari) {
+                    deviceCheck.innerHTML = '<span>✅</span><span>Thiết bị iOS • Có thể cài đặt trực tiếp</span>';
+                    deviceCheck.style.background = 'rgba(40, 200, 100, 0.15)';
+                    deviceCheck.style.color = '#2ac46b';
+                    installBtn.classList.remove('disabled');
+                } else {
+                    deviceCheck.innerHTML = '<span>⚠️</span><span>Vui lòng mở bằng Safari để cài đặt</span>';
+                    deviceCheck.style.background = 'rgba(255, 149, 0, 0.15)';
+                    deviceCheck.style.color = '#FF9F0A';
+                    installBtn.classList.add('disabled');
+                }
+            } else {
+                deviceCheck.innerHTML = '<span>❌</span><span>Không phải thiết bị iOS • Không thể cài trực tiếp</span>';
+                deviceCheck.style.background = 'rgba(255, 59, 48, 0.15)';
+                deviceCheck.style.color = '#ff3b30';
+                installBtn.classList.add('disabled');
+            }
+        }
+
+        // Xử lý khi nhấn nút cài đặt
+        document.getElementById('installBtn').addEventListener('click', function(e) {
+            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            
+            if (!isiOS || !isSafari) {
+                e.preventDefault();
+                alert('❌ Vui lòng mở link này bằng Safari trên iPhone/iPad để cài đặt!');
+                return;
+            }
+            
+            // Hiệu ứng loading
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Đang kết nối...';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        });
+
+        // Chạy kiểm tra khi load trang
+        checkiOS();
+        
+        // Kiểm tra nếu là iOS thì tự động focus vào nút cài
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            document.getElementById('installBtn').focus();
+        }
+    </script>
 </body>
 </html>
