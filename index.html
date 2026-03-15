@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài Đặt Locket Gold</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .app-icon span {
+            font-size: 60px;
+            color: white;
+        }
+
+        .version-info {
+            background: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .info-value {
+            color: #333;
+            font-weight: 600;
+            background: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .bundle-id {
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #764ba2;
+            background: #f0e7ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 60px;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-icon {
+            font-size: 1.3em;
+        }
+
+        .guide-section {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .guide-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .guide-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 18px;
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .note-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0 10px 0;
+            font-size: 0.9em;
+            color: #856404;
+        }
+
+        .note-box strong {
+            color: #856404;
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        .footer-text a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .version-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="app-icon">
+                <span>📸</span>
+            </div>
+            
+            <h1>Locket Gold</h1>
+            
+            <div class="bundle-id">
+                📦 com.locket.Locket
+            </div>
+
+            <div class="version-info">
+                <div class="info-item">
+                    <span class="info-label">Phiên bản</span>
+                    <span class="info-value">10000.000.0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Dung lượng</span>
+                    <span class="info-value">~120 MB</span>
+                </div>
+            </div>
+
+            <!-- Link tải trực tiếp file .ipa -->
+            <a href="https://github.com/hoangnamnion/locketgold/releases/download/v01/quanver2.ipa" 
+               class="download-btn" 
+               download>
+                <span class="download-icon">⬇️</span>
+                Tải xuống Locket Gold
+            </a>
+
+            <div class="guide-section">
+                <div class="guide-title">
+                    <span>📱</span>
+                    <strong>Hướng dẫn cài đặt trên iPhone/iPad</strong>
+                </div>
+                
+                <ul class="guide-steps">
+                    <li>
+                        <span class="step-number">1</span>
+                        <span>Tải file <strong>.ipa</strong> bằng nút màu tím ở trên</span>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <span>Cài đặt ứng dụng <strong>AltStore</strong> hoặc <strong>SideStore</strong> trên máy tính và iPhone</span>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <span>Kết nối iPhone với máy tính và mở AltStore</span>
+                    </li>
+                    <li>
+                        <span class="step-number">4</span>
+                        <span>Kéo file <strong>quanver2.ipa</strong> vào cửa sổ AltStore trên máy tính</span>
+                    </li>
+                    <li>
+                        <span class="step-number">5</span>
+                        <span>Nhập Apple ID khi được yêu cầu (dùng để ký ứng dụng)</span>
+                    </li>
+                    <li>
+                        <span class="step-number">6</span>
+                        <span>Đợi quá trình cài đặt hoàn tất, vào <strong>Cài đặt > Cài đặt chung > VPN & Quản lý thiết bị</strong> để tin cậy chứng chỉ</span>
+                    </li>
+                </ul>
+
+                <div class="note-box">
+                    <strong>⚠️ Lưu ý quan trọng:</strong>
+                    <ul style="margin-top: 8px; margin-left: 20px;">
+                        <li>Ứng dụng tự ký bằng AltStore có hiệu lực 7 ngày, cần ký lại sau khi hết hạn</li>
+                        <li>Nên dùng Apple ID phụ để bảo mật</li>
+                        <li>Nếu cài bằng <strong>ESign</strong> hoặc <strong>Scarlet</strong> thì không cần máy tính</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; font-size: 0.9em; color: #888;">
+                ⚡ File được lưu trữ bởi GitHub Releases
+            </div>
+        </div>
+        
+        <div class="footer-text">
+            ⚡ Cần hỗ trợ? Liên hệ <a href="#">@hoangnamnion</a>
+        </div>
+    </div>
+</body>
+</html>
