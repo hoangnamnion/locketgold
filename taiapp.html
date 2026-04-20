@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hướng Dẫn VIP 15s</title>
+    <style>
+        :root { --primary-gold: #D4AF37; --secondary-gold: #C5A028; --dark-bg: #121212; --card-bg: rgba(30, 30, 30, 0.8); --text-color: #ffffff; --accent-glow: rgba(212, 175, 55, 0.3); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--dark-bg); background-image: radial-gradient(circle at top right, #2c2c2c, #000000); color: var(--text-color); min-height: 100vh; display: flex; justify-content: center; padding: 20px 15px; }
+        .container { width: 100%; max-width: 450px; position: relative; }
+        header { text-align: center; margin-bottom: 25px; animation: fadeIn Down 0.8s ease; }
+        h1 { font-size: 24px; font-weight: 800; background: linear-gradient(to right, #fff, var(--primary-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; text-transform: uppercase; }
+        .vip-badge { display: inline-block; background: var(--primary-gold); color: #000; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-bottom: 10px; box-shadow: 0 0 10px var(--accent-glow); }
+        .customer-greeting { font-size: 15px; color: #ccc; margin-top: 5px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 20px; }
+        .video-wrapper { width: 100%; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; position: relative; }
+        .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+        .step-card { background: var(--card-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 16px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.2s ease; }
+        .step-header { display: flex; align-items: center; margin-bottom: 10px; }
+        .step-number { background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold)); color: #000; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; margin-right: 12px; box-shadow: 0 0 10px var(--accent-glow); }
+        .step-title { font-weight: 600; font-size: 16px; color: #fff; }
+        .step-content { padding-left: 40px; font-size: 14px; color: #ccc; line-height: 1.5; }
+        .warning-text { color: #ff4757; font-weight: bold; display: block; margin-top: 5px; }
+        .success-text { color: #2ed573; font-weight: bold; }
+        .btn-action { display: block; width: 100%; padding: 14px; margin-top: 12px; border-radius: 12px; text-decoration: none; text-align: center; font-weight: 700; font-size: 15px; text-transform: uppercase; border: none; cursor: pointer;}
+        .btn-gold { background: linear-gradient(90deg, var(--secondary-gold), var(--primary-gold)); color: #000; }
+        .btn-blue { background: linear-gradient(90deg, #2193b0, #6dd5ed); color: #fff; }
+        .btn-disabled { background: #555; color: #aaa; pointer-events: none; cursor: not-allowed; }
+        footer { text-align: center; margin-top: 40px; margin-bottom: 20px; font-size: 12px; color: #555; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        #messenger-warning { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.98); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; backdrop-filter: blur(15px); }
+        .warning-title { font-size: 20px; font-weight: bold; color: var(--primary-gold); margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid var(--primary-gold); padding-bottom: 10px; width: 100%; }
+        .arrow-down { font-size: 40px; color: var(--primary-gold); animation: bounce 1.5s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        .expired-notice { border: 2px solid #ff4757; background: rgba(255, 71, 87, 0.1); padding: 15px; border-radius: 12px; color: #ff4757; text-align: center; margin-bottom: 20px; font-weight: bold; display: none; }
+        #countdown { color: var(--primary-gold); font-weight: bold; text-align: center; margin-top: 10px; font-size: 14px;}
+    </style>
+</head>
+<body>
+    <div id="messenger-warning">
+        <div class="warning-title">⚠️ Lỗi Trình Duyệt</div>
+        <div style="color: #fff; margin-bottom: 20px; font-size: 15px;">Nhấn 3 CHẤM (...) -> <b>Mở bằng trình duyệt</b> Safari</div>
+        <div class="arrow-down">⬇️</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="vip-badge">♛ EXCLUSIVE GUIDE</div>
+            <h1>Unlock Locket 15s</h1>
+            <div class="customer-greeting" id="greetingBox">
+                Đang tải dữ liệu...
+            </div>
+        </header>
+        
+        <div id="statusNotice" class="expired-notice"></div>
+        
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/zUEHCkS39BM?rel=0&modestbranding=1&playsinline=1&controls=1&showinfo=0" title="Hướng dẫn" allowfullscreen></iframe>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-header"><div class="step-number">1</div><div class="step-title">Chuẩn bị App Locket</div></div>
+                <div class="step-content">
+                    Xóa app Locket cũ và tải lại Locket mới.
+                    <span class="warning-text">⚠️ LƯU Ý: TẢI XONG KHÔNG ĐƯỢC MỞ APP LOCKET LÊN NGAY.</span>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header"><div class="step-number">2</div><div class="step-title">Tải Cấu Hình 15s</div></div>
+                <div class="step-content">
+                    Nhấn vào nút bên dưới để tải file cấu hình.<br>
+                    <button id="downloadBtn" class="btn-action btn-gold" style="display: none;">⬇️ Tải Profile Locket</button>
+                    <div id="countdown"></div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header"><div class="step-number">3</div><div class="step-title">Tải Ứng Dụng VPN</div></div>
+                <div class="step-content">
+                    <a href="https://apps.apple.com/us/app/usa-vpn-private-fast/id6475051414" target="_blank" class="btn-action btn-blue">🇺🇸 Tải USA VPN (AppStore)</a>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header"><div class="step-number">4</div><div class="step-title">Kích Hoạt & Tận Hưởng</div></div>
+                <div class="step-content">
+                    Bật VPN lên, vào Locket quay thử.
+                    <span class="success-text">🎉 Nếu được 15s là thành công! Xong việc nhớ xóa VPN.</span>
+                </div>
+            </div>
+        </div>
+        <footer id="footerText"></footer>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(location.search);
+        let data = params.get("data");
+        let timerInterval;
+
+        function isInAppBrowser() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) || (ua.indexOf("Instagram") > -1) || (ua.indexOf("Zalo") > -1);
+        }
+
+        function getFingerprint() {
+            const raw = [
+                navigator.userAgent,
+                navigator.language,
+                screen.width + "x" + screen.height,
+                Intl.DateTimeFormat().resolvedOptions().timeZone,
+                navigator.platform
+            ].join("|");
+            return btoa(raw);
+        }
+
+        async function init() {
+            // Chặn in-app browser
+            if (isInAppBrowser()) {
+                document.getElementById('messenger-warning').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            if (!data) return showError("❌ LINK KHÔNG HỢP LỆ");
+
+            try {
+                let decoded = JSON.parse(atob(data));
+
+                // Thay tên động
+                document.getElementById("greetingBox").innerHTML = `Xin chào, <b>${decoded.name}</b> 👋<br>Đây là hướng dẫn dành riêng cho bạn.`;
+                document.getElementById("footerText").innerHTML = `<p>Link này dành riêng cho ${decoded.name}.</p>`;
+
+                // Kiểm tra hết hạn
+                if (Date.now() > decoded.exp) {
+                    return showError("❌ LIÊN KẾT ĐÃ HẾT HẠN<br><span style='font-size: 12px; font-weight: normal; color: #ccc'>Vui lòng liên hệ Admin để lấy link mới.</span>");
+                }
+
+                // Kiểm tra thiết bị
+                const fp = getFingerprint();
+                if (!decoded.devices) {
+                    decoded.devices = [fp];
+                    data = btoa(JSON.stringify(decoded));
+                } else {
+                    if (!decoded.devices.includes(fp)) {
+                        if (decoded.devices.length >= 2) {
+                            return showError("❌ LINK ĐÃ ĐẠT GIỚI HẠN THIẾT BỊ<br><span style='font-size: 12px; font-weight: normal; color: #ccc'>Mỗi link chỉ hỗ trợ tối đa 2 thiết bị.</span>");
+                        }
+                        decoded.devices.push(fp);
+                        data = btoa(JSON.stringify(decoded));
+                    }
+                }
+
+                // Bật nút tải và đếm ngược
+                setupDownloadButton();
+                startCountdown(decoded.exp);
+
+            } catch (e) {
+                showError("❌ DỮ LIỆU KHÔNG HỢP LỆ");
+            }
+        }
+
+        function showError(msg) {
+            const notice = document.getElementById("statusNotice");
+            notice.style.display = "block";
+            notice.innerHTML = msg;
+
+            document.getElementById("downloadBtn").style.display = "none";
+            document.getElementById("countdown").innerHTML = "";
+            if(timerInterval) clearInterval(timerInterval);
+        }
+
+        function setupDownloadButton() {
+            const btn = document.getElementById("downloadBtn");
+            btn.style.display = "block";
+            btn.onclick = () => {
+                fetch("/api/download?data=" + data, {
+                    headers: { "x-fp": getFingerprint() }
+                })
+                .then(res => {
+                    if(!res.ok) throw new Error("Lỗi tải");
+                    return res.blob();
+                })
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    window.location.href = url;
+                })
+                .catch(err => alert("Có lỗi xảy ra hoặc link đã quá hạn."));
+            };
+        }
+
+        function startCountdown(expTime) {
+            const display = document.getElementById("countdown");
+            timerInterval = setInterval(() => {
+                const now = Date.now();
+                const distance = expTime - now;
+
+                if (distance <= 0) {
+                    clearInterval(timerInterval);
+                    showError("❌ LIÊN KẾT ĐÃ HẾT HẠN<br><span style='font-size: 12px; font-weight: normal; color: #ccc'>Vui lòng liên hệ Admin để lấy link mới.</span>");
+                    return;
+                }
+
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                const formatSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.innerHTML = `⏳ Tự huỷ sau: ${minutes}:${formatSeconds}`;
+            }, 1000);
+        }
+
+        init();
+    </script>
+</body>
+</html>
