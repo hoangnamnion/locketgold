@@ -62,7 +62,7 @@ export default function handler(req, res) {
         <key>DNSProtocol</key>
         <string>HTTPS</string>
         <key>ServerURL</key>
-        <string>https://dns.nextdns.io/aa5bc2/</string>
+        <string>https://dns.nextdns.io/797d97/</string>
         <key>ServerAddresses</key>
         <array>
           <string>45.90.28.0</string>
@@ -78,7 +78,7 @@ export default function handler(req, res) {
       <key>PayloadDisplayName</key>
       <string>Locket User 15s </string>
       <key>PayloadIdentifier</key>
-      <string>com.nextdns.profile.aa5bc2.${safeSlug}</string>
+      <string>com.nextdns.profile.797d97.${safeSlug}</string>
       <key>PayloadType</key>
       <string>com.apple.dnsSettings.managed</string>
       <key>PayloadUUID</key>
@@ -95,7 +95,7 @@ Locket Gold - Hoàng Quân
   <key>PayloadDisplayName</key>
   <string>Locket User 15s - ${displayName}</string>
   <key>PayloadIdentifier</key>
-  <string>com.nextdns.profile.aa5bc2</string>
+  <string>com.nextdns.profile.797d97</string>
   <key>PayloadRemovalDisallowed</key>
   <false/>
   <key>PayloadType</key>
