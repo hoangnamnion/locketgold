@@ -62,7 +62,7 @@ export default function handler(req, res) {
         <key>DNSProtocol</key>
         <string>HTTPS</string>
         <key>ServerURL</key>
-        <string>https://dns.nextdns.io/797d97/</string>
+        <string>https://dns.nextdns.io/797d97/${safeSlug}</string>
         <key>ServerAddresses</key>
         <array>
           <string>45.90.28.0</string>
@@ -82,7 +82,7 @@ export default function handler(req, res) {
       <key>PayloadType</key>
       <string>com.apple.dnsSettings.managed</string>
       <key>PayloadUUID</key>
-      <string>${uuidv4()}</string>
+      <string>18994c68-6df7-4ce2-8ca3-f478d8d6c6f0</string>
       <key>PayloadVersion</key>
       <integer>1</integer>
     </dict>
@@ -101,7 +101,7 @@ Locket Gold - Hoàng Quân
   <key>PayloadType</key>
   <string>Configuration</string>
   <key>PayloadUUID</key>
-  <string>${uuidv4()}</string>
+  <string>ddb614e1-bff9-485a-9cfd-f56c21ce5861</string>
   <key>PayloadVersion</key>
   <integer>1</integer>
 </dict>
