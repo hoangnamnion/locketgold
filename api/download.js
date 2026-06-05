@@ -74,9 +74,9 @@ export default function handler(req, res) {
       <key>OnDemandEnabled</key>
       <integer>1</integer>
       <key>PayloadDescription</key>
-      <string>Bản quyền DNS thuộc về LOCKET GOLD</string>
+      <string>Bản quyền DNS thuộc về LOCKET GOLD NGUYỄN HOÀNG QUÂN</string>
       <key>PayloadDisplayName</key>
-      <string>Locket User 15s </string>
+      <string>Locket User 15s - ${displayName}</string>
       <key>PayloadIdentifier</key>
       <string>com.nextdns.profile.797d97.${safeSlug}</string>
       <key>PayloadType</key>
@@ -87,11 +87,6 @@ export default function handler(req, res) {
       <integer>1</integer>
     </dict>
   </array>
-  <key>PayloadDescription</key>
-  <string> 
-✔️ Hỗ Trợ Locket Gold Quay Video 15s
-Locket Gold - Hoàng Quân
-</string>
   <key>PayloadDisplayName</key>
   <string>Locket User 15s - ${displayName}</string>
   <key>PayloadIdentifier</key>
