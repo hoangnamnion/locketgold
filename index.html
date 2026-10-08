@@ -1,95 +1,1132 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAO VAN NAM | Soft 3D Edition</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Locket Gold Nguyễn Hoàng Quân</title>
+  <meta name="description"
+    content="Hướng dẫn cài đặt Locket Gold VIP vĩnh viễn phong cách Neo-Brutalist Doraemon, video hướng dẫn cánh cửa thần kỳ và các bước kích hoạt thủ công.">
+
+  <!-- Tối ưu kết nối & Tải trước tài nguyên -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --neo-black: #141414;
+      --neo-yellow: #ffd23f;
+      --neo-yellow-light: #ffdc58;
+      --neo-pink: #ff5277;
+      --neo-blue: #02a9ea;
+      --neo-bg: #fffdf5;
+      --neo-grid-line: #e8e2d4;
+      --neo-card-bg: #ffffff;
+      --neo-border-w: 3px;
+      --neo-radius-sm: 10px;
+      --neo-radius-md: 14px;
+      --neo-radius-lg: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--neo-bg);
+      color: var(--neo-black);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      touch-action: manipulation;
+      text-rendering: optimizeSpeed;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Tối ưu GPU: Tách nền lưới ô ly ra lớp cố định để cuộn mượt 60/120fps, không bị vẽ lại (repaint) */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-color: var(--neo-bg);
+      background-image:
+        linear-gradient(var(--neo-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--neo-grid-line) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: -1;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    /* TOP NAVBAR PHONG CÁCH RETRO NEO-BRUTALISM */
+    .neo-navbar {
+      background: var(--neo-yellow);
+      border-bottom: 3.5px solid var(--neo-black);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 18px;
+    }
+
+    .nav-container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--neo-black);
+    }
+
+    .brand-title {
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .brand-pill {
+      background: var(--neo-black);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 7px 14px;
+      border-radius: var(--neo-radius-sm);
+      border: 2.5px solid var(--neo-black);
+      box-shadow: 2.5px 2.5px 0 var(--neo-black);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      color: var(--neo-black);
+    }
+
+    .nav-btn.btn-white {
+      background: #ffffff;
+    }
+
+    .nav-btn.btn-yellow {
+      background: #ffffff;
+    }
+
+    .nav-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3.5px 3.5px 0 var(--neo-black);
+    }
+
+    .nav-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0 0 0 var(--neo-black);
+    }
+
+    /* KHUNG NỘI DUNG CHÍNH */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 18px 70px 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 1. HERO SECTION */
+    .hero-section {
+      text-align: center;
+      padding: 10px 0 24px 0;
+    }
+
+    /* Khối Mascot Doraemon và Logo chữ DORAEMON nằm ngang nhau */
+    .doraemon-hero-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 0 auto 20px auto;
+      flex-wrap: wrap;
+    }
+
+    .doraemon-avatar-wrap {
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .doraemon-avatar-wrap:hover {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .doraemon-avatar-img {
+      max-width: 125px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0 rgba(20, 20, 20, 0.25));
+    }
+
+    .doraemon-text-logo {
+      max-width: 160px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0 rgba(20, 20, 20, 0.2));
+    }
+
+    /* Tiêu đề chính kiểu Neo-Brutalism */
+    .hero-main-title {
+      font-size: 2.85rem;
+      font-weight: 900;
+      color: var(--neo-black);
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    /* Hộp nhấn mạnh "[ 1 chạm là xong ]" chuẩn theo ảnh */
+    .hero-highlight-box {
+      display: inline-block;
+      background: var(--neo-yellow);
+      border: 3.5px solid var(--neo-black);
+      border-radius: 12px;
+      box-shadow: 5px 5px 0 var(--neo-black);
+      padding: 6px 24px;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--neo-black);
+      letter-spacing: -0.5px;
+      margin-bottom: 22px;
+      transform: rotate(-1deg);
+      transition: transform 0.2s ease;
+    }
+
+    .hero-highlight-box:hover {
+      transform: rotate(1deg) scale(1.02);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: #38424b;
+      max-width: 560px;
+      margin: 0 auto 24px auto;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    /* Các nút bấm hành động (CTA) */
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .btn-neo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: var(--neo-radius-sm);
+      border: 3.5px solid var(--neo-black);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 5px 5px 0 var(--neo-black);
+      transition: all 0.15s ease;
+    }
+
+    .btn-neo.btn-neo-yellow {
+      background: var(--neo-yellow);
+      color: var(--neo-black);
+    }
+
+    .btn-neo.btn-neo-white {
+      background: #ffffff;
+      color: var(--neo-black);
+    }
+
+    .btn-neo:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--neo-black);
+    }
+
+    .btn-neo:active {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0 var(--neo-black);
+    }
+
+    /* Cảnh báo Safari kiểu comic */
+    .safari-alert-neo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffe3e9;
+      border: 2.5px solid var(--neo-black);
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: #a71432;
+      box-shadow: 3px 3px 0 var(--neo-black);
+    }
+
+    /* ĐƯỜNG KẺ STRIPE PHONG CÁCH COMIC */
+    .comic-divider-stripe {
+      width: 100%;
+      height: 9px;
+      background: var(--neo-pink);
+      border-top: 3.5px solid var(--neo-black);
+      border-bottom: 3.5px solid var(--neo-black);
+      margin: 34px 0;
+    }
+
+    /* CARD CHUNG PHONG CÁCH NEO-BRUTALISM */
+    .neo-card {
+      background: var(--neo-card-bg);
+      border: 3.5px solid var(--neo-black);
+      border-radius: var(--neo-radius-lg);
+      box-shadow: 7px 7px 0 var(--neo-black);
+      padding: 26px 22px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .section-header-title {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--neo-black);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .section-header-sub {
+      font-size: 0.95rem;
+      color: #616e78;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    /* THANH TÌM KIẾM THEO GIAO DIỆN MẪU */
+    .neo-search-bar {
+      width: 100%;
+      background: #ffffff;
+      border: 3px solid var(--neo-black);
+      border-radius: var(--neo-radius-sm);
+      box-shadow: 4px 4px 0 var(--neo-black);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .neo-search-bar input {
+      border: none;
+      outline: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--neo-black);
+      width: 100%;
+      background: transparent;
+    }
+
+    /* 3. KHUNG VIDEO & CÁNH CỬA THẦN KỲ */
+    .video-neo-card {
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      aspect-ratio: 9 / 16;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3.5px solid var(--neo-black);
+      box-shadow: 6px 6px 0 var(--neo-black);
+      background: #ffffff;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Cánh Cửa Thần Kỳ (Dokodemo Door) */
+    .magic-door-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: linear-gradient(180deg, #fff7fa 0%, #ffe9f2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      perspective: 1200px;
+      transition: opacity 0.5s ease;
+      padding: 12px;
+      user-select: none;
+    }
+
+    .magic-door-overlay.door-closed {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .magic-door-overlay.door-opened {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .dokodemo-door-svg {
+      width: 86%;
+      max-height: 82%;
+      filter: drop-shadow(4px 4px 0 rgba(20, 20, 20, 0.25));
+      transition: transform 0.2s ease;
+      display: block;
+    }
+
+    .magic-door-overlay:hover .dokodemo-door-svg {
+      transform: scale(1.03);
+    }
+
+    .svg-door-leaf {
+      transform-origin: 168px 180px;
+      transition: transform 0.95s cubic-bezier(0.25, 0.8, 0.25, 1);
+      will-change: transform;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .magic-door-overlay.opening .svg-door-leaf {
+      transform: perspective(700px) rotateY(105deg);
+    }
+
+    .door-tap-hint {
+      margin-top: 10px;
+      background: var(--neo-yellow);
+      color: var(--neo-black);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 800;
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 2.5px solid var(--neo-black);
+      box-shadow: 3px 3px 0 var(--neo-black);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      animation: pulseHint 1.8s infinite;
+    }
+
+    @keyframes pulseHint {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.06);
+      }
+    }
+
+    .video-note {
+      margin-top: 16px;
+      font-size: 0.92rem;
+      color: #596a75;
+      font-weight: 600;
+    }
+
+    /* 4. GRID CÁC BƯỚC CÀI ĐẶT KIỂU BẢNG GIÁ THEO ẢNH MẪU */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step-card {
+      background: #ffffff;
+      border: 3.5px solid var(--neo-black);
+      border-radius: var(--neo-radius-md);
+      box-shadow: 6px 6px 0 var(--neo-black);
+      padding: 24px 20px;
+      position: relative;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .step-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0 var(--neo-black);
+    }
+
+    /* Bước 3 làm thẻ nền Vàng & có Badge Hồng như "Locket Gold Vĩnh Viễn" trong ảnh */
+    .step-card.card-highlight-yellow {
+      background: var(--neo-yellow-light);
+    }
+
+    .step-badge-tag {
+      position: absolute;
+      top: -14px;
+      right: 18px;
+      background: var(--neo-pink);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      padding: 4px 12px;
+      border-radius: 8px;
+      border: 2px solid var(--neo-black);
+      box-shadow: 2.5px 2.5px 0 var(--neo-black);
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .step-badge-number {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: var(--neo-black);
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 900;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .step-card-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--neo-black);
+      line-height: 1.3;
+    }
+
+    .step-card-desc {
+      font-size: 0.94rem;
+      color: #38424b;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .step-key-box {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 2px solid var(--neo-black);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #141414;
+    }
+
+    .step-pill-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--neo-black);
+      border: 1.8px solid var(--neo-black);
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: 6px;
+      font-size: 0.84rem;
+    }
+
+    /* SAO CHÉP LINK SAFARI HELPER */
+    .safari-copy-box {
+      margin-top: 26px;
+      background: #ffffff;
+      border: 3px solid var(--neo-black);
+      border-radius: var(--neo-radius-md);
+      box-shadow: 5px 5px 0 var(--neo-black);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .safari-copy-box h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .safari-copy-box p {
+      font-size: 0.92rem;
+      color: #55626d;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    /* 5. CÂU HỎI THƯỜNG GẶP (FAQ) THEO KIỂU COMIC */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .faq-neo-item {
+      background: #ffffff;
+      border: 3px solid var(--neo-black);
+      border-radius: var(--neo-radius-sm);
+      box-shadow: 4px 4px 0 var(--neo-black);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .faq-question {
+      padding: 14px 18px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      user-select: none;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--neo-black);
+    }
+
+    .faq-neo-item.active .faq-question {
+      background: var(--neo-yellow);
+      border-bottom: 3px solid var(--neo-black);
+    }
+
+    .faq-neo-item.active .faq-question::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 14px 18px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #404b53;
+      line-height: 1.6;
+    }
+
+    .faq-neo-item.active .faq-answer {
+      display: block;
+    }
+
+    /* FOOTER PHONG CÁCH RETRO */
+    .neo-footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 24px 16px;
+      background: var(--neo-yellow);
+      border: 3.5px solid var(--neo-black);
+      border-radius: var(--neo-radius-lg);
+      box-shadow: 6px 6px 0 var(--neo-black);
+      font-weight: 700;
+    }
+
+    .neo-footer p {
+      margin-top: 6px;
+      font-size: 0.92rem;
+      color: #1e1e1e;
+    }
+
+    /* TOAST THÔNG BÁO */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: var(--neo-black);
+      color: #ffffff;
+      border: 3px solid #ffffff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      max-width: 90vw;
+    }
+
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .hero-main-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-highlight-box {
+        font-size: 1.65rem;
+        padding: 5px 18px;
+      }
+
+      .btn-neo {
+        width: 100%;
+      }
+
+      .nav-actions .btn-white {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div id="overlay"></div>
+  <!-- THANH ĐIỀU HƯỚNG LOCKET NGUYỄN HOÀNG QUÂN -->
+  <nav class="neo-navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-title">Locket</span>
+        <span class="brand-pill">NGUYỄN HOÀNG QUÂN</span>
+      </div>
 
-    <div class="header-container">
-        <div class="glass-card">
-            <div class="avatar-box">
-                <img src="./image/logo.jpg" alt="CAO VAN NAM" class="avatar-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4140/4140048.png'">
-            </div>
-            <h1>CAO VAN NAM</h1>
-            <div class="tagline">✦ Unlock - Bypass - Code WEB ✦</div>
-            <div>
-                <a href="VIP.html" class="btn-3d highlight"><i class="fa fa-cloud-download-alt"></i> TẢI TOOL</a>
-                <a href="https://webhoangnam.id.vn" class="btn-3d"><i class="fa fa-file-invoice"></i> BẢNG GIÁ</a>
-            </div>
-        </div>
+      <div class="nav-actions">
+        <button class="nav-btn btn-white" id="navBtnCopy">📋 Sao chép link</button>
+        <a href="https://zalo.me/0358075061" target="_blank" class="nav-btn btn-yellow">Liên hệ Zalo</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="service-list">
-        <div class="service-item">
-            <i class="fa fa-unlock-alt"></i>
-            <div><b>Nâng Cấp App Premium</b><br><small>LOCKET, Youtube, Canvas, Netflix...</small></div>
-        </div>
-        <div class="service-item" style="border-color: #a18cd1;">
-            <i class="fab fa-android"></i>
-            <div><b>Cài phần mềm PC theo yêu cầu</b><br><small>Hỗ trợ từ xa qua UltraViewer</small></div>
-        </div>
-        <div class="service-item" style="border-color: #ff758c;">
-            <i class="fab fa-tiktok"></i>
-            <div><b>TikTok: @nam_26th4</b><br><small>Kênh chính chủ</small></div>
-        </div>
-    </div>
+  <div class="container">
 
-    <div id="contacts" class="banking-section">
-        <h3 class="section-title">CHẠM ĐỂ SAO CHÉP</h3>
+    <!-- 1. HERO SECTION -->
+    <header class="hero-section">
 
-        <div class="bank-card-3d card-mb" onclick="copyToClipboard('338935', 'MB Bank')">
-            <div class="copy-hint"><i class="fa fa-copy"></i></div>
-            <div class="chip-sim"></div>
-            <div class="card-num">338935</div>
-            <div class="card-bottom">
-                <div><div class="card-label">CHỦ TÀI KHOẢN</div><div class="card-name">CAO VAN NAM</div></div>
-                <div style="font-weight:900;">MB BANK</div>
+      <!-- Mascot & Logo nằm ngang nhau -->
+      <div class="doraemon-hero-brand">
+        <div class="doraemon-avatar-wrap" id="doraAvatar" title="Chạm vào tớ để nghe chuông leng keng!">
+          <img src="IMG/giphy.gif" alt="Doraemon Mascot" class="doraemon-avatar-img" width="125" height="125"
+            decoding="async">
+        </div>
+        <img src="IMG/CHUDOREMONgif.gif" alt="Doraemon Logo" class="doraemon-text-logo" width="160" height="85"
+          decoding="async">
+      </div>
+
+      <!-- Tiêu đề lớn & Hộp nổi bật chuẩn theo ảnh mẫu -->
+
+      <p class="hero-desc">
+        Mèo Ú Doraemon hỗ trợ bạn kích hoạt bảo bối Locket Gold VIP vĩnh viễn, chống thu hồi bản quyền và duy trì máy
+        chủ DoH siêu tốc độ!
+      </p>
+
+      <!-- Nút hành động chính -->
+      <div class="hero-cta-group">
+        <a href="LocketGold.mobileconfig" class="btn-neo btn-neo-yellow" id="btnDownload">
+          <span>📥</span> Tải cấu hình DNS
+        </a>
+      </div>
+
+      <div>
+        <div class="safari-alert-neo">
+          <span>🧭</span> Bắt buộc mở bằng trình duyệt <strong>Safari</strong> để tải hồ sơ nhé!
+        </div>
+      </div>
+
+    </header>
+
+    <!-- ĐƯỜNG KẺ STRIPE PHONG CÁCH COMIC RETRO -->
+    <div class="comic-divider-stripe"></div>
+
+    <!-- 2. KHỐI VIDEO HƯỚNG DẪN + CÁNH CỬA THẦN KỲ -->
+    <section class="neo-card video-neo-card" id="video-section">
+      <h2 class="section-header-title">Video Hướng Dẫn Cài Đặt</h2>
+      <p class="section-header-sub">
+        Chạm vào <strong>Cánh Cửa Thần Kỳ</strong> bên dưới để mở video hướng dẫn từng thao tác trực quan:
+      </p>
+
+      <div class="video-wrapper">
+        <!-- Cánh Cửa Thần Kỳ (Dokodemo Door) -->
+        <div class="magic-door-overlay door-closed" id="magicDoorOverlay" title="Chạm để mở Cánh Cửa Thần Kỳ!">
+          <svg viewBox="0 0 200 340" class="dokodemo-door-svg" xmlns="http://www.w3.org/2000/svg">
+            <!-- 1. CỔNG KHUNG CỬA NGOÀI CỐ ĐỊNH -->
+            <path d="M 16 28 C 16 18, 24 14, 34 14 L 166 14 C 176 14, 184 18, 184 28 L 176 36 L 24 36 Z" fill="#f0689b"
+              stroke="#141414" stroke-width="4.5" stroke-linejoin="round" />
+
+            <!-- Hai chân đế uốn cong ra ngoài -->
+            <path
+              d="M 26 306 L 174 306 L 174 314 L 180 318 C 184 321, 186 325, 186 331 L 186 338 L 170 338 L 170 327 C 170 323, 164 321, 156 321 L 44 321 C 36 321, 30 323, 30 327 L 30 338 L 14 338 L 14 331 C 14 325, 16 321, 20 318 L 26 314 Z"
+              fill="#f0689b" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" />
+
+            <!-- Khung thân cửa hai bên và mép dưới -->
+            <rect x="25" y="36" width="150" height="270" fill="#f0689b" stroke="#141414" stroke-width="4.5" />
+
+            <!-- Nền khoảng trống bên trong khung -->
+            <rect x="33" y="44" width="134" height="254" fill="#ffffff" />
+
+            <!-- 2. CÁNH CỬA CÓ THỂ MỞ XOAY 3D (Door Leaf Group) -->
+            <g class="svg-door-leaf" id="svgDoorLeaf">
+              <!-- Cánh cửa chính -->
+              <rect x="33" y="44" width="134" height="254" fill="#f0689b" stroke="#141414" stroke-width="4.5" />
+
+              <!-- Khung viền chỉ lõm bên trong cánh cửa -->
+              <rect x="40" y="51" width="120" height="240" fill="none" stroke="#141414" stroke-width="2.5" />
+
+              <!-- Tay nắm cửa hình tròn màu xanh ngọc -->
+              <circle cx="53" cy="184" r="7.8" fill="#9cd3c7" stroke="#141414" stroke-width="3.2" />
+            </g>
+          </svg>
+
+          <div class="door-tap-hint">
+            <span>🚪</span> Chạm để mở cửa
+          </div>
+        </div>
+
+        <!-- Lazy-load iframe: Chỉ nạp khi mở cánh cửa để triệt tiêu 100% lag ban đầu -->
+        <iframe id="ytVideoPlayer" width="560" height="315"
+          data-src="https://www.youtube.com/embed/djVTCRp1AB4?si=H8hTkqWa91KRaTxX" title="YouTube video player"
+          frameborder="0" loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="video-note">
+        <span>💡</span> <em>Mẹo: Chạm vào cánh cửa để mở và tự động phát video nhé!</em>
+      </div>
+    </section>
+
+    <!-- 3. CÁC BƯỚC CÀI ĐẶT THỦ CÔNG (ĐƯỢC THIẾT KẾ DẠNG THẺ GRID THEO ẢNH MẪU) -->
+    <section class="neo-card">
+      <h2 class="section-header-title">Bảng Hướng Dẫn Cài Đặt</h2>
+      <p class="section-header-sub">
+        Thực hiện theo 4 bước bên dưới để kích hoạt trọn đời (100% miễn phí).
+      </p>
+
+      <!-- Thanh tìm kiếm giả lập phong cách trong ảnh -->
+      <div class="neo-search-bar">
+        <span>🔍</span>
+        <input type="text" value="Quy trình 4 bước kích hoạt Locket Gold VIP..." readonly>
+      </div>
+
+      <div class="steps-grid">
+
+        <!-- BƯỚC 1 -->
+        <div class="step-card">
+          <div>
+            <div class="step-card-header">
+              <div class="step-badge-number">1</div>
+              <div class="step-card-title">Tải Hồ Sơ Cấu Hình</div>
             </div>
-        </div>
-
-        <div class="bank-card-3d card-bidv" onclick="copyToClipboard('2005838699', 'TECHCOMBANK')">
-            <div class="copy-hint"><i class="fa fa-copy"></i></div>
-            <div class="chip-sim"></div>
-            <div class="card-num">2005 838 699</div>
-            <div class="card-bottom">
-                <div><div class="card-label">CHỦ TÀI KHOẢN</div><div class="card-name">CAO VAN NAM</div></div>
-                <div style="font-weight:900;">TECHCOMBANK</div>
+            <div class="step-card-desc">
+              Nhấn nút <span class="step-pill-btn">Tải cấu hình DNS</span> ở trên. Khi Safari hỏi: <em>"Trang web đang
+                cố tải hồ sơ cấu hình..."</em>, hãy nhấn <span class="step-pill-btn">Cho phép</span> (Allow) rồi bấm
+              <span class="step-pill-btn">Đóng</span>.
             </div>
+          </div>
+          <div class="step-key-box">
+            👉 <strong>Lưu ý:</strong> Bắt buộc dùng Safari, mở trong Zalo/TikTok sẽ bị chặn.
+          </div>
         </div>
 
-        <div class="bank-card-3d card-momo" onclick="copyToClipboard('0378787154', 'MOMO')">
-            <div class="copy-hint"><i class="fa fa-copy"></i></div>
-            <div class="chip-sim"></div>
-            <div class="card-num">037 878 7154</div>
-            <div class="card-bottom">
-                <div><div class="card-label">VÍ ĐIỆN TỬ</div><div class="card-name">CAO VAN NAM</div></div>
-                <div style="font-weight:900;">MOMO</div>
+        <!-- BƯỚC 2 -->
+        <div class="step-card">
+          <div>
+            <div class="step-card-header">
+              <div class="step-badge-number">2</div>
+              <div class="step-card-title">Cài Đặt Trong Máy</div>
             </div>
+            <div class="step-card-desc">
+              Mở <strong>Cài đặt</strong> (Settings) trên iPhone ➜ Chọn mục <span class="step-pill-btn">Đã tải về hồ
+                sơ</span> ở ngay đầu ➜ Nhấn <span class="step-pill-btn">Cài đặt</span> ở góc trên bên phải ➜ Nhập
+              passcode máy và xác nhận.
+            </div>
+          </div>
+          <div class="step-key-box">
+            ⚙️ Hồ sơ sẽ cấu hình DNS mã hoá DoH an toàn.
+          </div>
         </div>
-    </div>
 
-    <div class="floating-nav">
-        <a href="#home" class="nav-btn active"><i class="fa fa-home"></i></a>
-        <a href="http://zalo.me/0378787154" class="nav-btn"><i class="fa fa-comment-dots"></i></a>
-        <a href="https://www.facebook.com/cao.vannam.26042k5" class="nav-btn"><i class="fab fa-facebook"></i></a>
-        <a href="#contacts" class="nav-btn"><i class="fa fa-credit-card"></i></a>
-    </div>
+        <!-- BƯỚC 3: NỔI BẬT NỀN VÀNG & BADGE HỒNG THEO ẢNH MẪU -->
+        <div class="step-card card-highlight-yellow">
+          <div class="step-badge-tag">Bắt buộc</div>
+          <div>
+            <div class="step-card-header">
+              <div class="step-badge-number">3</div>
+              <div class="step-card-title">Bật Tin Cậy Chứng Chỉ</div>
+            </div>
+            <div class="step-card-desc">
+              Bước quan trọng nhất để kích hoạt VIP:
+              <br>• Vào <strong>Cài đặt</strong> ➜ <strong>Cài đặt chung</strong> ➜ <strong>Giới thiệu</strong>.
+              <br>• Kéo xuống đáy chọn <span class="step-pill-btn">Cài đặt tin cậy chứng nhận</span>.
+              <br>• Gạt <span class="step-pill-btn" style="background:#000; color:#fff;">BẬT XANH</span> chứng chỉ
+              <strong>"LocketGold CA"</strong>.
+            </div>
+          </div>
+          <div class="step-key-box" style="background: #ffffff;">
+            ⚠️ Nếu không bật chứng chỉ, máy sẽ không nhận diện VIP!
+          </div>
+        </div>
 
-    <div id="toast">
-        <i class="fa fa-check-circle"></i>
-        <span id="toast-msg">Đã sao chép!</span>
-    </div>
+        <!-- BƯỚC 4 -->
+        <div class="step-card">
+          <div>
+            <div class="step-card-header">
+              <div class="step-badge-number">4</div>
+              <div class="step-card-title">Mở Locket & Tận Hưởng! 🎉</div>
+            </div>
+            <div class="step-card-desc">
+              Vuốt đa nhiệm tắt hẳn ứng dụng Locket rồi mở lại. Bạn sẽ thấy biểu tượng vương miện vàng và toàn bộ quyền
+              lợi <strong>Locket Gold VIP</strong> vĩnh viễn đã được mở khoá!
+            </div>
+          </div>
+          <div class="step-key-box">
+            ✨ Đăng ảnh/video dài 30s không giới hạn!
+          </div>
+        </div>
 
-    <script src="./js/script.js"></script>
-	    <script src="./js/zinwwebbbb.js"></script>
+      </div>
+
+      <!-- HỘP SAO CHÉP LIÊN KẾT NHANH -->
+      <div class="safari-copy-box">
+        <h4>📱 Đang lướt trên Facebook / Zalo / TikTok?</h4>
+        <p>Bấm nút bên dưới để copy liên kết, sau đó dán vào Safari để tải cấu hình nha:</p>
+        <button class="btn-neo btn-neo-white" id="btnCopyLink" style="font-size: 0.98rem; padding: 10px 22px;">
+          <span>📋</span> Sao chép liên kết trang này
+        </button>
+      </div>
+
+    </section>
+
+    <!-- 4. HỎI ĐÁP NHANH (FAQ) -->
+    <section class="neo-card">
+      <h2 class="section-header-title">Câu Hỏi Thường Gặp</h2>
+      <p class="section-header-sub">Giải đáp mọi thắc mắc của bạn về Locket Gold VIP</p>
+
+      <div class="faq-list">
+        <div class="faq-neo-item active">
+          <div class="faq-question">1. Cài đặt này có an toàn cho iPhone không?</div>
+          <div class="faq-answer">Hoàn toàn an toàn 100%. Hồ sơ chỉ cấu hình chuyển hướng kết nối DNS của riêng ứng dụng
+            Locket (RevenueCat) qua máy chủ chuyên dụng, không ảnh hưởng đến bất kỳ ứng dụng ngân hàng hay thông tin cá
+            nhân nào khác.</div>
+        </div>
+
+        <div class="faq-neo-item">
+          <div class="faq-question">2. Tại sao tôi không thấy mục "Đã tải về hồ sơ"?</div>
+          <div class="faq-answer">Hãy đảm bảo bạn đã dùng trình duyệt Safari để bấm tải và nhấn "Cho phép". Nếu vẫn
+            không thấy, bạn vào <strong>Cài đặt ➜ Cài đặt chung ➜ Quản lý VPN & Thiết bị</strong> để tìm hồ sơ tải về
+            nhé.</div>
+        </div>
+
+        <div class="faq-neo-item">
+          <div class="faq-question">3. Locket Gold VIP có được dùng vĩnh viễn không?</div>
+          <div class="faq-answer">Có, cấu hình đã tích hợp bộ chứng chỉ tự động duy trì gói VIP vĩnh viễn và tự động
+            chặn thu hồi bản quyền.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER PHONG CÁCH RETRO -->
+    <footer class="neo-footer">
+      <div style="font-size: 1.2rem; font-weight: 900; margin-bottom: 6px;">
+        💛 LOCKET GOLD NGUYỄN HOÀNG QUÂN x DORAEMON 💛
+      </div>
+      <p>
+        Quản trị hệ thống: <strong>NGUYỄN HOÀNG QUÂN</strong> (Zalo: 0358075061)
+      </p>
+      <p style="font-size: 0.85rem; color: #454545; margin-top: 6px;">
+        © 2026 Doraemon Team. Chúc các bạn có những trải nghiệm thật tuyệt vời trên Locket!
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Thông báo Toast -->
+  <div id="toast">✅ Đã sao chép liên kết! Hãy mở Safari và dán nhé.</div>
+
+  <script>
+    // Phát âm thanh tiếng chuông / ma thuật bằng Web Audio API
+    function playChimeSound() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.35);
+      } catch (e) {
+        // Fallback
+      }
+    }
+
+    // Xử lý sao chép liên kết
+    const btnCopy = document.getElementById('btnCopyLink');
+    const navBtnCopy = document.getElementById('navBtnCopy');
+    const toast = document.getElementById('toast');
+
+    function copyCurrentUrl() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast('✅ Đã sao chép liên kết! Hãy mở Safari và dán nhé.');
+        }).catch(() => fallbackCopy());
+      } else {
+        fallbackCopy();
+      }
+    }
+
+    function fallbackCopy() {
+      const tempInput = document.createElement('input');
+      tempInput.value = window.location.href;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast('✅ Đã sao chép liên kết! Hãy mở Safari và dán nhé.');
+    }
+
+    if (btnCopy) btnCopy.addEventListener('click', copyCurrentUrl);
+    if (navBtnCopy) navBtnCopy.addEventListener('click', copyCurrentUrl);
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    // Hiệu ứng bấm vào Doraemon Avatar
+    const doraAvatar = document.getElementById('doraAvatar');
+    if (doraAvatar) {
+      doraAvatar.addEventListener('click', () => {
+        playChimeSound();
+        doraAvatar.style.transform = 'scale(1.2) rotate(-8deg)';
+        setTimeout(() => {
+          doraAvatar.style.transform = 'scale(1.2) rotate(8deg)';
+        }, 150);
+        setTimeout(() => {
+          doraAvatar.style.transform = '';
+        }, 350);
+        showToast('🔔 Leng keng! Doraemon chúc bạn lên Locket Gold thành công!');
+      });
+    }
+
+    // Xử lý mở Cánh Cửa Thần Kỳ và sau 1 giây bắt đầu phát video
+    const magicDoorOverlay = document.getElementById('magicDoorOverlay');
+    const ytVideoPlayer = document.getElementById('ytVideoPlayer');
+    let isDoorOpened = false;
+
+    if (magicDoorOverlay && ytVideoPlayer) {
+      magicDoorOverlay.addEventListener('click', () => {
+        if (isDoorOpened) return;
+        isDoorOpened = true;
+
+        playChimeSound();
+
+        // Bắt đầu xoay bản lề 3D cánh cửa
+        magicDoorOverlay.classList.add('opening');
+        showToast('🚪 Cánh cửa thần kỳ đang mở ra...');
+
+        // Sau đúng 1 giây (1000ms), ẩn cánh cửa và phát video mượt mà
+        setTimeout(() => {
+          magicDoorOverlay.classList.remove('door-closed');
+          magicDoorOverlay.classList.add('door-opened');
+
+          // Nạp YouTube iframe on-demand
+          const targetUrl = ytVideoPlayer.dataset.src || ytVideoPlayer.src;
+          if (targetUrl) {
+            ytVideoPlayer.src = targetUrl + (targetUrl.includes('?') ? '&' : '?') + 'autoplay=1';
+          }
+        }, 1000);
+      });
+    }
+
+    // FAQ Accordion tương tác
+    document.querySelectorAll('.faq-question').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+
 </body>
+
 </html>
