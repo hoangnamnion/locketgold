@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>🔥 Nâng Gold Locket | NGUYỄN HOÀNG QUÂN</title>
+  <meta name="description"
+    content="Tool kích hoạt Locket Gold VIP tức thì, không cần iCloud, hỗ trợ nâng đơn lẻ và nâng hàng loạt độc quyền bởi Nguyễn Hoàng Quân." />
+
+  <!-- Tối ưu kết nối & Google Fonts -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --neo-black: #141414;
+      --neo-yellow: #ffd23f;
+      --neo-yellow-light: #ffdc58;
+      --neo-pink: #ff5277;
+      --neo-green: #10b981;
+      --neo-green-light: #d1fae5;
+      --neo-blue: #02a9ea;
+      --neo-bg: #fffdf5;
+      --neo-grid-line: #e8e2d4;
+      --neo-card-bg: #ffffff;
+      --neo-border-w: 3px;
+      --neo-radius-sm: 10px;
+      --neo-radius-md: 14px;
+      --neo-radius-lg: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--neo-bg);
+      color: var(--neo-black);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      touch-action: manipulation;
+      text-rendering: optimizeSpeed;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nền lưới ô ly tách lớp GPU cố định chống giật lag */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-color: var(--neo-bg);
+      background-image:
+        linear-gradient(var(--neo-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--neo-grid-line) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: -1;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    /* TOP NAVBAR PHONG CÁCH RETRO LOCKET NGUYỄN HOÀNG QUÂN */
+    .neo-navbar {
+      background: var(--neo-yellow);
+      border-bottom: 3.5px solid var(--neo-black);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 18px;
+    }
+
+    .nav-container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--neo-black);
+    }
+
+    .brand-title {
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .brand-pill {
+      background: var(--neo-black);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 7px 14px;
+      border-radius: var(--neo-radius-sm);
+      border: 2.5px solid var(--neo-black);
+      box-shadow: 2.5px 2.5px 0 var(--neo-black);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      color: var(--neo-black);
+      background: #ffffff;
+    }
+
+    .nav-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3.5px 3.5px 0 var(--neo-black);
+    }
+
+    .nav-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0 0 0 var(--neo-black);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 30px 18px 70px 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HERO HEADER */
+    .hero-section {
+      text-align: center;
+      padding: 10px 0 20px 0;
+    }
+
+    .doraemon-hero-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 0 auto 16px auto;
+      flex-wrap: wrap;
+    }
+
+    .doraemon-avatar-wrap {
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .doraemon-avatar-wrap:hover {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .doraemon-avatar-img {
+      max-width: 120px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0 rgba(20, 20, 20, 0.25));
+    }
+
+    .doraemon-text-logo {
+      max-width: 155px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0 rgba(20, 20, 20, 0.2));
+    }
+
+    .hero-main-title {
+      font-size: 2.7rem;
+      font-weight: 900;
+      color: var(--neo-black);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      line-height: 1.15;
+    }
+
+    .hero-highlight-box {
+      display: inline-block;
+      background: var(--neo-yellow);
+      border: 3.5px solid var(--neo-black);
+      border-radius: 12px;
+      box-shadow: 5px 5px 0 var(--neo-black);
+      padding: 6px 24px;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--neo-black);
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+      transform: rotate(-1deg);
+      transition: transform 0.2s ease;
+    }
+
+    .hero-highlight-box:hover {
+      transform: rotate(1deg) scale(1.02);
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
+      color: #38424b;
+      max-width: 580px;
+      margin: 0 auto 18px auto;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .hero-tags {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag {
+      background: #ffffff;
+      border: 2px solid var(--neo-black);
+      box-shadow: 2px 2px 0 var(--neo-black);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    /* ĐƯỜNG KẺ STRIPE PHONG CÁCH COMIC */
+    .comic-divider-stripe {
+      width: 100%;
+      height: 9px;
+      background: var(--neo-pink);
+      border-top: 3.5px solid var(--neo-black);
+      border-bottom: 3.5px solid var(--neo-black);
+      margin: 28px 0 32px 0;
+    }
+
+    /* TAB CHUYỂN ĐỔI (ĐƠN LẺ / HÀNG LOẠT) */
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: var(--neo-radius-sm);
+      border: 3.5px solid var(--neo-black);
+      background: #ffffff;
+      color: var(--neo-black);
+      box-shadow: 4px 4px 0 var(--neo-black);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--neo-yellow);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--neo-black);
+    }
+
+    .tab-btn:hover:not(.active) {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 var(--neo-black);
+    }
+
+    /* CARD CHUNG PHONG CÁCH NEO-BRUTALISM */
+    .neo-card {
+      background: var(--neo-card-bg);
+      border: 3.5px solid var(--neo-black);
+      border-radius: var(--neo-radius-lg);
+      box-shadow: 7px 7px 0 var(--neo-black);
+      padding: 28px 24px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 2.5px dashed #e2dad0;
+    }
+
+    .card-head-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--neo-yellow);
+      border: 2.5px solid var(--neo-black);
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 var(--neo-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .card-head-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+
+    .card-head-sub {
+      font-size: 0.88rem;
+      color: #616e78;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* INPUT & FORM */
+    .input-label {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--neo-black);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .input-wrap {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .input-prefix {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 900;
+      color: var(--neo-black);
+      font-size: 1.25rem;
+      pointer-events: none;
+    }
+
+    .neo-input {
+      width: 100%;
+      padding: 14px 16px 14px 42px;
+      background: #ffffff;
+      border: 3px solid var(--neo-black);
+      border-radius: var(--neo-radius-sm);
+      box-shadow: 4px 4px 0 var(--neo-black);
+      color: var(--neo-black);
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+
+    .neo-input::placeholder {
+      color: #8c9ba5;
+      font-weight: 500;
+    }
+
+    .neo-input:focus {
+      border-color: var(--neo-black);
+      box-shadow: 5px 5px 0 var(--neo-black);
+      transform: translate(-1px, -1px);
+    }
+
+    /* NÚT BẤM (BUTTONS) */
+    .btn-neo {
+      width: 100%;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 800;
+      padding: 14px 24px;
+      border-radius: var(--neo-radius-sm);
+      border: 3.5px solid var(--neo-black);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 5px 5px 0 var(--neo-black);
+      transition: all 0.15s ease;
+      color: var(--neo-black);
+    }
+
+    .btn-neo.btn-yellow {
+      background: var(--neo-yellow);
+    }
+
+    .btn-neo.btn-white {
+      background: #ffffff;
+    }
+
+    .btn-neo:hover:not(:disabled) {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--neo-black);
+    }
+
+    .btn-neo:active:not(:disabled) {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0 var(--neo-black);
+    }
+
+    .btn-neo:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* TRẠNG THÁI (STATUS ALERTS) */
+    .status {
+      padding: 12px 18px;
+      border-radius: var(--neo-radius-sm);
+      border: 2.5px solid var(--neo-black);
+      box-shadow: 3.5px 3.5px 0 var(--neo-black);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      word-break: break-word;
+      animation: fadeInUp 0.3s ease;
+    }
+
+    .status-wait {
+      background: #fff8d6;
+      color: #7c5e00;
+    }
+
+    .status-ok {
+      background: #e6fcf5;
+      color: #087f5b;
+    }
+
+    .status-err {
+      background: #ffe3e9;
+      color: #a71432;
+    }
+
+    /* CARD PROFILE THÔNG TIN TÀI KHOẢN */
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #ffffff;
+      border: 3px solid var(--neo-black);
+      border-radius: var(--neo-radius-md);
+      box-shadow: 5px 5px 0 var(--neo-black);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.3s ease;
+    }
+
+    .profile-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--neo-black);
+      box-shadow: 3px 3px 0 var(--neo-black);
+      flex-shrink: 0;
+      background: #fff;
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .profile-name {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--neo-black);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .profile-username {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #0b6bcb;
+      margin-top: 2px;
+    }
+
+    .profile-uid {
+      font-size: 0.8rem;
+      color: #616e78;
+      font-family: monospace;
+      margin-top: 2px;
+    }
+
+    .profile-gold-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 2px solid var(--neo-black);
+      margin-top: 6px;
+      width: fit-content;
+    }
+
+    .profile-gold-badge.active {
+      background: var(--neo-yellow);
+      box-shadow: 2px 2px 0 var(--neo-black);
+    }
+
+    .profile-gold-badge.inactive {
+      background: #f1f3f5;
+      color: #495057;
+    }
+
+    .profile-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      background: #ffffff;
+      border: 2px solid var(--neo-black);
+      box-shadow: 2px 2px 0 var(--neo-black);
+      color: var(--neo-black);
+      font-size: 0.8rem;
+      font-weight: 800;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .profile-link-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--neo-black);
+    }
+
+    /* KẾT QUẢ NÂNG THÀNH CÔNG (RESULT BOX) */
+    .result-card {
+      text-align: center;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      margin-top: 10px;
+    }
+
+    .result-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      margin: 0 auto 16px;
+      background: var(--neo-yellow);
+      border: 3.5px solid var(--neo-black);
+      box-shadow: 6px 6px 0 var(--neo-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 46px;
+      position: relative;
+    }
+
+    .result-title {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--neo-black);
+      margin-bottom: 6px;
+    }
+
+    .result-sub {
+      font-size: 0.96rem;
+      color: #495057;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .result-detail {
+      background: #ffffff;
+      border: 3px solid var(--neo-black);
+      box-shadow: 5px 5px 0 var(--neo-black);
+      border-radius: var(--neo-radius-md);
+      overflow: hidden;
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 18px;
+      font-size: 0.92rem;
+    }
+
+    .detail-row:not(:last-child) {
+      border-bottom: 2px solid #e9ecef;
+    }
+
+    .detail-label {
+      color: #6c757d;
+      font-weight: 700;
+    }
+
+    .detail-value {
+      font-weight: 900;
+      color: var(--neo-black);
+    }
+
+    .detail-value.gold {
+      color: #d97706;
+    }
+
+    .detail-value.green {
+      color: #059669;
+    }
+
+    /* BATCH AREA (HÀNG LOẠT) */
+    .batch-area {
+      width: 100%;
+      padding: 14px 16px;
+      background: #ffffff;
+      border: 3px solid var(--neo-black);
+      border-radius: var(--neo-radius-sm);
+      box-shadow: 4px 4px 0 var(--neo-black);
+      color: var(--neo-black);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', monospace;
+      outline: none;
+      resize: vertical;
+      min-height: 120px;
+      transition: all 0.15s ease;
+      margin-bottom: 16px;
+    }
+
+    .batch-area:focus {
+      border-color: var(--neo-black);
+      box-shadow: 5px 5px 0 var(--neo-black);
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 540px) {
+      .btn-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .batch-results {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .batch-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      padding: 10px 14px;
+      border-radius: var(--neo-radius-sm);
+      background: #ffffff;
+      border: 2px solid var(--neo-black);
+      box-shadow: 2px 2px 0 var(--neo-black);
+      font-weight: 700;
+    }
+
+    .batch-item .u {
+      color: #0b6bcb;
+      font-family: monospace;
+    }
+
+    .batch-item .s {
+      margin-left: auto;
+      font-size: 0.82rem;
+    }
+
+    .batch-item.done {
+      background: #ecfdf5;
+      border-color: var(--neo-black);
+    }
+
+    .batch-item.done .s {
+      color: #059669;
+    }
+
+    .batch-item.fail {
+      background: #fef2f2;
+    }
+
+    .batch-item.fail .s {
+      color: #dc2626;
+    }
+
+    .batch-item.pend {
+      background: #fffbeb;
+    }
+
+    .batch-item.pend .s {
+      color: #d97706;
+    }
+
+    /* CONSOLE LOG */
+    .log-box {
+      background: #1e1e1e;
+      border: 3px solid var(--neo-black);
+      border-radius: var(--neo-radius-sm);
+      box-shadow: 4px 4px 0 var(--neo-black);
+      padding: 12px 14px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #d4d4d4;
+      max-height: 150px;
+      overflow-y: auto;
+      margin-top: 14px;
+    }
+
+    .log-line {
+      display: block;
+    }
+
+    .log-ok {
+      color: #4ade80;
+    }
+
+    .log-err {
+      color: #f87171;
+    }
+
+    .log-wait {
+      color: #fde047;
+    }
+
+    .log-info {
+      color: #60a5fa;
+    }
+
+    /* SPINNER */
+    .spin {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .neo-footer {
+      text-align: center;
+      margin-top: 36px;
+      padding: 24px 16px;
+      background: var(--neo-yellow);
+      border: 3.5px solid var(--neo-black);
+      border-radius: var(--neo-radius-lg);
+      box-shadow: 6px 6px 0 var(--neo-black);
+      font-weight: 700;
+    }
+
+    .neo-footer p {
+      margin-top: 6px;
+      font-size: 0.92rem;
+      color: #1e1e1e;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.85);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-main-title {
+        font-size: 2.15rem;
+      }
+      .hero-highlight-box {
+        font-size: 1.45rem;
+        padding: 5px 16px;
+      }
+      .neo-card {
+        padding: 20px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR RETRO LOCKET NGUYỄN HOÀNG QUÂN -->
+  <nav class="neo-navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-title">Locket</span>
+        <span class="brand-pill">NGUYỄN HOÀNG QUÂN</span>
+      </div>
+
+      <div class="nav-actions">
+        <a href="index.html" class="nav-btn">🏠 Hướng dẫn DNS</a>
+        <a href="https://zalo.me/0358075061" target="_blank" class="nav-btn">💬 Zalo Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO HEADER -->
+    <header class="hero-section">
+      <!-- Mascot & Logo nằm ngang nhau -->
+      <div class="doraemon-hero-brand">
+        <div class="doraemon-avatar-wrap" id="doraAvatar" title="Chạm vào tớ để nghe chuông leng keng!">
+          <img src="IMG/giphy.gif" alt="Doraemon Mascot" class="doraemon-avatar-img" width="120" height="120"
+            decoding="async">
+        </div>
+        <img src="IMG/CHUDOREMONgif.gif" alt="Doraemon Logo" class="doraemon-text-logo" width="155" height="80"
+          decoding="async">
+      </div>
+
+      <h1 class="hero-main-title">Nâng Gold Locket</h1>
+      <div class="hero-highlight-box">Kích Hoạt Tức Thì</div>
+
+      <p class="hero-desc">
+        Hệ thống hỗ trợ kick tài khoản lên <strong>Locket Gold VIP</strong> trực tiếp từ máy chủ — Không cần mật khẩu, không cần iCloud, nhanh chóng và an toàn tuyệt đối!
+      </p>
+
+      <div class="hero-tags">
+        <span class="hero-tag">⚡ Tốc độ 1 giây</span>
+        <span class="hero-tag">🛡️ Không cần iCloud</span>
+        <span class="hero-tag">👑 Đa máy chủ Fallback</span>
+      </div>
+    </header>
+
+    <!-- ĐƯỜNG KẺ STRIPE PHONG CÁCH COMIC -->
+    <div class="comic-divider-stripe"></div>
+
+    <!-- TAB CHUYỂN ĐỔI CHẾ ĐỘ NÂNG -->
+    <div class="tab-nav">
+      <button class="tab-btn active" id="tabSingleBtn" onclick="switchTab('single')">
+        <span>👤</span> Nâng Đơn Lẻ
+      </button>
+      <button class="tab-btn" id="tabBatchBtn" onclick="switchTab('batch')">
+        <span>⚡</span> Nâng Hàng Loạt
+      </button>
+    </div>
+
+    <!-- ── CARD 1: NÂNG ĐƠN LẺ ── -->
+    <div class="neo-card" id="cardSingle">
+      <div class="card-head">
+        <div class="card-head-icon">👤</div>
+        <div>
+          <div class="card-head-title">Nâng Đơn Lẻ 1 Tài Khoản</div>
+          <div class="card-head-sub">Nhập username hoặc dán link locket.cam/... để tra cứu & nâng</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="usernameInput">Username hoặc Link Locket</label>
+        <div class="input-wrap">
+          <span class="input-prefix">@</span>
+          <input id="usernameInput" class="neo-input" type="text"
+            placeholder="nhập username hoặc dán link locket.cam/..." autocomplete="off" spellcheck="false" />
+        </div>
+      </div>
+
+      <!-- Trạng thái -->
+      <div id="singleStatus" class="status hidden"></div>
+
+      <!-- Profile thông tin tài khoản sau khi tra cứu -->
+      <div id="profileCard" class="profile-card hidden">
+        <img id="profileAvatar" class="profile-avatar" src="" alt="avatar" referrerpolicy="no-referrer" />
+        <div class="profile-info">
+          <div id="profileName" class="profile-name"></div>
+          <div id="profileUsername" class="profile-username"></div>
+          <div id="profileUid" class="profile-uid"></div>
+          <div id="profileGoldBadge" class="profile-gold-badge"></div>
+          <div>
+            <a id="profileLocketLink" class="profile-link-btn" href="#" target="_blank" rel="noopener">
+              <span>🌐 Mở trang cá nhân</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nút Kiểm Tra -->
+      <button class="btn-neo btn-white" id="lookupBtn" onclick="lookupUser()">
+        <span>🔍</span> Kiểm tra tài khoản
+      </button>
+
+      <!-- Nút Nâng Gold (Xuất hiện sau khi tìm thấy) -->
+      <div id="kickBtnWrap" class="hidden" style="margin-top: 14px;">
+        <button class="btn-neo btn-yellow" id="kickBtn" onclick="kickUser()">
+          <span>⚡</span> NÂNG GOLD NGAY
+        </button>
+      </div>
+
+      <!-- Khối Kết Quả Nâng Thành Công -->
+      <div id="resultBox" class="result-card hidden">
+        <div class="result-icon">🏆</div>
+        <div class="result-title">Nâng Gold Thành Công!</div>
+        <div id="resultSub" class="result-sub"></div>
+
+        <div class="result-detail">
+          <div class="detail-row">
+            <span class="detail-label">Tài khoản</span>
+            <span id="res-username" class="detail-value gold"></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Tên hiển thị</span>
+            <span id="res-name" class="detail-value"></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Trạng thái</span>
+            <span class="detail-value green">✅ Gold Đã Kích Hoạt</span>
+          </div>
+          <div class="detail-row" id="res-expires-row">
+            <span class="detail-label">Hạn sử dụng</span>
+            <span id="res-expires" class="detail-value gold"></span>
+          </div>
+        </div>
+
+        <button class="btn-neo btn-white" onclick="resetSingle()">
+          <span>↩</span> Nâng tài khoản khác
+        </button>
+      </div>
+
+      <!-- Console Log (Ẩn hiện linh hoạt) -->
+      <div id="logBox" class="log-box hidden"></div>
+    </div>
+
+    <!-- ── CARD 2: NÂNG HÀNG LOẠT ── -->
+    <div class="neo-card hidden" id="cardBatch">
+      <div class="card-head">
+        <div class="card-head-icon">⚡</div>
+        <div>
+          <div class="card-head-title">Nâng Hàng Loạt Nhiều Tài Khoản</div>
+          <div class="card-head-sub">Xử lý tuần tự danh sách username tự động</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="batchInput">Danh sách Username (mỗi dòng 1 tên)</label>
+        <textarea id="batchInput" class="batch-area"
+          placeholder="hoangquan&#10;user123&#10;locket_vip&#10;..."></textarea>
+      </div>
+
+      <div id="batchStatus" class="status hidden"></div>
+
+      <div class="btn-row">
+        <button class="btn-neo btn-white" id="batchCheckBtn" onclick="batchCheck()">
+          <span>🔍</span> Check tất cả
+        </button>
+        <button class="btn-neo btn-yellow" id="batchKickBtn" onclick="batchKick()">
+          <span>⚡</span> Nâng tất cả
+        </button>
+      </div>
+
+      <div id="batchResults" class="batch-results"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="neo-footer">
+      <div style="font-size: 1.2rem; font-weight: 900; margin-bottom: 6px;">
+        💛 LOCKET GOLD VIP - NGUYỄN HOÀNG QUÂN 💛
+      </div>
+      <p>
+        Tool nội bộ &nbsp;·&nbsp; Đã nâng thành công <strong id="callCount" style="background:#141414;color:#fff;padding:2px 8px;border-radius:6px;">0</strong> lượt trong phiên
+      </p>
+      <p style="font-size: 0.85rem; color: #454545; margin-top: 6px;">
+        Quản trị hệ thống: <strong>NGUYỄN HOÀNG QUÂN</strong> (Zalo: 0358075061)
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    const API = 'https://hihihihiihihi.caovannamutt.workers.dev/';
+    let totalKicks = 0;
+
+    function $(id) { return document.getElementById(id); }
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    // Chuyển Tab Đơn lẻ / Hàng loạt
+    function switchTab(mode) {
+      const tabSingleBtn = $('tabSingleBtn');
+      const tabBatchBtn = $('tabBatchBtn');
+      const cardSingle = $('cardSingle');
+      const cardBatch = $('cardBatch');
+
+      if (mode === 'single') {
+        tabSingleBtn.classList.add('active');
+        tabBatchBtn.classList.remove('active');
+        cardSingle.classList.remove('hidden');
+        cardBatch.classList.add('hidden');
+      } else {
+        tabSingleBtn.classList.remove('active');
+        tabBatchBtn.classList.add('active');
+        cardSingle.classList.add('hidden');
+        cardBatch.classList.remove('hidden');
+      }
+    }
+
+    function setStatus(el, type, html) {
+      el.className = 'status status-' + type;
+      el.innerHTML = html;
+      el.classList.remove('hidden');
+    }
+    function hideStatus(el) { el.classList.add('hidden'); }
+
+    function addLog(msg, type) {
+      type = type || 'info';
+      const box = $('logBox');
+      box.classList.remove('hidden');
+      const line = document.createElement('span');
+      line.className = 'log-line log-' + type;
+      const t = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      line.textContent = '[' + t + '] ' + msg;
+      box.appendChild(line);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function setBtnLoading(btn, yes) {
+      if (!btn) return;
+      if (yes) {
+        if (!btn._orig || btn.innerHTML.indexOf('spin') === -1) {
+          btn._orig = btn.innerHTML;
+        }
+        btn.innerHTML = '<span class="spin"></span> Đang xử lý...';
+        btn.disabled = true;
+      } else {
+        if (btn._orig) {
+          btn.innerHTML = btn._orig;
+        } else {
+          btn.innerHTML = btn.id === 'kickBtn'
+            ? '<span>⚡</span> NÂNG GOLD NGAY'
+            : '<span>🔍</span> Kiểm tra tài khoản';
+        }
+        btn.disabled = false;
+      }
+    }
+
+    function cleanUsername(raw) {
+      if (!raw) return '';
+      let u = raw.trim();
+      u = u.split('?')[0].split('#')[0];
+      const m = u.match(/locket\.cam\/(?:@)?([a-zA-Z0-9_.\-]+)/i);
+      if (m && m[1]) u = m[1];
+      return u.replace(/^@/, '').replace(/\/$/, '').trim().toLowerCase();
+    }
+
+    function formatExpiryDate(dateStr) {
+      if (!dateStr) return null;
+      const d = new Date(dateStr);
+      if (isNaN(d.getTime())) return null;
+
+      const now = new Date();
+      const diffMs = d.getTime() - now.getTime();
+      const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const year = d.getFullYear();
+      const hours = String(d.getHours()).padStart(2, '0');
+      const minutes = String(d.getMinutes()).padStart(2, '0');
+
+      let relative = '';
+      if (diffDays > 0) {
+        relative = ` (còn ${diffDays} ngày)`;
+      } else {
+        relative = ' (đã hết hạn)';
+      }
+
+      return `${day}/${month}/${year} ${hours}:${minutes}${relative}`;
+    }
+
+    // ── Lookup User ──
+    async function lookupUser() {
+      const username = cleanUsername($('usernameInput').value);
+      if (!username) { setStatus($('singleStatus'), 'err', '❌ Vui lòng nhập username hoặc dán link Locket!'); return; }
+
+      $('usernameInput').value = username;
+
+      const btn = $('lookupBtn');
+      setBtnLoading(btn, true);
+      hideStatus($('singleStatus'));
+      $('profileCard').classList.add('hidden');
+      $('kickBtnWrap').classList.add('hidden');
+      $('resultBox').classList.add('hidden');
+
+      setStatus($('singleStatus'), 'wait',
+        '<span class="spin" style="margin-right:8px;vertical-align:middle;display:inline-block;"></span> Đang lấy thông tin & ảnh đại diện của <strong>@' + username + '</strong>...'
+      );
+      addLog('Đang tra cứu: @' + username, 'info');
+
+      try {
+        const res = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'info', username })
+        });
+
+        const data = await res.json().catch(() => null);
+
+        if (!data || !data.success) {
+          throw new Error((data && (data.error || data.message)) || 'Không tìm thấy tài khoản trên Locket');
+        }
+
+        const displayName = data.name || username;
+        const finalAvatar = data.avatar || ('https://ui-avatars.com/api/?name=' + encodeURIComponent(displayName) + '&background=FFD23F&color=141414&bold=true&rounded=true&size=128');
+
+        const avatarImg = $('profileAvatar');
+        avatarImg.referrerPolicy = 'no-referrer';
+        avatarImg.onerror = function () {
+          this.onerror = null;
+          this.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(displayName) + '&background=FFD23F&color=141414&bold=true&rounded=true&size=128';
+        };
+        avatarImg.src = finalAvatar;
+
+        $('profileName').textContent = displayName;
+        $('profileUsername').textContent = '@' + data.username;
+        $('profileUid').textContent = 'UID: ' + data.uid;
+
+        const goldBadge = $('profileGoldBadge');
+        const expText = formatExpiryDate(data.expires_date);
+
+        if (data.gold_active) {
+          goldBadge.className = 'profile-gold-badge active';
+          goldBadge.innerHTML = '⭐️ <strong>Gold VIP</strong> · HSD: ' + (expText || 'Đang hoạt động');
+          setStatus($('singleStatus'), 'ok', '✅ Tìm thấy <strong>' + displayName + '</strong> — ⭐️ Đã có Gold (Hết hạn: ' + (expText || 'Đang hoạt động') + ')');
+        } else if (data.expires_date) {
+          goldBadge.className = 'profile-gold-badge inactive';
+          goldBadge.innerHTML = '⚠️ <strong>Gold Đã Hết Hạn</strong> (' + expText + ')';
+          setStatus($('singleStatus'), 'wait', '⚠️ Tìm thấy <strong>' + displayName + '</strong> — Gói Gold đã hết hạn, bấm nút bên dưới để nâng lại!');
+        } else {
+          goldBadge.className = 'profile-gold-badge inactive';
+          goldBadge.innerHTML = 'Tài khoản thường (Chưa có Gold)';
+          setStatus($('singleStatus'), 'ok', '✅ Tìm thấy <strong>' + displayName + '</strong>');
+        }
+
+        const linkEl = $('profileLocketLink');
+        if (linkEl) {
+          linkEl.href = 'https://locket.cam/' + data.username;
+        }
+
+        setBtnLoading($('kickBtn'), false);
+        $('profileCard').classList.remove('hidden');
+        $('kickBtnWrap').classList.remove('hidden');
+
+        addLog('OK: Tìm thấy @' + data.username + ' (' + displayName + ')', 'ok');
+      } catch (e) {
+        setStatus($('singleStatus'), 'err', '❌ ' + e.message);
+        addLog('ERR: ' + e.message, 'err');
+      }
+      setBtnLoading(btn, false);
+    }
+
+    // ── Kick User (Hỗ trợ đa server fallback) ──
+    async function kickUser() {
+      const username = cleanUsername($('usernameInput').value);
+      if (!username) return;
+
+      const btn = $('kickBtn');
+      setBtnLoading(btn, true);
+      setStatus($('singleStatus'), 'wait',
+        '<span class="spin" style="margin-right:8px;vertical-align:middle;display:inline-block;"></span> Đang nâng Gold cho <strong>@' + username + '</strong>...'
+      );
+      addLog('Kick: @' + username, 'wait');
+
+      const APIS = [
+        API,
+        'https://locketgold.caovannamutt.workers.dev/',
+        'https://twilight-mountain-96b6.caovannamutt.workers.dev/'
+      ];
+
+      let success = false;
+      let lastError = '';
+      let lastSuccessData = null;
+
+      for (const apiUrl of APIS) {
+        try {
+          const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'kick', username, device_id: 'SERVER_LK_API' })
+          });
+          const data = await res.json().catch(function () { return { success: res.ok }; });
+          if (data.success || res.ok) {
+            success = true;
+            lastSuccessData = data;
+            break;
+          } else {
+            lastError = data.error || data.message || 'Kick thất bại';
+          }
+        } catch (err) {
+          lastError = err.message;
+        }
+      }
+
+      setBtnLoading(btn, false);
+
+      if (success) {
+        totalKicks++;
+        $('callCount').textContent = totalKicks;
+
+        $('res-username').textContent = '@' + username;
+        $('res-name').textContent = $('profileName').textContent || username;
+        $('resultSub').textContent = 'Tài khoản @' + username + ' đã được kích hoạt Locket Gold thành công!';
+
+        const expFormatted = formatExpiryDate(lastSuccessData && lastSuccessData.expires_date) || '1 Năm (Gia hạn tự động)';
+        $('res-expires').textContent = expFormatted;
+
+        $('profileCard').classList.add('hidden');
+        $('kickBtnWrap').classList.add('hidden');
+        hideStatus($('singleStatus'));
+        $('resultBox').classList.remove('hidden');
+        addLog('SUCCESS: Nâng Gold @' + username + ' (HSD: ' + expFormatted + ')', 'ok');
+      } else {
+        setStatus($('singleStatus'), 'err', '❌ Nâng thất bại: ' + lastError);
+        addLog('ERR: ' + lastError, 'err');
+      }
+    }
+
+    function resetSingle() {
+      $('usernameInput').value = '';
+      $('profileCard').classList.add('hidden');
+      $('kickBtnWrap').classList.add('hidden');
+      $('resultBox').classList.add('hidden');
+      hideStatus($('singleStatus'));
+      setBtnLoading($('kickBtn'), false);
+      setBtnLoading($('lookupBtn'), false);
+      $('usernameInput').focus();
+    }
+
+    // ── Batch Handling ──
+    function parseBatch() {
+      return $('batchInput').value.split('\n')
+        .map(function (l) { return cleanUsername(l); })
+        .filter(function (u) { return u.length > 0; });
+    }
+
+    async function apiCall(action, username) {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: action, username: username })
+      });
+      return res.json().catch(function () { return { success: res.ok }; });
+    }
+
+    function renderBatchItem(username, state, msg) {
+      const container = $('batchResults');
+      let item = document.getElementById('bi-' + username);
+      if (!item) {
+        item = document.createElement('div');
+        item.id = 'bi-' + username;
+        container.appendChild(item);
+      }
+      const icons = { pend: '⏳', done: '✅', fail: '❌' };
+      item.className = 'batch-item ' + state;
+      item.innerHTML =
+        '<span>' + (icons[state] || '⏳') + '</span>' +
+        '<span class="u">@' + username + '</span>' +
+        '<span class="s">' + msg + '</span>';
+    }
+
+    async function batchCheck() {
+      const users = parseBatch();
+      if (!users.length) { setStatus($('batchStatus'), 'err', '❌ Chưa nhập username nào!'); return; }
+
+      const btn = $('batchCheckBtn');
+      setBtnLoading(btn, true);
+      $('batchResults').innerHTML = '';
+      setStatus($('batchStatus'), 'wait', '⏳ Đang check ' + users.length + ' tài khoản...');
+
+      let ok = 0, fail = 0;
+      for (let i = 0; i < users.length; i++) {
+        const u = users[i];
+        renderBatchItem(u, 'pend', 'Đang kiểm tra...');
+        try {
+          const data = await apiCall('info', u);
+          if (data.success) {
+            let goldLabel = '';
+            if (data.gold_active) {
+              const exp = formatExpiryDate(data.expires_date);
+              goldLabel = ' [⭐️ Gold VIP' + (exp ? ' · HSD: ' + exp : '') + ']';
+            } else {
+              goldLabel = ' [Thường]';
+            }
+            renderBatchItem(u, 'done', (data.name || 'Tìm thấy ✓') + goldLabel);
+            ok++;
+          } else {
+            renderBatchItem(u, 'fail', data.error || 'Không tìm thấy');
+            fail++;
+          }
+        } catch (e) {
+          renderBatchItem(u, 'fail', 'Lỗi kết nối');
+          fail++;
+        }
+        await sleep(300);
+      }
+      setStatus($('batchStatus'), ok > 0 ? 'ok' : 'err', '✅ ' + ok + ' hợp lệ · ❌ ' + fail + ' lỗi');
+      setBtnLoading(btn, false);
+    }
+
+    async function batchKick() {
+      const users = parseBatch();
+      if (!users.length) { setStatus($('batchStatus'), 'err', '❌ Chưa nhập username nào!'); return; }
+      if (!confirm('⚡ Nâng Gold cho ' + users.length + ' tài khoản?\n\n' + users.map(function (u) { return '@' + u; }).join('\n'))) return;
+
+      const btn = $('batchKickBtn');
+      setBtnLoading(btn, true);
+      $('batchResults').innerHTML = '';
+      setStatus($('batchStatus'), 'wait', '⚡ Đang nâng ' + users.length + ' tài khoản...');
+
+      let ok = 0, fail = 0;
+      for (let i = 0; i < users.length; i++) {
+        const u = users[i];
+        renderBatchItem(u, 'pend', 'Đang nâng...');
+        try {
+          const data = await apiCall('kick', u);
+          if (data.success || data.ok) {
+            renderBatchItem(u, 'done', 'Gold ✅');
+            ok++; totalKicks++;
+            $('callCount').textContent = totalKicks;
+          } else {
+            renderBatchItem(u, 'fail', data.error || data.message || 'Thất bại');
+            fail++;
+          }
+        } catch (e) { renderBatchItem(u, 'fail', 'Lỗi kết nối'); fail++; }
+        await sleep(400);
+      }
+      setStatus($('batchStatus'), ok > 0 ? 'ok' : 'err',
+        '🏆 Xong: ✅ ' + ok + ' thành công · ❌ ' + fail + ' thất bại'
+      );
+      setBtnLoading(btn, false);
+    }
+
+    // Tự động nhận diện khi dán link locket.cam/...
+    $('usernameInput').addEventListener('input', function (e) {
+      const val = e.target.value.trim();
+      if (val.includes('locket.cam/')) {
+        const clean = cleanUsername(val);
+        if (clean) {
+          e.target.value = clean;
+        }
+      }
+    });
+
+    $('usernameInput').addEventListener('paste', function (e) {
+      setTimeout(() => {
+        const val = $('usernameInput').value.trim();
+        if (val.includes('locket.cam/')) {
+          const clean = cleanUsername(val);
+          if (clean) {
+            $('usernameInput').value = clean;
+            lookupUser();
+          }
+        }
+      }, 50);
+    });
+
+    // Enter to lookup
+    $('usernameInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') lookupUser();
+    });
+
+    window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(function () { $('usernameInput').focus(); }, 100);
+    });
+  </script>
+</body>
+
+</html>
