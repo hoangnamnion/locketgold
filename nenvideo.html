@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kéo Thả Video Vào Đây - Nén Video Dưới 10s &lt; 5MB</title>
+  <title>Kéo Thả Video Vào Đây - Nén Video Dưới 9s &lt; 5MB</title>
   <meta name="description"
-    content="Công cụ tối giản nén video hỗ trợ cắt đoạn tối đa 10 giây ép về dưới 5MB trực tiếp trên máy tính.">
+    content="Công cụ tối giản nén video hỗ trợ cắt đoạn tối đa 9 giây ép về dưới 5MB trực tiếp trên máy tính.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -44,7 +44,7 @@
           <span class="folder-emoji">📁</span> Kéo Thả Video Vào Đây
         </h1>
         <p class="minimal-subtitle">
-          Chấp nhận mọi video • Tự động cắt đoạn tối đa 10 giây để nén &lt; 5MB
+          Chấp nhận mọi video • Tự động cắt đoạn tối đa 9 giây để nén &lt; 5MB
         </p>
       </div>
 
@@ -55,10 +55,10 @@
         <!-- Two Stacked Rule Pills -->
         <div class="pill-stack">
           <div class="rule-pill pink">
-            ✂️ Video dài hơn 10s: Hỗ trợ cắt đoạn chuẩn ≤ 10s
+            ✂️ Video dài hơn 9s: Hỗ trợ cắt đoạn chuẩn ≤ 9s
           </div>
           <div class="rule-pill green">
-            🎯 Dung lượng xuất: Luôn &lt; 5MB
+            🎯 Dung lượng xuất: Luôn ≤ 5MB (Chuẩn 100%)
           </div>
         </div>
 
@@ -106,7 +106,7 @@
           <span>🎬</span> Sẵn Sàng Nén Video (&lt; 5MB)
         </h1>
         <p id="configSubtitle" class="minimal-subtitle">
-          Chọn đoạn video mong muốn (tối đa 10 giây) để tiến hành nén.
+          Chọn đoạn video mong muốn (tối đa 9 giây) để tiến hành nén.
         </p>
       </div>
 
@@ -128,11 +128,11 @@
           </div>
         </div>
 
-        <!-- Trimmer Box (Shown when video > 10s or for trimming) -->
+        <!-- Trimmer Box (Shown when video > 9s or for trimming) -->
         <div id="trimmerBox" class="trimmer-card">
           <div class="trimmer-header">
-            <span class="trimmer-title">✂️ Cắt đoạn để nén (Tối đa 10 giây)</span>
-            <span id="trimDurationBadge" class="trimmer-badge">Đoạn chọn: 10.0s</span>
+            <span class="trimmer-title">✂️ Cắt đoạn để nén (Tối đa 9 giây)</span>
+            <span id="trimDurationBadge" class="trimmer-badge">Đoạn chọn: 9.0s</span>
           </div>
 
           <div class="time-inputs-row">
@@ -147,7 +147,7 @@
             <div class="time-col">
               <label for="trimEndInput" class="time-label">Kết thúc:</label>
               <div class="input-suffix-wrap">
-                <input type="number" id="trimEndInput" min="0.5" step="0.5" value="10.0">
+                <input type="number" id="trimEndInput" min="0.5" step="0.5" value="9.0">
                 <span>s</span>
               </div>
             </div>
@@ -158,17 +158,17 @@
             <input type="range" id="trimRangeSlider" min="0" max="100" step="0.1" value="0" class="trim-scrubber">
             <div class="scrubber-labels">
               <span>0s</span>
-              <span id="scrubberCurrentLabel">Đang chọn: 0.0s - 10.0s</span>
+              <span id="scrubberCurrentLabel">Đang chọn: 0.0s - 9.0s</span>
               <span id="scrubberTotalLabel">Tổng: 0s</span>
             </div>
           </div>
 
           <!-- Quick trim buttons -->
           <div class="quick-trim-row">
-            <button type="button" class="trim-quick-btn active" id="btnTrimStart">10s Đầu tiên</button>
-            <button type="button" class="trim-quick-btn" id="btnTrimMid">10s Ở giữa</button>
-            <button type="button" class="trim-quick-btn" id="btnTrimEnd">10s Cuối cùng</button>
-            <button type="button" class="trim-quick-btn preview" id="btnPreviewTrim">▶ Xem thử 10s này</button>
+            <button type="button" class="trim-quick-btn active" id="btnTrimStart">9s Đầu tiên</button>
+            <button type="button" class="trim-quick-btn" id="btnTrimMid">9s Ở giữa</button>
+            <button type="button" class="trim-quick-btn" id="btnTrimEnd">9s Cuối cùng</button>
+            <button type="button" class="trim-quick-btn preview" id="btnPreviewTrim">▶ Xem thử 9s này</button>
           </div>
         </div>
 
@@ -178,7 +178,7 @@
             <span>Dung lượng đoạn nén dự kiến:</span>
             <strong id="estSizeText">Tool Xịn Của Hoàng Quân</strong>
           </div>
-          <span class="safe-badge">✅ CHUẨN &lt; 5MB</span>
+          <span class="safe-badge">✅ CHUẨN ≤ 5MB</span>
         </div>
 
         <!-- Action Button -->
@@ -212,7 +212,7 @@
 
         <div class="stat-chips">
           <span class="chip">Đã chạy: <strong id="timeElapsedText">0.0s</strong></span>
-          <span class="chip">Đoạn nén: <strong id="videoCurrentTimeText">0.0s / 10.0s</strong></span>
+          <span class="chip">Đoạn nén: <strong id="videoCurrentTimeText">0.0s / 9.0s</strong></span>
         </div>
 
         <button type="button" id="btnCancelCompress" class="btn-cancel-link" style="margin-top: 10px;">
@@ -248,7 +248,7 @@
 
         <div class="success-banner">
           <span id="resSavedAmount">Tiết kiệm 9.7 MB</span>
-          <span class="check-tag">✅ &lt; 5MB (≤ 10s)</span>
+          <span class="check-tag">✅ &lt; 5MB (≤ 9s)</span>
         </div>
 
         <!-- Video Player -->

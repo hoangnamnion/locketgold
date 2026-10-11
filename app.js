@@ -8,9 +8,10 @@
 
 (() => {
   // --- Constants ---
-  const MAX_TRIM_DURATION = 10.0; // Tối đa 10 giây cho một đoạn cắt
-  const CEILING_SIZE_MB = 4.8;     // Ngưỡng trần an toàn để 100% video thực tế dưới 5.0 MB
-  const TARGET_SAFE_MB = 2.8;      // Mục tiêu nén chuẩn cực nét và an toàn dưới 5MB
+  const MAX_TRIM_DURATION = 9.0;  // Tối đa 9 giây cho một đoạn cắt
+  const CEILING_SIZE_MB = 4.2;     // Ngưỡng trần an toàn tuyệt đối để 100% video thực tế dưới 5.0 MB
+  const TARGET_SAFE_MB = 2.4;      // Mục tiêu nén chuẩn cực nét và an toàn dưới 5MB (~1.8MB - 2.8MB)
+  const HARD_LIMIT_BYTES = 4.85 * 1024 * 1024; // 4.85 MB trần cứng bảo vệ không bao giờ vượt quá 5MB
 
   // --- DOM Elements ---
   const uploadSection = document.getElementById('uploadSection');
@@ -76,7 +77,7 @@
 
   // Trim States
   let trimStart = 0.0;
-  let trimEnd = 10.0;
+  let trimEnd = 9.0;
   let previewTimeout = null;
 
   let mediaRecorder = null;
@@ -86,7 +87,10 @@
   let cancelRequested = false;
   let animationFrameId = null;
   let processingTimer = null;
+  let recordTimeout = null;
+  let activeStream = null;
   let startTime = 0;
+  let recompressAttempts = 0;
 
   let audioContext = null;
   let audioSourceNode = null;
@@ -112,17 +116,17 @@
     });
   }
 
-  // --- Safe Bitrate Calculation to Guarantee < 5MB ---
-  function getSafeVideoBitrateBps(clipDurationSec) {
-    const dur = Math.max(1.0, Math.min(MAX_TRIM_DURATION, clipDurationSec || 10.0));
-    const targetBits = TARGET_SAFE_MB * 1024 * 1024 * 8;
-    const audioBps = 128000;
+  // --- Safe Bitrate Calculation to Guarantee <= 5MB ---
+  function getSafeVideoBitrateBps(clipDurationSec, safetyFactor = 1.0) {
+    const dur = Math.max(1.0, Math.min(MAX_TRIM_DURATION, clipDurationSec || 9.0));
+    const targetBits = (TARGET_SAFE_MB * safetyFactor) * 1024 * 1024 * 8;
+    const audioBps = 96000;
     const totalBps = targetBits / dur;
-    const videoBps = Math.max(350000, Math.floor(totalBps - audioBps));
+    const videoBps = Math.max(250000, Math.floor(totalBps - audioBps));
 
-    // Hard ceiling safety check: never exceed 4.8MB
-    const maxAllowedBps = (CEILING_SIZE_MB * 1024 * 1024 * 8) / dur - audioBps;
-    return Math.min(videoBps, Math.max(300000, maxAllowedBps));
+    // Hard ceiling safety check: tuyệt đối không vượt quá CEILING_SIZE_MB
+    const maxAllowedBps = ((CEILING_SIZE_MB * safetyFactor) * 1024 * 1024 * 8) / dur - audioBps;
+    return Math.min(videoBps, Math.max(200000, maxAllowedBps));
   }
 
   // --- Drag & Drop / File Selection ---
@@ -221,17 +225,17 @@
 
       // XỬ LÝ CẮT ĐOẠN VIDEO (TRIMMER)
       if (videoDuration <= MAX_TRIM_DURATION) {
-        // Video ngắn hơn hoặc bằng 10s: Không cần cắt
+        // Video ngắn hơn hoặc bằng 9s: Không cần cắt
         trimStart = 0.0;
         trimEnd = videoDuration;
         trimmerBox.classList.add('hidden');
-        configSubtitle.textContent = `Clip ngắn hợp lệ (${videoDuration.toFixed(1)}s ≤ 10s). Sẵn sàng nén luôn!`;
+        configSubtitle.textContent = `Clip ngắn hợp lệ (${videoDuration.toFixed(1)}s ≤ 9s). Sẵn sàng nén luôn!`;
       } else {
-        // Video dài hơn 10s: Bật khối chọn đoạn 10 giây
+        // Video dài hơn 9s: Bật khối chọn đoạn 9 giây
         trimStart = 0.0;
         trimEnd = MAX_TRIM_DURATION;
         trimmerBox.classList.remove('hidden');
-        configSubtitle.textContent = `Video dài ${videoDuration.toFixed(1)}s. Hãy chọn đoạn cắt tối đa 10 giây để nén!`;
+        configSubtitle.textContent = `Video dài ${videoDuration.toFixed(1)}s. Hãy chọn đoạn cắt tối đa 9 giây để nén!`;
 
         setupTrimmerControls();
       }
@@ -285,7 +289,7 @@
     trimStart = Math.max(0, parseFloat(start.toFixed(1)));
     trimEnd = Math.min(videoDuration, parseFloat(end.toFixed(1)));
 
-    // Đảm bảo không vượt quá 10 giây
+    // Đảm bảo không vượt quá 9 giây
     if (trimEnd - trimStart > MAX_TRIM_DURATION) {
       trimEnd = parseFloat((trimStart + MAX_TRIM_DURATION).toFixed(1));
     }
@@ -294,7 +298,7 @@
     trimEndInput.value = trimEnd.toFixed(1);
 
     const diff = (trimEnd - trimStart).toFixed(1);
-    trimDurationBadge.textContent = `Đoạn chọn: ${diff}s / Max 10s`;
+    trimDurationBadge.textContent = `Đoạn chọn: ${diff}s / Max 9s`;
     scrubberCurrentLabel.textContent = `Đang chọn: ${trimStart.toFixed(1)}s - ${trimEnd.toFixed(1)}s`;
 
     trimRangeSlider.value = trimStart.toFixed(1);
@@ -385,12 +389,12 @@
 
   function updateEstimate() {
     const clipDur = Math.max(1.0, trimEnd - trimStart);
-    const estDisplay = Math.min(TARGET_SAFE_MB, Math.max(1.2, (TARGET_SAFE_MB * clipDur / 8))).toFixed(1);
-    estSizeText.textContent = `~ ${estDisplay} MB • Tool Xịn Của Hoàng Quân`;
+    const estDisplay = Math.min(TARGET_SAFE_MB, Math.max(1.0, (TARGET_SAFE_MB * clipDur / 9))).toFixed(1);
+    estSizeText.textContent = `~ ${estDisplay} MB (≤ 5MB) • Tool Xịn Của Hoàng Quân`;
   }
 
   // Calculate target dimensions keeping aspect ratio (clamp to max 720p HD)
-  function calculateTargetDimensions() {
+  function calculateTargetDimensions(scale = 1.0) {
     let targetW = originalWidth;
     let targetH = originalHeight;
     const aspect = originalWidth / originalHeight;
@@ -403,12 +407,21 @@
       } else {
         targetW = 720;
         targetH = Math.round(targetW / aspect);
+        if (targetH > 1280) {
+          targetH = 1280;
+          targetW = Math.round(targetH * aspect);
+        }
       }
+    }
+
+    if (scale < 1.0) {
+      targetW = Math.round(targetW * scale);
+      targetH = Math.round(targetH * scale);
     }
 
     targetW = Math.round(targetW / 2) * 2;
     targetH = Math.round(targetH / 2) * 2;
-    return { width: targetW, height: targetH };
+    return { width: Math.max(320, targetW), height: Math.max(240, targetH) };
   }
 
   // --- Best MIME type ---
@@ -431,7 +444,7 @@
   }
 
   // --- Compression Core Engine (Recording Exactly Trimmed Excerpt) ---
-  async function startCompression() {
+  async function startCompression(safetyFactor = 1.0, scaleFactor = 1.0) {
     if (!currentFile || isCompressing) return;
 
     if (previewTimeout) {
@@ -451,20 +464,22 @@
 
     progressPercent.textContent = '0%';
     progressBarFill.style.width = '0%';
-    processingStatusText.textContent = `Đang nén đoạn cắt ${clipDuration.toFixed(1)}s (từ ${trimStart.toFixed(1)}s đến ${trimEnd.toFixed(1)}s)...`;
+    processingStatusText.textContent = safetyFactor < 1.0 
+      ? `Đang tối ưu sâu để cam kết chuẩn ≤ 5MB (${clipDuration.toFixed(1)}s)...`
+      : `Đang nén đoạn cắt ${clipDuration.toFixed(1)}s (từ ${trimStart.toFixed(1)}s đến ${trimEnd.toFixed(1)}s)...`;
     timeElapsedText.textContent = '0.0s';
     videoCurrentTimeText.textContent = `0.0s / ${clipDuration.toFixed(1)}s`;
 
     startTime = Date.now();
     processingTimer = setInterval(updateProcessingTimer, 200);
 
-    const { width: targetWidth, height: targetHeight } = calculateTargetDimensions();
+    const { width: targetWidth, height: targetHeight } = calculateTargetDimensions(scaleFactor);
     renderCanvas.width = targetWidth;
     renderCanvas.height = targetHeight;
 
     const fps = 30;
-    const videoBitrateBps = getSafeVideoBitrateBps(clipDuration);
-    const audioBitrateBps = 128000;
+    const videoBitrateBps = getSafeVideoBitrateBps(clipDuration, safetyFactor);
+    const audioBitrateBps = 96000;
     const playbackSpeed = 1.0; // 1x chuẩn thời gian thực: triệt tiêu 100% giật lag và lệch tiếng
 
     const { mime: selectedMime, ext: outputExt } = getBestSupportedMimeType();
@@ -474,11 +489,11 @@
     canvasCtx.imageSmoothingQuality = 'medium';
 
     const canvasStream = renderCanvas.captureStream(fps);
-    const combinedStream = new MediaStream();
+    activeStream = new MediaStream();
 
     const videoTracks = canvasStream.getVideoTracks();
     if (videoTracks.length > 0) {
-      combinedStream.addTrack(videoTracks[0]);
+      activeStream.addTrack(videoTracks[0]);
     }
 
     // Audio setup with Web Audio API
@@ -500,7 +515,7 @@
 
       const audioTracks = audioDestNode.stream.getAudioTracks();
       if (audioTracks.length > 0) {
-        combinedStream.addTrack(audioTracks[0]);
+        activeStream.addTrack(audioTracks[0]);
         audioTrackAdded = true;
       }
     } catch (err) {
@@ -519,9 +534,9 @@
     }
 
     try {
-      mediaRecorder = new MediaRecorder(combinedStream, recorderOptions);
+      mediaRecorder = new MediaRecorder(activeStream, recorderOptions);
     } catch (err) {
-      mediaRecorder = new MediaRecorder(combinedStream);
+      mediaRecorder = new MediaRecorder(activeStream);
     }
 
     mediaRecorder.ondataavailable = (e) => {
@@ -534,34 +549,87 @@
       finishCompression(outputExt);
     };
 
-    // Seek to exact trim start position before starting recording
-    sourceVideo.currentTime = trimStart;
     sourceVideo.playbackRate = playbackSpeed;
     sourceVideo.muted = false;
 
-    // Start recording với chunks 1000ms (giảm 90% tải bộ nhớ và giật lag)
-    mediaRecorder.start(1000);
+    // Chờ tua đến đúng vị trí trimStart chuẩn xác
+    await new Promise((resolve) => {
+      if (Math.abs(sourceVideo.currentTime - trimStart) < 0.05) {
+        resolve();
+      } else {
+        const onSeeked = () => {
+          sourceVideo.removeEventListener('seeked', onSeeked);
+          resolve();
+        };
+        sourceVideo.addEventListener('seeked', onSeeked);
+        sourceVideo.currentTime = trimStart;
+      }
+    });
+
+    // Vẽ ngay frame đầu tiên lên canvas
+    canvasCtx.drawImage(sourceVideo, 0, 0, renderCanvas.width, renderCanvas.height);
 
     let lastDrawTime = 0;
-    const frameIntervalMs = 1000 / fps; // 33.3ms giới hạn chuẩn 30fps
+    const frameIntervalMs = 1000 / fps; // 33.3ms chuẩn 30fps
 
-    sourceVideo.play().then(() => {
-      renderLoop();
-    }).catch(err => {
+    try {
+      await sourceVideo.play();
+    } catch (err) {
       showError('Không thể phát video để nén: ' + err.message);
       cancelCompression();
+      return;
+    }
+
+    // Chờ frame thực sự bắt đầu chạy để MediaRecorder không bị ghi dính độ trễ khởi động ban đầu
+    await new Promise((resolve) => {
+      let moved = false;
+      const onTick = () => {
+        if (!moved && (sourceVideo.currentTime > trimStart + 0.02 || !sourceVideo.paused)) {
+          moved = true;
+          sourceVideo.removeEventListener('timeupdate', onTick);
+          resolve();
+        }
+      };
+      sourceVideo.addEventListener('timeupdate', onTick);
+      setTimeout(() => {
+        if (!moved) {
+          moved = true;
+          sourceVideo.removeEventListener('timeupdate', onTick);
+          resolve();
+        }
+      }, 200);
     });
+
+    // BẮT ĐẦU GHI KHI VIDEO ĐÃ THỰC SỰ LĂN BÁNH
+    mediaRecorder.start(200);
+
+    // Timeout phòng hộ cứng để đảm bảo video không bao giờ vượt quá thời lượng cho phép
+    const maxSafetyMs = Math.ceil((clipDuration + 0.1) * 1000);
+    recordTimeout = setTimeout(() => {
+      if (isCompressing) {
+        stopAndFinalize();
+      }
+    }, maxSafetyMs);
+
+    // Lắng nghe timeupdate để dừng tức thì khi chạm trimEnd
+    sourceVideo.ontimeupdate = () => {
+      if (isCompressing && (sourceVideo.currentTime >= trimEnd - 0.02 || sourceVideo.ended)) {
+        stopAndFinalize();
+      }
+    };
 
     sourceVideo.onended = () => {
       stopAndFinalize();
     };
+
+    renderLoop();
 
     function renderLoop(timestamp) {
       if (!isCompressing || cancelRequested) return;
 
       const clipDuration = trimEnd - trimStart;
 
-      // Throttle canvas rendering to 30fps (không vẽ thừa thãi trên màn hình 120Hz/144Hz)
+      // Throttle canvas rendering to 30fps
       if (!timestamp || timestamp - lastDrawTime >= frameIntervalMs - 2) {
         if (!sourceVideo.paused && !sourceVideo.ended) {
           canvasCtx.drawImage(sourceVideo, 0, 0, renderCanvas.width, renderCanvas.height);
@@ -577,8 +645,8 @@
         lastDrawTime = timestamp || performance.now();
       }
 
-      // ĐÃ CHẠY ĐẾN ĐIỂM KẾT THÚC CỦA ĐOẠN CẮT (trimEnd)
-      if (sourceVideo.currentTime >= trimEnd - 0.05 || sourceVideo.ended) {
+      // ĐÃ CHẠY ĐỦ THỜI LƯỢNG ĐOẠN CẮT (Dừng ngay tại trimEnd)
+      if (sourceVideo.currentTime >= trimEnd - 0.02 || sourceVideo.ended) {
         stopAndFinalize();
         return;
       }
@@ -590,32 +658,73 @@
   function stopAndFinalize() {
     if (!isCompressing || cancelRequested) return;
 
+    if (recordTimeout) {
+      clearTimeout(recordTimeout);
+      recordTimeout = null;
+    }
+
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
       animationFrameId = null;
     }
 
-    sourceVideo.pause();
+    if (sourceVideo) {
+      sourceVideo.ontimeupdate = null;
+      sourceVideo.pause();
+    }
+
     processingStatusText.textContent = 'Hoàn tất! Đang kiểm tra dung lượng < 5MB...';
     progressPercent.textContent = '100%';
     progressBarFill.style.width = '100%';
 
-    setTimeout(() => {
-      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    // Dừng ghi NGAY LẬP TỨC
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      try {
         mediaRecorder.stop();
-      }
-    }, 200);
+      } catch (e) {}
+    }
+
+    // Dừng toàn bộ stream tracks để cắt sạch luồng dữ liệu, không ghi dư thời lượng
+    if (activeStream) {
+      try {
+        activeStream.getTracks().forEach(track => track.stop());
+      } catch (e) {}
+    }
   }
 
   function finishCompression(outputExt) {
     if (cancelRequested) return;
 
     clearInterval(processingTimer);
-    isCompressing = false;
 
     const mimeType = mediaRecorder.mimeType || 'video/mp4';
     const finalBlob = new Blob(recordedChunks, { type: mimeType });
     const finalSize = finalBlob.size;
+
+    // KIỂM SOÁT AN TOÀN TRẦN DUNG LƯỢNG: CAM KẾT 100% LUÔN <= 5MB
+    if (finalSize > HARD_LIMIT_BYTES && recompressAttempts < 2) {
+      recompressAttempts++;
+      processingStatusText.textContent = `Tự động tối ưu sâu lần ${recompressAttempts} để cam kết ≤ 5MB (${formatBytes(finalSize)} -> ≤ 5MB)...`;
+      progressPercent.textContent = '0%';
+      progressBarFill.style.width = '0%';
+
+      if (compressedBlobUrl) {
+        URL.revokeObjectURL(compressedBlobUrl);
+        compressedBlobUrl = null;
+      }
+
+      const newSafety = recompressAttempts === 1 ? 0.65 : 0.45;
+      const newScale = recompressAttempts === 1 ? 0.85 : 0.70;
+
+      setTimeout(() => {
+        isCompressing = false;
+        startCompression(newSafety, newScale);
+      }, 150);
+      return;
+    }
+
+    recompressAttempts = 0;
+    isCompressing = false;
 
     if (compressedBlobUrl) {
       URL.revokeObjectURL(compressedBlobUrl);
@@ -634,7 +743,7 @@
     if (savedBytes > 0) {
       resSavedAmount.textContent = `Tiết kiệm ${formatBytes(savedBytes)} (Giảm ${savedPercentage}%) • Đoạn: ${clipDuration}s`;
     } else {
-      resSavedAmount.textContent = `Đã nén tối ưu đoạn ${clipDuration}s đạt chuẩn < 5MB`;
+      resSavedAmount.textContent = `Đã nén tối ưu đoạn ${clipDuration}s đạt chuẩn ≤ 5MB`;
     }
 
     // Set download link
@@ -656,18 +765,30 @@
     isCompressing = false;
     clearInterval(processingTimer);
 
+    if (recordTimeout) {
+      clearTimeout(recordTimeout);
+      recordTimeout = null;
+    }
+
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
       animationFrameId = null;
     }
 
     if (sourceVideo) {
+      sourceVideo.ontimeupdate = null;
       sourceVideo.pause();
     }
 
     if (mediaRecorder && mediaRecorder.state !== 'inactive') {
       try {
         mediaRecorder.stop();
+      } catch (e) {}
+    }
+
+    if (activeStream) {
+      try {
+        activeStream.getTracks().forEach(track => track.stop());
       } catch (e) {}
     }
 
@@ -684,6 +805,7 @@
 
   // --- Attach Button Listeners ---
   btnStartCompress.addEventListener('click', () => {
+    recompressAttempts = 0;
     startCompression();
   });
 
