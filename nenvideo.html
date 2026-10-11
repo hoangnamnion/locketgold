@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kéo Thả Video Vào Đây - Nén Video Dưới 10s &lt; 5MB</title>
+  <meta name="description"
+    content="Công cụ tối giản nén video hỗ trợ cắt đoạn tối đa 10 giây ép về dưới 5MB trực tiếp trên máy tính.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Error Modal Alert -->
+  <div id="errorModal" class="alert-modal hidden">
+    <div class="alert-modal-card">
+      <div class="alert-icon-wrapper">
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+      </div>
+      <div class="alert-content">
+        <h3 class="alert-title">Thông báo</h3>
+        <p id="errorMessageText" class="alert-message">Đã xảy ra lỗi khi đọc video.</p>
+      </div>
+      <button type="button" id="btnCloseAlert" class="btn-alert-close">Đã hiểu</button>
+    </div>
+  </div>
+
+  <main class="minimal-app-container">
+    <!-- State 1: Upload View (Exact Match with Screenshot) -->
+    <section id="uploadSection" class="minimal-section">
+      <!-- Title Header above card -->
+      <div class="minimal-header">
+        <h1 class="minimal-title">
+          <span class="folder-emoji">📁</span> Kéo Thả Video Vào Đây
+        </h1>
+        <p class="minimal-subtitle">
+          Chấp nhận mọi video • Tự động cắt đoạn tối đa 10 giây để nén &lt; 5MB
+        </p>
+      </div>
+
+      <!-- Main Neo-Brutalism Card -->
+      <div id="dropZone" class="minimal-card drop-zone" tabindex="0">
+        <input type="file" id="fileInput" accept="video/*" class="file-input">
+
+        <!-- Two Stacked Rule Pills -->
+        <div class="pill-stack">
+          <div class="rule-pill pink">
+            ✂️ Video dài hơn 10s: Hỗ trợ cắt đoạn chuẩn ≤ 10s
+          </div>
+          <div class="rule-pill green">
+            🎯 Dung lượng xuất: Luôn &lt; 5MB
+          </div>
+        </div>
+
+        <!-- Yellow Upload Circle Icon -->
+        <div class="upload-circle-btn">
+          <svg class="upload-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="16" x2="12" y2="7" />
+            <polyline points="7 12 12 7 17 12" />
+            <path d="M5 20h14" />
+          </svg>
+        </div>
+
+        <!-- Text Guidance -->
+        <div class="guidance-text">
+          <h2 class="card-heading">Kéo & Thả clip vào đây để nén ngay</h2>
+          <p class="card-sublink">hoặc <span class="browse-link">nhấn vào đây để duyệt file từ máy tính</span></p>
+        </div>
+
+        <!-- Format Tags -->
+        <div class="tag-row">
+          <span class="format-tag">MP4</span>
+          <span class="format-tag">MOV</span>
+          <span class="format-tag">WebM</span>
+          <span class="format-tag">MKV</span>
+          <span class="format-tag">AVI</span>
+        </div>
+      </div>
+
+      <!-- Footer Tags -->
+      <footer class="minimal-footer">
+        <div class="footer-pill">
+          🔒 100% Nội bộ trên máy
+        </div>
+        <div class="footer-pill">
+          ⚡ Tăng tốc phần cứng GPU
+        </div>
+      </footer>
+    </section>
+
+    <!-- State 2: Video Configuration & Ready / Trim View -->
+    <section id="configSection" class="minimal-section hidden">
+      <div class="minimal-header">
+        <h1 class="minimal-title">
+          <span>🎬</span> Sẵn Sàng Nén Video (&lt; 5MB)
+        </h1>
+        <p id="configSubtitle" class="minimal-subtitle">
+          Chọn đoạn video mong muốn (tối đa 10 giây) để tiến hành nén.
+        </p>
+      </div>
+
+      <div class="minimal-card ready-card">
+        <!-- Video Mini Inspector -->
+        <div class="ready-info-box">
+          <div class="ready-video-wrapper">
+            <video id="sourceVideo" preload="metadata" playsinline muted></video>
+            <span id="origDurationBadge" class="duration-tag">0.0s</span>
+          </div>
+          <div class="ready-meta">
+            <h3 id="videoName" class="file-title">video.mp4</h3>
+            <div class="meta-row">
+              <span class="chip">Dung lượng: <strong id="origSizeText">0 MB</strong></span>
+              <span class="chip">Độ phân giải: <strong id="origResText">1920x1080</strong></span>
+              <span class="chip">Thời lượng gốc: <strong id="origDurationText">0.0s</strong></span>
+            </div>
+            <button id="btnChangeFile" class="btn-cancel-link" type="button">✕ Đổi video khác</button>
+          </div>
+        </div>
+
+        <!-- Trimmer Box (Shown when video > 10s or for trimming) -->
+        <div id="trimmerBox" class="trimmer-card">
+          <div class="trimmer-header">
+            <span class="trimmer-title">✂️ Cắt đoạn để nén (Tối đa 10 giây)</span>
+            <span id="trimDurationBadge" class="trimmer-badge">Đoạn chọn: 10.0s</span>
+          </div>
+
+          <div class="time-inputs-row">
+            <div class="time-col">
+              <label for="trimStartInput" class="time-label">Bắt đầu:</label>
+              <div class="input-suffix-wrap">
+                <input type="number" id="trimStartInput" min="0" step="0.5" value="0.0">
+                <span>s</span>
+              </div>
+            </div>
+            <div class="time-arrow">➔</div>
+            <div class="time-col">
+              <label for="trimEndInput" class="time-label">Kết thúc:</label>
+              <div class="input-suffix-wrap">
+                <input type="number" id="trimEndInput" min="0.5" step="0.5" value="10.0">
+                <span>s</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video scrubber range slider -->
+          <div class="scrubber-wrapper">
+            <input type="range" id="trimRangeSlider" min="0" max="100" step="0.1" value="0" class="trim-scrubber">
+            <div class="scrubber-labels">
+              <span>0s</span>
+              <span id="scrubberCurrentLabel">Đang chọn: 0.0s - 10.0s</span>
+              <span id="scrubberTotalLabel">Tổng: 0s</span>
+            </div>
+          </div>
+
+          <!-- Quick trim buttons -->
+          <div class="quick-trim-row">
+            <button type="button" class="trim-quick-btn active" id="btnTrimStart">10s Đầu tiên</button>
+            <button type="button" class="trim-quick-btn" id="btnTrimMid">10s Ở giữa</button>
+            <button type="button" class="trim-quick-btn" id="btnTrimEnd">10s Cuối cùng</button>
+            <button type="button" class="trim-quick-btn preview" id="btnPreviewTrim">▶ Xem thử 10s này</button>
+          </div>
+        </div>
+
+        <!-- Output target preview -->
+        <div class="estimate-box">
+          <div class="estimate-text">
+            <span>Dung lượng đoạn nén dự kiến:</span>
+            <strong id="estSizeText">Tool Xịn Của Hoàng Quân</strong>
+          </div>
+          <span class="safe-badge">✅ CHUẨN &lt; 5MB</span>
+        </div>
+
+        <!-- Action Button -->
+        <button type="button" id="btnStartCompress" class="btn-start-pop">
+          🚀 BẮT ĐẦU NÉN
+        </button>
+      </div>
+    </section>
+
+    <!-- State 3: Processing View -->
+    <section id="processingSection" class="minimal-section hidden">
+      <div class="minimal-header">
+        <h1 class="minimal-title">
+          <span>⚙️</span> Đang Nén Đoạn Video...
+        </h1>
+        <p class="minimal-subtitle">
+          Hệ thống đang nén và ép dung lượng về dưới 5MB. Vui lòng đợi trong giây lát.
+        </p>
+      </div>
+
+      <div class="minimal-card progress-card">
+        <div class="progress-circle-pop">
+          <span id="progressPercent" class="circle-number">0%</span>
+        </div>
+
+        <p id="processingStatusText" class="status-tip">Đang xử lý khung hình...</p>
+
+        <div class="progress-bar-track">
+          <div id="progressBarFill" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+
+        <div class="stat-chips">
+          <span class="chip">Đã chạy: <strong id="timeElapsedText">0.0s</strong></span>
+          <span class="chip">Đoạn nén: <strong id="videoCurrentTimeText">0.0s / 10.0s</strong></span>
+        </div>
+
+        <button type="button" id="btnCancelCompress" class="btn-cancel-link" style="margin-top: 10px;">
+          ✕ Hủy quá trình nén
+        </button>
+      </div>
+    </section>
+
+    <!-- State 4: Result View -->
+    <section id="resultSection" class="minimal-section hidden">
+      <div class="minimal-header">
+        <h1 class="minimal-title">
+          <span>🎉</span> Nén Thành Công Dưới 5MB!
+        </h1>
+        <p class="minimal-subtitle">
+          Đoạn video clip đã sẵn sàng để tải về và gửi qua Zalo, Messenger, Discord, Email.
+        </p>
+      </div>
+
+      <div class="minimal-card result-card">
+        <!-- Comparison -->
+        <div class="compare-row">
+          <div class="compare-col">
+            <span class="col-label">Dung lượng video gốc</span>
+            <span id="resBeforeSize" class="col-value old">12.5 MB</span>
+          </div>
+          <div class="compare-arrow">➔</div>
+          <div class="compare-col">
+            <span class="col-label">Sau khi nén</span>
+            <span id="resAfterSize" class="col-value highlight">2.8 MB</span>
+          </div>
+        </div>
+
+        <div class="success-banner">
+          <span id="resSavedAmount">Tiết kiệm 9.7 MB</span>
+          <span class="check-tag">✅ &lt; 5MB (≤ 10s)</span>
+        </div>
+
+        <!-- Video Player -->
+        <div class="player-wrapper">
+          <video id="compressedVideoPlayer" controls playsinline></video>
+        </div>
+
+        <!-- Download & Restart -->
+        <div class="action-buttons">
+          <a id="btnDownloadVideo" class="btn-download-pop" download="compressed.mp4">
+            💾 TẢI VIDEO VỀ MÁY
+          </a>
+          <button type="button" id="btnCompressAnother" class="btn-restart-pop">
+            ↻ Nén video khác
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Hidden canvas used for rendering -->
+  <canvas id="renderCanvas" style="display: none;"></canvas>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
