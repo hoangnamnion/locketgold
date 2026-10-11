@@ -229,13 +229,17 @@
         trimStart = 0.0;
         trimEnd = videoDuration;
         trimmerBox.classList.add('hidden');
-        configSubtitle.textContent = `Clip ngắn hợp lệ (${videoDuration.toFixed(1)}s ≤ 9s). Sẵn sàng nén luôn!`;
+        if (configSubtitle) {
+          configSubtitle.textContent = `Clip ngắn hợp lệ (${videoDuration.toFixed(1)}s ≤ 9s). Sẵn sàng nén luôn!`;
+        }
       } else {
         // Video dài hơn 9s: Bật khối chọn đoạn 9 giây
         trimStart = 0.0;
         trimEnd = MAX_TRIM_DURATION;
         trimmerBox.classList.remove('hidden');
-        configSubtitle.textContent = `Video dài ${videoDuration.toFixed(1)}s. Hãy chọn đoạn cắt tối đa 9 giây để nén!`;
+        if (configSubtitle) {
+          configSubtitle.textContent = `Video dài ${videoDuration.toFixed(1)}s. Hãy chọn đoạn cắt tối đa 9 giây để nén!`;
+        }
 
         setupTrimmerControls();
       }
@@ -341,53 +345,64 @@
     clearQuickActive();
   });
 
-  // Quick chips
-  btnTrimStart.addEventListener('click', () => {
-    setTrimRange(0.0, Math.min(videoDuration, MAX_TRIM_DURATION));
-    setQuickActive(btnTrimStart);
-  });
-
-  btnTrimMid.addEventListener('click', () => {
-    const mid = videoDuration / 2;
-    const s = Math.max(0, mid - (MAX_TRIM_DURATION / 2));
-    const e = Math.min(videoDuration, s + MAX_TRIM_DURATION);
-    setTrimRange(s, e);
-    setQuickActive(btnTrimMid);
-  });
-
-  btnTrimEnd.addEventListener('click', () => {
-    const s = Math.max(0, videoDuration - MAX_TRIM_DURATION);
-    setTrimRange(s, videoDuration);
-    setQuickActive(btnTrimEnd);
-  });
-
-  btnPreviewTrim.addEventListener('click', () => {
-    if (previewTimeout) {
-      clearTimeout(previewTimeout);
-      previewTimeout = null;
-    }
-    sourceVideo.currentTime = trimStart;
-    sourceVideo.play().then(() => {
-      const playDurationMs = (trimEnd - trimStart) * 1000;
-      previewTimeout = setTimeout(() => {
-        sourceVideo.pause();
-        sourceVideo.currentTime = trimStart;
-      }, playDurationMs);
-    }).catch(err => {
-      console.warn('Preview error:', err);
+  // Quick chips (if present)
+  if (btnTrimStart) {
+    btnTrimStart.addEventListener('click', () => {
+      setTrimRange(0.0, Math.min(videoDuration, MAX_TRIM_DURATION));
+      setQuickActive(btnTrimStart);
     });
-  });
+  }
+
+  if (btnTrimMid) {
+    btnTrimMid.addEventListener('click', () => {
+      const mid = videoDuration / 2;
+      const s = Math.max(0, mid - (MAX_TRIM_DURATION / 2));
+      const e = Math.min(videoDuration, s + MAX_TRIM_DURATION);
+      setTrimRange(s, e);
+      setQuickActive(btnTrimMid);
+    });
+  }
+
+  if (btnTrimEnd) {
+    btnTrimEnd.addEventListener('click', () => {
+      const s = Math.max(0, videoDuration - MAX_TRIM_DURATION);
+      setTrimRange(s, videoDuration);
+      setQuickActive(btnTrimEnd);
+    });
+  }
+
+  if (btnPreviewTrim) {
+    btnPreviewTrim.addEventListener('click', () => {
+      if (previewTimeout) {
+        clearTimeout(previewTimeout);
+        previewTimeout = null;
+      }
+      sourceVideo.currentTime = trimStart;
+      sourceVideo.play().then(() => {
+        const playDurationMs = (trimEnd - trimStart) * 1000;
+        previewTimeout = setTimeout(() => {
+          sourceVideo.pause();
+          sourceVideo.currentTime = trimStart;
+        }, playDurationMs);
+      }).catch(err => {
+        console.warn('Preview error:', err);
+      });
+    });
+  }
 
   function clearQuickActive() {
-    [btnTrimStart, btnTrimMid, btnTrimEnd].forEach(b => b.classList.remove('active'));
+    [btnTrimStart, btnTrimMid, btnTrimEnd].forEach(b => {
+      if (b) b.classList.remove('active');
+    });
   }
 
   function setQuickActive(btn) {
     clearQuickActive();
-    btn.classList.add('active');
+    if (btn) btn.classList.add('active');
   }
 
   function updateEstimate() {
+    if (!estSizeText) return;
     const clipDur = Math.max(1.0, trimEnd - trimStart);
     const estDisplay = Math.min(TARGET_SAFE_MB, Math.max(1.0, (TARGET_SAFE_MB * clipDur / 9))).toFixed(1);
     estSizeText.textContent = `~ ${estDisplay} MB (≤ 5MB) • Tool Xịn Của Hoàng Quân`;

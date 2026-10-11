@@ -36,18 +36,8 @@
   </div>
 
   <main class="minimal-app-container">
-    <!-- State 1: Upload View (Exact Match with Screenshot) -->
+    <!-- State 1: Upload View -->
     <section id="uploadSection" class="minimal-section">
-      <!-- Title Header above card -->
-      <div class="minimal-header">
-        <h1 class="minimal-title">
-          <span class="folder-emoji">📁</span> Kéo Thả Video Vào Đây
-        </h1>
-        <p class="minimal-subtitle">
-          Chấp nhận mọi video • Tự động cắt đoạn tối đa 9 giây để nén &lt; 5MB
-        </p>
-      </div>
-
       <!-- Main Neo-Brutalism Card -->
       <div id="dropZone" class="minimal-card drop-zone" tabindex="0">
         <input type="file" id="fileInput" accept="video/*" class="file-input">
@@ -101,15 +91,6 @@
 
     <!-- State 2: Video Configuration & Ready / Trim View -->
     <section id="configSection" class="minimal-section hidden">
-      <div class="minimal-header">
-        <h1 class="minimal-title">
-          <span>🎬</span> Sẵn Sàng Nén Video (&lt; 5MB)
-        </h1>
-        <p id="configSubtitle" class="minimal-subtitle">
-          Chọn đoạn video mong muốn (tối đa 9 giây) để tiến hành nén.
-        </p>
-      </div>
-
       <div class="minimal-card ready-card">
         <!-- Video Mini Inspector -->
         <div class="ready-info-box">
@@ -163,22 +144,6 @@
             </div>
           </div>
 
-          <!-- Quick trim buttons -->
-          <div class="quick-trim-row">
-            <button type="button" class="trim-quick-btn active" id="btnTrimStart">9s Đầu tiên</button>
-            <button type="button" class="trim-quick-btn" id="btnTrimMid">9s Ở giữa</button>
-            <button type="button" class="trim-quick-btn" id="btnTrimEnd">9s Cuối cùng</button>
-            <button type="button" class="trim-quick-btn preview" id="btnPreviewTrim">▶ Xem thử 9s này</button>
-          </div>
-        </div>
-
-        <!-- Output target preview -->
-        <div class="estimate-box">
-          <div class="estimate-text">
-            <span>Dung lượng đoạn nén dự kiến:</span>
-            <strong id="estSizeText">Tool Xịn Của Hoàng Quân</strong>
-          </div>
-          <span class="safe-badge">✅ CHUẨN ≤ 5MB</span>
         </div>
 
         <!-- Action Button -->
