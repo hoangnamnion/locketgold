@@ -53,9 +53,28 @@
       <key>PayloadCertificateFileName</key>
       <string>LocketGoldCA.der</string>
       <key>PayloadContent</key>
-      <data>
-MIIDBzCCAe+gAwIBAgIUN2C/L/EBuG+ZQH8el1i2OHmNu+IwDQYJKoZIhvcNAQELBQAwMzEWMBQGA1UEAwwNTG9ja2V0R29sZCBDQTEZMBcGA1UECgwQTG9ja2V0R29sZCBMb2NhbDAeFw0yNjEwMTUxMDM1MDZaFw0zNjEwMTMxMDM1MDZaMDMxFjAUBgNVBAMMDUxvY2tldEdvbGQgQ0ExGTAXBgNVBAoMEExvY2tldEdvbGQgTG9jYWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDyg9lacY+SBzi3oBGeU+6pO5bKt5ozzIV4ZSLeQrBCR1RbyiSecQKKR8B7CCmH9+1/Fsn5TTprhBCzdvq6siESIZTNPN5uN39AscdKhKB3tJhuS08AwCJVyrKCd4g4BNjPY8HUCzEtsQ9Liyr240MT2+psxa6yUYFvq12ok7xGb7p7bT0P8TNBSBF+aM4an0kZ9ax+Me9mWqJM0FL7cKtGGeXm1ynr+uZyvtpVnR/ldhXd9Zd9mGsV/Jl8NIyGa93dKlQvWzO+iqyrivAGPcTyWL9mjxrfWMsuL0st76AFRFZlIjjYqIWT4OoUsRs3T7cD+spl3hp6H2yXc42A6Ie9AgMBAAGjEzARMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAMsoMROS/W2hpApryNwwqCiLdpQQF/UCQe1SI/9wtD7vseQ5exPF2hbckCh5+UkYrTqBoFILj0Pjsg27YGu/PduQg1E6ZbK7U1NH3dMlxHTPhAILYHrFZgmTRfLL811UUiBTDJt54SiTrkQOoxT2phF6+PvBCjFxvbe8G71qEpIBEuewNmttRRozmyotJWTSAYSDed0FDqeYTjukXXxyerUkCBR2NLU4QXve1k/sRGh42tZNg4F1o3ORIp5AQxg8KQqYmUeevxFDoR8+M7OuB+7WhI5hLQQ0kakvBZKsPFnqwKjCipPKvSsijJuytoUR9GghBRo3IemwS7zAVhM9f28=</data>
-    </dict>
+        <data>
+        MIIDZzCCAk+gAwIBAgIUUE39v/2p1lNsm2EiCFtNzH25BOswDQYJKoZIhvcNAQEL
+        BQAwQzEgMB4GA1UEAwwXTG9ja2V0IEdvbGQgVklQIFJvb3QgQ0ExEjAQBgNVBAoM
+        CUxvY2tldFZJUDELMAkGA1UEBhMCVk4wHhcNMjYxMTE0MDA1MTQ0WhcNMzYxMTEx
+        MDA1MTQ0WjBDMSAwHgYDVQQDDBdMb2NrZXQgR29sZCBWSVAgUm9vdCBDQTESMBAG
+        A1UECgwJTG9ja2V0VklQMQswCQYDVQQGEwJWTjCCASIwDQYJKoZIhvcNAQEBBQAD
+        ggEPADCCAQoCggEBANGI1y5+/8eI+XCP6RQtqar83boj7UtScIodFm2pm64k4PJm
+        rejJC7zY3XEUE7cVUb5VpjOj5cUi5g7kuMI6Nma/hcNKyViY8rw25cMVvb5p2bZt
+        kAbyFwJZ/yMt/1hI/YQeHGBiFbIw7PMG7ajavPuCb+Z1B3VVtvjAUB1oz1E88xFD
+        C16dDNOkYJ9AMDNnArjF5a0r4nZhpuvFqQvsuZdifsX8RITKFF9mYraSJ5sGh08a
+        hV+iHhsGp0ZHZUuc9ToRoz7D1PDslvlV6AOXxTuWgqeEnfvwSF9KSnc+htffWUA9
+        5vhuqrprnCVHmNEG729uS+KO+d9KQ/u1H9si8pMCAwEAAaNTMFEwHQYDVR0OBBYE
+        FG91YfK6qmS0bjrhJpvr5s6WlaZEMB8GA1UdIwQYMBaAFG91YfK6qmS0bjrhJpvr
+        5s6WlaZEMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBADGlm6pw
+        Kd9LsNUjPJNuHkb82z/UVmbPwmlmU5glZJ9g7xOyY7Sxehw6k5/ewAdZSpZF/s4E
+        JAwnF/WrOy5TwCsuehH2im53RnSB28CXCG4gi7hrqljnfHL1uFRAlBkeXkT7KYlr
+        +zWqkLBYxDRolCDx3OzAImtUqDSMdO6YH4qvzGzRK0ovrQWXT2QDUf5p/DG8uF/J
+        algbSdRtAWg1HI5ltoDPin3WWAtl7YVbbdcFZe7c9akx9ufrBUsji9+LopwaTJWq
+        VFWdmLr2CBuMnwnEvxtoAlYjovyUw/AKBjp20YiJS+a35KonDF3QS1nc7vOIglQF
+        UqfKsRjuZ338ZIw=
+        </data>
+      </dict>
 
     <!-- ② DNS over HTTPS (DoH nodns.vn + 5 Domains) -->
     <dict>
@@ -76,7 +95,7 @@ MIIDBzCCAe+gAwIBAgIUN2C/L/EBuG+ZQH8el1i2OHmNu+IwDQYJKoZIhvcNAQELBQAwMzEWMBQGA1UE
         <key>DNSProtocol</key>
         <string>HTTPS</string>
         <key>ServerURL</key>
-        <string>https://103.82.26.44/dns-query</string>
+        <string>https://180.93.120.230/dns-query</string>
         <key>SupplementalMatchDomains</key>
         <array>
           <string>api.revenuecat.com</string>
